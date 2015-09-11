@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Sets the instance url of jira.
+ * Sets the instance url of Google Chart Shortcodes.
  */
 function ma_gcs_admin() {
 	$form = array ();
