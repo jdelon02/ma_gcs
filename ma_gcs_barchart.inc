@@ -178,7 +178,6 @@ function theme_shortcode_barchart($vars) {
   . '" style="width: 900px; height: 500px;"></div>';
 
   return $returnstring;
-  //return '<div class="shortcodes" id="' . $thisisrandom . '" data-type= "'. $typeme . '" data-link="' . $linkme . '" data-title="' . $titleme . '" data-subtitle="' . $subtitle . '" data-id="' . $thisisrandom . '" data-col1="' . $col1 . '" data-col2="' . $col2 . '" data-col3="' . $col3 . '" data-col4="' . $col4 . '" data-col5="' . $col5 . '" data-col6="' . $col6 . '"  data-col7="' . $col7 . '"  data-col8="' . $col8 . '" style="width: 900px; height: 500px;"></div>';
 }
 
 /**

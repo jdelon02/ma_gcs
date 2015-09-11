@@ -6,7 +6,3 @@ stylesheets[all][] = css/ma_gcs.css
 dependencies[] = filter
 dependencies[] = shortcode
 dependencies[] = shortcode_wysiwyg
-files[] = ma_gcs_piechart.inc
-files[] = ma_gcs_barchart.inc
-files[] = ma_gcs_columnchart.inc
-files[] = ma_gcs_tablechart.inc
