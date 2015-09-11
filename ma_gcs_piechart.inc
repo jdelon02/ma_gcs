@@ -6,7 +6,7 @@
  * Used by shortcode_wysiwyg module to add form elements for attributes.
  */
 
-function ma_gcs_piechart_attributes($form, &$form_state) {
+function ma_gcs_shortcode_piechart_attributes($form, &$form_state) {
  
   $form['piechart-link'] = array(
       '#name' => t('link'),

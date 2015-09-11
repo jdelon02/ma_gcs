@@ -33,11 +33,11 @@ function ma_gcs_init() {
 	drupal_add_css(drupal_get_path('module', 'ma_gcs') .'/css/ma_gcs.css');
   drupal_add_js(drupal_get_path('module', 'ma_gcs') . '/js/ma_gcs.js');
 }
-function ma_gcs_info() {
+function ma_gcs_shortcode_info() {
   $shortcodes['piechart'] = array(
     'title' => t('Google Pie Chart'),  // The title of this shortcode, displayed in the Drupal backend for administrators to enable/disable shortcodes for input types
     'description' => t('Embed a Google Pie Chart.'),  // Description shown along with the title in the Drupal backend
-    'attributes callback' => 'ma_gcs_piechart_attributes',
+    'attributes callback' => 'ma_gcs_shortcode_piechart_attributes',
     'process callback' => 'ma_gcs_shortcode_piechart', // Custom function that deals with the variables and html output
     'tips callback' => 'ma_gcs_shortcode_piechart_tip' // Custom function that displays some help text to the user
   );
@@ -45,7 +45,7 @@ function ma_gcs_info() {
   $shortcodes['columnchart'] = array(
       'title' => t('Google Column Chart'),  // The title of this shortcode, displayed in the Drupal backend for administrators to enable/disable shortcodes for input types
       'description' => t('Embed a Google Column Chart.'),  // Description shown along with the title in the Drupal backend
-      'attributes callback' => 'ma_gcs_columnchart_attributes',
+      'attributes callback' => 'ma_gcs_shortcode_columnchart_attributes',
       'process callback' => 'ma_gcs_shortcode_columnchart', // Custom function that deals with the variables and html output
       'tips callback' => 'ma_gcs_shortcode_columnchart_tip' // Custom function that displays some help text to the user
   );
@@ -53,7 +53,7 @@ function ma_gcs_info() {
   $shortcodes['barchart'] = array(
       'title' => t('Google Bar Chart'),  // The title of this shortcode, displayed in the Drupal backend for administrators to enable/disable shortcodes for input types
       'description' => t('Embed a Google Bar Chart.'),  // Description shown along with the title in the Drupal backend
-      'attributes callback' => 'ma_gcs_barchart_attributes',
+      'attributes callback' => 'ma_gcs_shortcode_barchart_attributes',
       'process callback' => 'ma_gcs_shortcode_barchart', // Custom function that deals with the variables and html output
       'tips callback' => 'ma_gcs_shortcode_barchart_tip' // Custom function that displays some help text to the user
   );
@@ -61,7 +61,7 @@ function ma_gcs_info() {
   $shortcodes['tablechart'] = array(
       'title' => t('Google Table Chart'),  // The title of this shortcode, displayed in the Drupal backend for administrators to enable/disable shortcodes for input types
       'description' => t('Embed a Google Table Chart.'),  // Description shown along with the title in the Drupal backend
-      'attributes callback' => 'ma_gcs_tablechart_attributes',
+      'attributes callback' => 'ma_gcs_shortcode_tablechart_attributes',
       'process callback' => 'ma_gcs_shortcode_tablechart', // Custom function that deals with the variables and html output
       'tips callback' => 'ma_gcs_shortcode_tablechart_tip' // Custom function that displays some help text to the user
   );
