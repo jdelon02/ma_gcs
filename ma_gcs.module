@@ -1,0 +1,147 @@
+<?php
+/**
+ * Define our shortcodes and their titles, descriptions, and callback functions
+ *
+ * See comments below for explanation
+ */
+function ma_gcs_menu() {
+
+  $items = array();
+
+  $items['admin/config/services/ma_gcs'] = array(
+    'title' => 'Google Charts Shortcodes',
+    'description' => 'Configuration for Google Charts Shortcodes',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('ma_gcs_admin'),
+    'access arguments' => array('administer site configuration'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'ma_gcs.admin.inc',
+  );
+
+  return $items;
+}
+
+function ma_gcs_init() {
+  drupal_add_js('https://www.google.com/jsapi', 'external');
+	drupal_add_css(drupal_get_path('module', 'ma_gcs') .'/css/googlechartsshortcodes.css');
+  drupal_add_js(drupal_get_path('module', 'ma_gcs') . '/js/googlechartsshortcodes.js');
+}
+function ma_gcs_shortcode_info() {
+  $shortcodes['piechart'] = array(
+    'title' => t('Google Pie Chart'),  // The title of this shortcode, displayed in the Drupal backend for administrators to enable/disable shortcodes for input types
+    'description' => t('Embed a Google Pie Chart.'),  // Description shown along with the title in the Drupal backend
+    'attributes callback' => 'ma_gcs_piechart_attributes',
+    'process callback' => 'ma_gcs_shortcode_piechart', // Custom function that deals with the variables and html output
+    'tips callback' => 'ma_gcs_shortcode_piechart_tip' // Custom function that displays some help text to the user
+  );
+  
+  $shortcodes['columnchart'] = array(
+      'title' => t('Google Column Chart'),  // The title of this shortcode, displayed in the Drupal backend for administrators to enable/disable shortcodes for input types
+      'description' => t('Embed a Google Column Chart.'),  // Description shown along with the title in the Drupal backend
+      'attributes callback' => 'ma_gcs_columnchart_attributes',
+      'process callback' => 'ma_gcs_shortcode_columnchart', // Custom function that deals with the variables and html output
+      'tips callback' => 'ma_gcs_shortcode_columnchart_tip' // Custom function that displays some help text to the user
+  );
+  
+  $shortcodes['barchart'] = array(
+      'title' => t('Google Bar Chart'),  // The title of this shortcode, displayed in the Drupal backend for administrators to enable/disable shortcodes for input types
+      'description' => t('Embed a Google Bar Chart.'),  // Description shown along with the title in the Drupal backend
+      'attributes callback' => 'ma_gcs_barchart_attributes',
+      'process callback' => 'ma_gcs_shortcode_barchart', // Custom function that deals with the variables and html output
+      'tips callback' => 'ma_gcs_shortcode_barchart_tip' // Custom function that displays some help text to the user
+  );
+  
+  $shortcodes['tablechart'] = array(
+      'title' => t('Google Table Chart'),  // The title of this shortcode, displayed in the Drupal backend for administrators to enable/disable shortcodes for input types
+      'description' => t('Embed a Google Table Chart.'),  // Description shown along with the title in the Drupal backend
+      'attributes callback' => 'ma_gcs_tablechart_attributes',
+      'process callback' => 'ma_gcs_shortcode_tablechart', // Custom function that deals with the variables and html output
+      'tips callback' => 'ma_gcs_shortcode_tablechart_tip' // Custom function that displays some help text to the user
+  );
+
+  return $shortcodes;
+}
+
+/**
+ * Define our variables (parameters) for each shortcode
+ */
+function ma_gcs_theme() {
+  return array(
+    'shortcode_piechart' => array(
+      'variables' => array(
+        'link' => '',
+        'title' => '',
+        'subtitle' => '',
+        'col1' => '',
+        'col2' => '',
+        'col3' => '',
+        'col4' => '',
+        'col5' => '',
+        'col6' => '',
+        'col7' => '',
+        'col8' => '',
+      ),
+    ),
+      
+    'shortcode_barchart' => array(
+      'variables' => array(
+        'link' => '',
+        'title' => '',
+        'subtitle' => '',
+        'col1' => '',
+        'col2' => '',
+        'col3' => '',
+        'col4' => '',
+        'col5' => '',
+        'col6' => '',
+        'col7' => '',
+        'col8' => '',
+        'isstacked' => '',
+      ),
+    ),
+       
+    'shortcode_columnchart' => array(
+      'variables' => array(
+        'link' => '',
+        'title' => '',
+        'subtitle' => '',
+        'col1' => '',
+        'col2' => '',
+        'col3' => '',
+        'col4' => '',
+        'col5' => '',
+        'col6' => '',
+        'col7' => '',
+        'col8' => '',
+        'isstacked' => '',
+      ),
+    ),
+      
+    'shortcode_tablechart' => array(
+      'variables' => array(
+        'link' => '',
+        'title' => '',
+        'subtitle' => '',
+        'legal1' => '',
+        'legal2' => '',
+        'col1' => '',
+        'col2' => '',
+        'col3' => '',
+        'col4' => '',
+        'col5' => '',
+        'col6' => '',
+        'col7' => '',
+        'col8' => '',
+      ),
+    ),
+  );
+}
+
+
+/**
+ * This function generates a ranomd string to assign as a div id for the google chart (in case they have more than one on a page).
+ */
+function generateRandomString($length = 5) {
+  return substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length);
+}
+

@@ -1,0 +1,74 @@
+.shortcodes {
+	font-family: 'Merriweather', 'Georgia', 'Times', 'Times New Roman', serif;
+	font-size: 10px;
+  letter-spacing: .5px;
+  /*line-height: 1.25;*/
+  /* this is the parent of each element that this module generates */
+}
+h3.rbftitle {
+ padding-top: 0;
+ padding-bottom: 0;
+ margin-bottom: 0;
+}
+p.rbfsubtext {
+	font-family: 'Merriweather', 'Georgia', 'Times', 'Times New Roman', serif;
+	letter-spacing: .5px;
+  font-size: 8px;
+  font-style: italic;
+}
+/* This is only for styling tables */
+.google-visualization-table {
+	/* this is the container div */
+}
+.google-visualization-table-table {
+	font-family: 'Merriweather', 'Georgia', 'Times', 'Times New Roman', serif;
+	letter-spacing: .5px;
+
+	/* this is the inner table */
+}
+.google-visualization-table-table .td {
+	padding-top: 0px !important;
+	padding-bottom: 0px !important;
+	border: solid #eee;
+  border-width: 1px 0px 0px 0;
+ }
+  .headerRow {
+		background-color: #364d6e;
+		color: white;
+		border: 0px solid #364d6e;
+  }
+  .tableRow {
+
+  }
+  .oddTableRow {
+
+  }
+  .selectedTableRow {
+
+  }
+	.hoverTableRow {
+
+	}
+	.headerCell {
+
+	}
+	td.tableCell {
+		padding-top: 0px !important;
+		padding-bottom: 0px !important;
+
+	}
+	td.google-visualization-table-td-number {
+		padding-top: 0px !important;
+		padding-bottom: 0px !important;
+	}
+	.rowNumberCell {
+
+	}
+#shortcode-wysiwyg-form .form-item {
+	margin: 0 0 10px;
+	vertical-align: baseline;
+}
+#shortcode-wysiwyg-form .form-item-col1, #shortcode-wysiwyg-form .form-item-col3, #shortcode-wysiwyg-form .form-item-col5, #shortcode-wysiwyg-form .form-item-col7 {
+	padding-right: 100px;
+	float: left;
+}
