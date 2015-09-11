@@ -33,7 +33,7 @@ function ma_gcs_init() {
 	drupal_add_css(drupal_get_path('module', 'ma_gcs') .'/css/ma_gcs.css');
   drupal_add_js(drupal_get_path('module', 'ma_gcs') . '/js/ma_gcs.js');
 }
-function ma_gcs_shortcode_info() {
+function ma_gcs_info() {
   $shortcodes['piechart'] = array(
     'title' => t('Google Pie Chart'),  // The title of this shortcode, displayed in the Drupal backend for administrators to enable/disable shortcodes for input types
     'description' => t('Embed a Google Pie Chart.'),  // Description shown along with the title in the Drupal backend
