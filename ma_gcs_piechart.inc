@@ -69,7 +69,7 @@ function ma_gcs_piechart_attributes($form, &$form_state) {
  *     'attribute' => 'default_value_goes_here'
  * ),
  */
-function ma_gcs_piechart($attrs) {
+function ma_gcs_shortcode_piechart($attrs) {
   $attrs = shortcode_attrs(
     array(
       'link' => '',
@@ -163,7 +163,7 @@ function theme_shortcode_piechart($vars) {
  * This function outputs some tips to the user beneath the WYSIWYG editor so they know
  * what the shortcode does and how to use it.
  */
-function ma_gcs_piechart_tip($format, $long) {
+function ma_gcs_shortcode_piechart_tip($format, $long) {
   $output = array();
   $output[] = '<p><strong>' . t('[piechart link="http://URLhere.com"][/piechart]') . '</strong> ';
   if ($long) {

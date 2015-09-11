@@ -161,7 +161,7 @@ function theme_shortcode_tablechart($vars) {
 
   drupal_add_js(
       array(
-          'ma_google_chart_shortcodes' => array(
+          'ma_gcs' => array(
               'colors' => $colors,
           )
       ),

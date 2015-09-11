@@ -86,7 +86,8 @@ function ma_gcs_columnchart_attributes($form, &$form_state) {
  * ),
  */
 function ma_gcs_shortcode_columnchart($attrs) {
-  $attrs = shortcode_attrs(array(
+  $attrs = shortcode_attrs(
+    array(
       'link' => '',
       'title' => '',
       'subtitle' => '',
@@ -99,8 +100,8 @@ function ma_gcs_shortcode_columnchart($attrs) {
       'col7' => variable_get('ma_gcs_color7'),
       'col8' => variable_get('ma_gcs_color8'),
       'isstacked' => '',
-  ),
-      $attrs
+    ),
+    $attrs
   );
 
 
@@ -154,7 +155,7 @@ function theme_shortcode_columnchart($vars) {
 
   drupal_add_js(
       array(
-          'ma_google_chart_shortcodes' => array(
+          'ma_gcs' => array(
               'colors' => $colors,
           )
       ),
