@@ -1,4 +1,11 @@
 <?php
+
+module_load_include('inc', 'ma_gcs', 'ma_gcs_barchart');
+module_load_include('inc', 'ma_gcs', 'ma_gcs_piechart');
+module_load_include('inc', 'ma_gcs', 'ma_gcs_tablechart');
+module_load_include('inc', 'ma_gcs', 'ma_gcs_columnchart');
+
+
 /**
  * Define our shortcodes and their titles, descriptions, and callback functions
  *
