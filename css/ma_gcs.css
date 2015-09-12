@@ -68,12 +68,11 @@ p.rbfsubtext {
 	margin: 0 0 10px;
 	vertical-align: baseline;
 }
-#shortcode-wysiwyg-form .form-item-col1, #shortcode-wysiwyg-form .form-item-col4, #shortcode-wysiwyg-form .form-item-col7 {
-	padding-right: 100px;
-	float: left;
+#shortcode-wysiwyg-form .form-wrapper {
+	width: 100%;
 }
-#shortcode-wysiwyg-form .form-item-col3, #shortcode-wysiwyg-form .form-item-col6 {
-  /* padding-right: 100px; */
-  float: right;
+#shortcode-wysiwyg-form .form-wrapper .form-item {
+	width: 33%;
 }
+
 
