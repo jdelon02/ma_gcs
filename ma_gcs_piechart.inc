@@ -46,7 +46,7 @@ function ma_gcs_shortcode_piechart_attributes($form, &$form_state) {
         '#name' => t('col'.$i),
         '#type' => 'textfield',
         '#title' => t('Color #' . $i),
-        '#default_value' => variable_get('ma_pie_chart_shortcodes_color' . $i, ''),
+        '#default_value' => variable_get('ma_gcs_color' . $i, ''),
         '#size' => 8,
         '#states' => array(
             'visible' => array(
