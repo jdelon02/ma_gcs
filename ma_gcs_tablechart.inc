@@ -71,7 +71,7 @@ function ma_gcs_shortcode_tablechart_attributes($form, &$form_state) {
   );
   
   for($i = 1; $i < 9; $i++) {
-    $form ['tablechart-col' . $i] = array (
+    $form ['tablechart-fieldset']['tablechart-col' . $i] = array (
         '#name' => t('col'.$i),
         '#type' => 'textfield',
         '#title' => t('Color #' . $i),
