@@ -42,7 +42,7 @@ function ma_gcs_shortcode_columnchart_attributes($form, &$form_state) {
   );
 
   // To make the fieldset collapsible
-  $form['fieldset'] = array(
+  $form['columnset'] = array(
       '#type' => 'fieldset',
       '#title' => t('Colors'),
       '#collapsible' => FALSE, // Added
@@ -50,7 +50,7 @@ function ma_gcs_shortcode_columnchart_attributes($form, &$form_state) {
   );
   
   for($i = 1; $i < 9; $i++) {
-    $form ['fieldset']['columnchart-col' . $i] = array (
+    $form ['columnset']['columnchart-col' . $i] = array (
         '#name' => t('col'.$i),
         '#type' => 'textfield',
         '#title' => t('Color #' . $i),
