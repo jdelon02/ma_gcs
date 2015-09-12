@@ -73,6 +73,7 @@ p.rbfsubtext {
 }
 #shortcode-wysiwyg-form .form-wrapper .form-item {
 	width: 33%;
+	float: left;
 }
 
 
