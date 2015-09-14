@@ -75,7 +75,7 @@ function ma_gcs_theme() {
   return array(
     'shortcode_piechart' => array(
       'variables' => array(
-        'type' => 'PieChart',  
+        'type' => '',  
         'link' => '',
         'title' => '',
         'subtitle' => '',
@@ -92,7 +92,7 @@ function ma_gcs_theme() {
       
     'shortcode_barchart' => array(
       'variables' => array(
-        'type' => 'BarChart',
+        'type' => '',
         'link' => '',
         'title' => '',
         'subtitle' => '',
@@ -110,7 +110,7 @@ function ma_gcs_theme() {
        
     'shortcode_columnchart' => array(
       'variables' => array(
-        'type' => 'ColumnChart',
+        'type' => '',
         'link' => '',
         'title' => '',
         'subtitle' => '',
@@ -128,7 +128,7 @@ function ma_gcs_theme() {
       
     'shortcode_tablechart' => array(
       'variables' => array(
-        'type' => 'TableChart',
+        'type' => '',
         'link' => '',
         'title' => '',
         'subtitle' => '',
