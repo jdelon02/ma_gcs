@@ -63,15 +63,20 @@ function ma_gcs_shortcode_tablechart_attributes($form, &$form_state) {
   );
   
   // To make the fieldset collapsible
-  $form['tableset'] = array(
+  $form['tablechart-set'] = array(
       '#type' => 'fieldset',
       '#title' => t('Colors'),
       '#collapsible' => FALSE, // Added
       '#collapsed' => FALSE,  // Added
+      '#states' => array(
+          'visible' => array(
+              ':input[name="shortcode"]' => array('value' => 'tablechart'),
+          ),
+      ),
   );
   
   for($i = 1; $i < 9; $i++) {
-    $form ['tableset']['tablechart-col' . $i] = array (
+    $form ['tablechart-set']['tablechart-col' . $i] = array (
         '#name' => t('col'.$i),
         '#type' => 'textfield',
         '#title' => t('Color #' . $i),

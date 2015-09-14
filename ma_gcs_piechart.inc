@@ -42,15 +42,20 @@ function ma_gcs_shortcode_piechart_attributes($form, &$form_state) {
   );
 
   // To make the fieldset collapsible
-  $form['pieset'] = array(
+  $form['piechart-set'] = array(
       '#type' => 'fieldset',
       '#title' => t('Colors'),
       '#collapsible' => FALSE, // Added
       '#collapsed' => FALSE,  // Added
+      '#states' => array(
+          'visible' => array(
+              ':input[name="shortcode"]' => array('value' => 'piechart'),
+          ),
+      ),
   );
   
   for($i = 1; $i < 9; $i++) {
-    $form ['pieset']['piechart-col' . $i] = array (
+    $form ['piechart-set']['piechart-col' . $i] = array (
         '#name' => t('col'.$i),
         '#type' => 'textfield',
         '#title' => t('Color #' . $i),

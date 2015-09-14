@@ -41,15 +41,21 @@ function ma_gcs_shortcode_barchart_attributes($form, &$form_state) {
       ),
   );
   // To make the fieldset collapsible
-  $form['barset'] = array(
+  $form['barchart-set'] = array(
       '#type' => 'fieldset',
       '#title' => t('Colors'),
       '#collapsible' => FALSE, // Added
       '#collapsed' => FALSE,  // Added
+      '#size' => 8,
+      '#states' => array(
+          'visible' => array(
+              ':input[name="shortcode"]' => array('value' => 'barchart-set'),
+          ),
+      ),
   );
   
   for($i = 1; $i < 9; $i++) {
-    $form ['barset']['barchart-col' . $i] = array (
+    $form ['barchart-set']['barchart-col' . $i] = array (
         '#name' => t('col'.$i),
         '#type' => 'textfield',
         '#title' => t('Color #' . $i),
