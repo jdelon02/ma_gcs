@@ -95,7 +95,6 @@ function ma_gcs_shortcode_piechart_attributes($form, &$form_state) {
  * ),
  */
 function ma_gcs_shortcode_piechart($attrs) {
-  dsm($attrs);
   $attrs = shortcode_attrs(
     array(
       'type' => 'PieChart',
@@ -114,6 +113,7 @@ function ma_gcs_shortcode_piechart($attrs) {
     $attrs
   );
 
+  dpm($attrs);
 
   return theme('shortcode_piechart', 
     array(
