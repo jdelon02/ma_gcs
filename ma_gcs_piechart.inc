@@ -10,8 +10,7 @@ function ma_gcs_shortcode_piechart_attributes($form, &$form_state) {
  
   $form['piechart-type'] = array(
       '#name' => t('type'),
-      '#title' => t('type'),
-      '#type' => 'textfield',
+      '#type' => 'hidden',
       '#default_value' => 'PieChart',
       '#states' => array(
           'visible' => array(
@@ -170,7 +169,7 @@ function theme_shortcode_piechart($vars) {
       'setting'
   );
   $returnstring = '<div class="shortcodes" id="' . $thisisrandom
-  . '" data-type="'. $typeme
+  . '" data-type="PieChart"'
   . '" data-link="' . $linkme
   . '" data-title="' . $titleme
   . '" data-subtitle="' . $subtitle
