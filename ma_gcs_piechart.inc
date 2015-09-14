@@ -95,6 +95,7 @@ function ma_gcs_shortcode_piechart_attributes($form, &$form_state) {
  * ),
  */
 function ma_gcs_shortcode_piechart($attrs) {
+  dsm($attrs);
   $attrs = shortcode_attrs(
     array(
       'type' => 'PieChart',
@@ -138,7 +139,7 @@ function ma_gcs_shortcode_piechart($attrs) {
 function theme_shortcode_piechart($vars) {
   $thisisrandom = generateRandomString();
   $typeme = $vars['type'];
-dpm($typeme);
+
   $linkme = $vars['link'];
   $titleme = $vars['title'];
   $subtitle = $vars['subtitle'];
