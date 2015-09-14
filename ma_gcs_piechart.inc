@@ -97,7 +97,7 @@ function ma_gcs_shortcode_piechart_attributes($form, &$form_state) {
 function ma_gcs_shortcode_piechart($attrs) {
   $attrs = shortcode_attrs(
     array(
-      'type' => '',
+      'type' => 'PieChart',
       'link' => '',
       'title' => '',
       'subtitle' => '',
