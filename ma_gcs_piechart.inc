@@ -10,8 +10,7 @@ function ma_gcs_shortcode_piechart_attributes($form, &$form_state) {
  
   $form['piechart-type'] = array(
       '#name' => t('type'),
-      '#title' => t('Enter pie Sheets URL'),
-      '#type' => 'textfield',
+      '#type' => 'hidden',
       '#default-value' => 'PieChart',
       '#states' => array(
           'visible' => array(
