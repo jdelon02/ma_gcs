@@ -104,7 +104,7 @@ function ma_gcs_shortcode_piechart($attrs) {
 
   return theme('shortcode_piechart', 
     array(
-      'type' => 'PieChart',
+      'type' => $attrs['type'],
       'link' => $attrs['link'],
       'title' => $attrs['title'],
       'subtitle' => $attrs['subtitle'],
