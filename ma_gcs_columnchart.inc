@@ -174,7 +174,7 @@ function theme_shortcode_columnchart($vars) {
       ),
       'setting'
   );
-  $returnstring = '<div class="shortcodes" id="' . $thisisrandom
+  $returnstring = '<div class="shortcodes" data-type="columnchart"  id="' . $thisisrandom
   . '" data-link="' . $linkme
   . '" data-title="' . $titleme
   . '" data-subtitle="' . $subtitle

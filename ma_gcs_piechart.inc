@@ -154,7 +154,7 @@ function theme_shortcode_piechart($vars) {
       ),
       'setting'
   );
-  $returnstring = '<div class="shortcodes" id="' . $thisisrandom
+  $returnstring = '<div class="shortcodes" data-type="piechart" id="' . $thisisrandom
   . '" data-link="' . $linkme
   . '" data-title="' . $titleme
   . '" data-subtitle="' . $subtitle

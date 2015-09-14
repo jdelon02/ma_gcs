@@ -174,7 +174,7 @@ function theme_shortcode_barchart($vars) {
       ),
       'setting'
   );
-  $returnstring = '<div class="shortcodes" id="' . $thisisrandom
+  $returnstring = '<div class="shortcodes" data-type="barchart" id="' . $thisisrandom
   . '" data-link="' . $linkme
   . '" data-title="' . $titleme
   . '" data-subtitle="' . $subtitle

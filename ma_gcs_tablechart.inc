@@ -181,7 +181,7 @@ function theme_shortcode_tablechart($vars) {
       ),
       'setting'
   );
-  $returnstring = '<div class="shortcodes" id="' . $thisisrandom
+  $returnstring = '<div class="shortcodes" data-type="tablechart" id="' . $thisisrandom
   . '" data-link="' . $linkme
   . '" data-title="' . $titleme
   . '" data-subtitle="' . $subtitle
