@@ -103,6 +103,7 @@ function ma_gcs_shortcode_piechart($attrs) {
 
   return theme('shortcode_piechart', 
     array(
+      'type' => 'PieChart',
       'link' => $attrs['link'],
       'title' => $attrs['title'],
       'subtitle' => $attrs['subtitle'],
@@ -123,6 +124,7 @@ function ma_gcs_shortcode_piechart($attrs) {
  */
 function theme_shortcode_piechart($vars) {
   $thisisrandom = generateRandomString();
+  $typeme = $vars['type'];
   $linkme = $vars['link'];
   $titleme = $vars['title'];
   $subtitle = $vars['subtitle'];
@@ -154,7 +156,8 @@ function theme_shortcode_piechart($vars) {
       ),
       'setting'
   );
-  $returnstring = '<div class="shortcodes" data-type="piechart" id="' . $thisisrandom
+  $returnstring = '<div class="shortcodes" id="' . $thisisrandom
+  . '" data-type= "'. $typeme
   . '" data-link="' . $linkme
   . '" data-title="' . $titleme
   . '" data-subtitle="' . $subtitle
