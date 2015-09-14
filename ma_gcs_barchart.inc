@@ -49,7 +49,7 @@ function ma_gcs_shortcode_barchart_attributes($form, &$form_state) {
       '#size' => 8,
       '#states' => array(
           'visible' => array(
-              ':input[name="shortcode"]' => array('value' => 'barchart-set'),
+              ':input[name="shortcode"]' => array('value' => 'barchart'),
           ),
       ),
   );
