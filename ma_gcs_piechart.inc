@@ -8,6 +8,18 @@
 
 function ma_gcs_shortcode_piechart_attributes($form, &$form_state) {
  
+  $form['piechart-type'] = array(
+      '#name' => t('type'),
+      '#title' => t('Enter pie Sheets URL'),
+      '#type' => 'textfield',
+      '#default-value' => 'PieChart',
+      '#states' => array(
+          'visible' => array(
+              ':input[name="shortcode"]' => array('value' => 'piechart'),
+          ),
+      ),
+  );
+  
   $form['piechart-link'] = array(
       '#name' => t('link'),
       '#title' => t('Enter pie Sheets URL'),
@@ -158,7 +170,7 @@ function theme_shortcode_piechart($vars) {
       'setting'
   );
   $returnstring = '<div class="shortcodes" id="' . $thisisrandom
-  . '" data-type="PieChart"'
+  . '" data-type="'. $typeme
   . '" data-link="' . $linkme
   . '" data-title="' . $titleme
   . '" data-subtitle="' . $subtitle
