@@ -10,20 +10,20 @@ google.load('visualization', '1', {
 
 
   // see MDN for setting custom events: https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Creating_and_triggering_events
-  var resizeTimer;
+//  var resizeTimer;
   //var resizeEnd = new Event('resizeEnd');
   // Create the event.
-  var resizeEnd = document.createEvent('Event');
+//  var resizeEnd = document.createEvent('Event');
 
   // Define that the event name is 'build'.
-  resizeEnd.initEvent('resizeEnd', true, true);
+//  resizeEnd.initEvent('resizeEnd', true, true);
 
-  $(window).on('resize', function(e) {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(function() {
-      window.dispatchEvent(resizeEnd);
-    }, 250);
-  });
+//  $(window).on('resize', function(e) {
+//    clearTimeout(resizeTimer);
+//    resizeTimer = setTimeout(function() {
+//      window.dispatchEvent(resizeEnd);
+//    }, 250);
+//  });
 
 	Drupal.behaviors.google_charts_shortcodes = {
 		attach : function(context, settings) {
@@ -154,39 +154,39 @@ console.log('my stacked = ' + myStacked);
 						case 'PieChart':
 							var chart = new google.visualization.PieChart(context.getElementById(randomPie));
 							chart.draw(newData, pieoptions);
-              $(window).on('resizeEnd', function(){
-                chart.draw(newData, pieoptions);
-              });
+//              $(window).on('resizeEnd', function(){
+//                chart.draw(newData, pieoptions);
+//              });
 							break;
 						case 'ColumnChart':
 							var chart = new google.visualization.ColumnChart(context.getElementById(randomPie));
 							chart.draw(newData, chartoptions);
-              $(window).on('resizeEnd', function(){
-                chart.draw(newData, chartoptions);
-              });
+//              $(window).on('resizeEnd', function(){
+//                chart.draw(newData, chartoptions);
+//              });
 							break;
 						case 'BarChart':
 							var chart = new google.visualization.BarChart(context.getElementById(randomPie));
 							chart.draw(newData, baroptions);
-              $(window).on('resizeEnd', function(){
-                chart.draw(newData, baroptions);
-              });
+//              $(window).on('resizeEnd', function(){
+//                chart.draw(newData, baroptions);
+//              });
 							break;
 						case 'LineChart':
 							var chart = new google.visualization.LineChart(context.getElementById(randomPie));
 							chart.draw(newData, lineoptions);
-              $(window).on('resizeEnd', function(){
-                chart.draw(newData, lineoptions);
-              });
+//              $(window).on('resizeEnd', function(){
+//                chart.draw(newData, lineoptions);
+//              });
 							break;
 						case 'Table':
 						  var table = new google.visualization.Table(context.getElementById(randomPie));
   						  console.log(JSON.stringify(newData));
   						  //console.log();
   						  table.draw(newData, tableoptions);
-  						  $(window).on('resizeEnd', function(){
-                  table.draw(newData, tableoptions);
-                });
+//  			    $(window).on('resizeEnd', function(){
+//                  table.draw(newData, tableoptions);
+//                });
   						  //$(this).css( "height", "auto" );
   						  thisis = '#' + randomPie;
   						  //console.log(thisis);
