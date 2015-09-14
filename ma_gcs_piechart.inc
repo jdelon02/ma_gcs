@@ -138,6 +138,7 @@ function ma_gcs_shortcode_shortcode_piechart($attrs) {
 function theme_shortcode_piechart($vars) {
   $thisisrandom = generateRandomString();
   $typeme = $vars['type'];
+dpm($typeme);
   $linkme = $vars['link'];
   $titleme = $vars['title'];
   $subtitle = $vars['subtitle'];
