@@ -94,7 +94,7 @@ function ma_gcs_shortcode_piechart_attributes($form, &$form_state) {
  *     'attribute' => 'default_value_goes_here'
  * ),
  */
-function ma_gcs_shortcode_piechart($attrs) {
+function ma_gcs_shortcode_shortcode_piechart($attrs) {
   $attrs = shortcode_attrs(
     array(
       'type' => 'PieChart',
@@ -135,7 +135,7 @@ function ma_gcs_shortcode_piechart($attrs) {
 /**
  * This function uses the attributes passed in to return the HTML of this shortcode.
  */
-function theme_shortcode_shortcode_piechart($vars) {
+function theme_shortcode_piechart($vars) {
   $thisisrandom = generateRandomString();
   $typeme = $vars['type'];
   $linkme = $vars['link'];
