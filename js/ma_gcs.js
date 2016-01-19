@@ -8,28 +8,17 @@ google.load('visualization', '1', {
 
 (function($) {
 
-
-  // see MDN for setting custom events: https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Creating_and_triggering_events
-//  var resizeTimer;
-  //var resizeEnd = new Event('resizeEnd');
-  // Create the event.
-//  var resizeEnd = document.createEvent('Event');
-
-  // Define that the event name is 'build'.
-//  resizeEnd.initEvent('resizeEnd', true, true);
-
-//  $(window).on('resize', function(e) {
-//    clearTimeout(resizeTimer);
-//    resizeTimer = setTimeout(function() {
-//      window.dispatchEvent(resizeEnd);
-//    }, 250);
-//  });
-
 	Drupal.behaviors.google_charts_shortcodes = {
 		attach : function(context, settings) {
+			//highchartsloaded = Drupal.settings.highchartsload.highchart;
+			//myColors = Drupal.settings.magcs.colors;
+			//console.log(myColors);
 			if ($('.shortcodes', context).length) {
 				$('.shortcodes').each(function(index) {
-
+					//highchartsloaded = Drupal.settings.highchartsload.highchart;
+					var theseColors = $(this).data('colors');
+					var myColors = theseColors.split(',');
+					console.log(myColors);
 					var mySpreadsheet = $(this).data('link');
 					var myChartType = $(this).data('type');
 					var myTitle = $(this).data('title');
@@ -37,7 +26,7 @@ google.load('visualization', '1', {
 					var myLegal1 = $(this).data('legal1');
 					var myLegal2 = $(this).data('legal2');
 					var myStacked = $(this).data('isstacked');
-console.log('my stacked = ' + myStacked);
+					console.log('my stacked = ' + myStacked);
 					if (mySpreadsheet.toLowerCase().indexOf('gid=') >= 0) {
 						myGid = mySpreadsheet.substr(mySpreadsheet.indexOf("gid=") + 4);
 						var myString = mySpreadsheet.substr(mySpreadsheet.indexOf("edit"));

@@ -23,6 +23,7 @@ function ma_gcs_shortcode_barchart_attributes($form, &$form_state) {
       '#name' => t('title'),
       '#title' => t('Enter A Chart Title'),
       '#type' => 'textfield',
+  		'#size' => 40,
       '#states' => array(
           'visible' => array(
               ':input[name="shortcode"]' => array('value' => 'barchart'),
@@ -34,6 +35,7 @@ function ma_gcs_shortcode_barchart_attributes($form, &$form_state) {
       '#name' => t('subtitle'),
       '#title' => t('Enter A Sub-Title'),
       '#type' => 'textfield',
+  		'#size' => 40,
       '#states' => array(
           'visible' => array(
               ':input[name="shortcode"]' => array('value' => 'barchart'),
@@ -70,7 +72,7 @@ function ma_gcs_shortcode_barchart_attributes($form, &$form_state) {
   }
   $stacked = array(
       'True' => t('True'),
-      'False' => t('False'),
+      'False' => t('False')
   );
   $form['barchart-isstacked'] = array(
       '#name' => t('isstacked'),
@@ -180,14 +182,7 @@ function theme_shortcode_barchart($vars) {
   . '" data-title="' . $titleme
   . '" data-subtitle="' . $subtitle
   . '" data-id="' . $thisisrandom
-  . '" data-col1="' . $col1
-  . '" data-col2="' . $col2
-  . '" data-col3="' . $col3
-  . '" data-col4="' . $col4
-  . '" data-col5="' . $col5
-  . '" data-col6="' . $col6
-  . '" data-col7="' . $col7
-  . '" data-col8="' . $col8
+  . '" data-colors="' . $colors
   . '" data-isstacked="' . $stackme
   . '" style="width: 900px; height: 500px;"></div>';
 

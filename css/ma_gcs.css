@@ -64,16 +64,47 @@ p.rbfsubtext {
 	.rowNumberCell {
 
 	}
+	
+#shortcode-wysiwyg-form label {
+	font-size: 16px;
+  font-weight: 400;
+}	
+#shortcode-wysiwyg-form .fieldset-legend {
+  font-size: 16px;
+  font-weight: 400;
+} 
 #shortcode-wysiwyg-form .form-item {
 	margin: 0 0 10px;
 	vertical-align: baseline;
 }
 #shortcode-wysiwyg-form .form-wrapper {
-	width: 100%;
+	/* width: 100%; */
 }
-#shortcode-wysiwyg-form .form-wrapper .form-item {
-	width: 33%;
+#shortcode-wysiwyg-form .fieldset-wrapper {
 	float: left;
 }
-
+#shortcode-wysiwyg-form .fieldset-wrapper .form-item label {
+  font-size: 14px;
+  font-weight: 400;
+}
+#shortcode-wysiwyg-form .fieldset-wrapper .form-item {
+	width: 31%;
+	float: left;
+}
+#shortcode-wysiwyg-form .form-item-title {
+	float: left;
+	width: 47%;	
+}
+#shortcode-wysiwyg-form .form-item-subtitle {
+	float: left;
+  width: 47%;
+}
+#shortcode-wysiwyg-form .form-item-legal1 {
+  float: left;
+  width: 47%;
+}
+#shortcode-wysiwyg-form .form-item-legal2 {
+  float: left;
+  width: 47%;
+}
 

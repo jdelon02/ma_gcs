@@ -23,6 +23,7 @@ function ma_gcs_shortcode_tablechart_attributes($form, &$form_state) {
       '#name' => t('title'),
       '#title' => t('Enter A Chart Title'),
       '#type' => 'textfield',
+  		'#size' => 40,
       '#states' => array(
           'visible' => array(
               ':input[name="shortcode"]' => array('value' => 'tablechart'),
@@ -34,6 +35,7 @@ function ma_gcs_shortcode_tablechart_attributes($form, &$form_state) {
       '#name' => t('subtitle'),
       '#title' => t('Enter A Sub-Title'),
       '#type' => 'textfield',
+  		'#size' => 40,
       '#states' => array(
           'visible' => array(
               ':input[name="shortcode"]' => array('value' => 'tablechart'),
@@ -45,6 +47,7 @@ function ma_gcs_shortcode_tablechart_attributes($form, &$form_state) {
       '#name' => t('legal1'),
       '#title' => t('Enter Disclaimer # 1'),
       '#type' => 'textfield',
+  		'#size' => 40,
       '#states' => array(
           'visible' => array(
               ':input[name="shortcode"]' => array('value' => 'tablechart'),
@@ -55,6 +58,7 @@ function ma_gcs_shortcode_tablechart_attributes($form, &$form_state) {
       '#name' => t('legal2'),
       '#title' => t('Enter Disclaimer # 2'),
       '#type' => 'textfield',
+  		'#size' => 40,
       '#states' => array(
           'visible' => array(
               ':input[name="shortcode"]' => array('value' => 'tablechart'),
@@ -188,14 +192,7 @@ function theme_shortcode_tablechart($vars) {
   . '" data-legal1="' . $legal1
   . '" data-legal2="' . $legal2
   . '" data-id="' . $thisisrandom
-  . '" data-col1="' . $col1
-  . '" data-col2="' . $col2
-  . '" data-col3="' . $col3
-  . '" data-col4="' . $col4
-  . '" data-col5="' . $col5
-  . '" data-col6="' . $col6
-  . '" data-col7="' . $col7
-  . '" data-col8="' . $col8
+  . '" data-colors="' . $colors
   . '" style="width: 900px; height: 500px;"></div>';
 
   return $returnstring;
