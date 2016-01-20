@@ -8,68 +8,6 @@
 
 function ma_gcs_shortcode_piechart_attributes($form, &$form_state) {
 
-	$form['piechart-link'] = array(
-			'#name' => t('link'),
-			'#title' => t('Enter pie Sheets URL'),
-			'#type' => 'textfield',
-			'#states' => array(
-					'visible' => array(
-							':input[name="shortcode"]' => array('value' => 'piechart'),
-					),
-			),
-	);
-
-	$form['piechart-title'] = array(
-			'#name' => t('title'),
-			'#title' => t('Enter A Pie Chart Title'),
-			'#type' => 'textfield',
-			'#size' => 40,
-			'#states' => array(
-					'visible' => array(
-							':input[name="shortcode"]' => array('value' => 'piechart'),
-					),
-			),
-	);
-
-	$form['piechart-subtitle'] = array(
-			'#name' => t('subtitle'),
-			'#title' => t('Enter A Sub-Title'),
-			'#type' => 'textfield',
-			'#size' => 40,
-			'#states' => array(
-					'visible' => array(
-							':input[name="shortcode"]' => array('value' => 'piechart'),
-					),
-			),
-	);
-
-	// To make the fieldset collapsible
-	$form['piechart-set'] = array(
-			'#type' => 'fieldset',
-			'#title' => t('Colors'),
-			'#collapsible' => FALSE, // Added
-			'#collapsed' => FALSE,  // Added
-			'#states' => array(
-					'visible' => array(
-							':input[name="shortcode"]' => array('value' => 'piechart'),
-					),
-			),
-	);
-
-	for($i = 1; $i < 9; $i++) {
-		$form ['piechart-set']['piechart-col' . $i] = array (
-				'#name' => t('col'.$i),
-				'#type' => 'textfield',
-				'#title' => t('Color #' . $i),
-				'#default_value' => variable_get('ma_gcs_color' . $i, ''),
-				'#size' => 8,
-				'#states' => array(
-						'visible' => array(
-								':input[name="shortcode"]' => array('value' => 'piechart'),
-						),
-				),
-		);
-	}
 
 	return $form;
 }

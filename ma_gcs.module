@@ -1,15 +1,23 @@
 <?php
 
+/**
+ * Initialize the module
+*/
+function ma_gcs_init() {
+	//module_load_include('inc', 'ma_gcs', 'ma_gcs_barchart');
+	//module_load_include('inc', 'ma_gcs', 'ma_gcs_piechart');
+	//module_load_include('inc', 'ma_gcs', 'ma_gcs_tablechart');
+	//module_load_include('inc', 'ma_gcs', 'ma_gcs_columnchart');
+	drupal_add_js('https://www.google.com/jsapi', 'external');
+	drupal_add_css(drupal_get_path('module', 'ma_gcs') .'/css/ma_gcs.css');
+	drupal_add_js(drupal_get_path('module', 'ma_gcs') . '/js/ma_gcs.js');
+}
 
 /**
  * Define our shortcodes and their titles, descriptions, and callback functions
- *
- * See comments below for explanation
- */
+*/
 function ma_gcs_menu() {
-
   $items = array();
-
   $items['admin/config/services/ma_gcs'] = array(
     'title' => 'Google Charts Shortcodes',
     'description' => 'Configuration for Google Charts Shortcodes',
@@ -19,54 +27,230 @@ function ma_gcs_menu() {
     'type' => MENU_NORMAL_ITEM,
     'file' => 'ma_gcs.admin.inc',
   );
-
   return $items;
 }
 
-function ma_gcs_init() {
-  //module_load_include('inc', 'ma_gcs', 'ma_gcs_barchart');
-  module_load_include('inc', 'ma_gcs', 'ma_gcs_piechart');
-  //module_load_include('inc', 'ma_gcs', 'ma_gcs_tablechart');
-  //module_load_include('inc', 'ma_gcs', 'ma_gcs_columnchart');
-  drupal_add_js('https://www.google.com/jsapi', 'external');
-	drupal_add_css(drupal_get_path('module', 'ma_gcs') .'/css/ma_gcs.css');
-  drupal_add_js(drupal_get_path('module', 'ma_gcs') . '/js/ma_gcs.js');
-}
 
+function _ma_gcs_chart_types() {
+	return array(
+			'Pie' => 'piechart',
+			'Bar' => 'barchart',
+			'Column' => 'columnchart',
+			'Table' => 'tablechart'			
+	);
+}
+function _ma_gcs_chart_types2() {
+	return array(
+			'Bar' => 'barchart',
+			'Column' => 'columnchart',
+			'Table' => 'tablechart'
+	);
+}
 function ma_gcs_shortcode_info() {
-  $shortcodes['piechart'] = array(
-    'title' => t('Google Pie Chart'),  
-    'description' => t('Embed a Google Pie Chart.'),  
-    'attributes callback' => 'ma_gcs_shortcode_piechart_attributes',
-    'process callback' => 'ma_gcs_shortcode_piechart', 
-    'tips callback' => 'ma_gcs_shortcode_tip' 
-  );
-  return $shortcodes;
+	$shortcodes['piechart'] = array(
+			'title' => ('Google Pie Chart'),
+			'description' => ('Embed a Google Pie Chart.'),
+			'attributes callback' => 'ma_gcs_shortcode_piechart_attributes',
+			'process callback' => 'ma_gcs_shortcode_piechart',
+			'tips callback' => 'ma_gcs_shortcode_tip'
+	);
+	
+	$chartarray=_ma_gcs_chart_types2();
+	foreach ($chartarray as $key => $value) {
+		$attcallback = 'ma_gcs_shortcode_' . $value . '_attributes';
+		$proccallback = 'ma_gcs_shortcode_' . $value . '';
+		$shortcodes[''. $value .''] = array(
+				'title' => ('Google ' . $key . ' Chart'),
+				'description' => ('Embed a Google ' . $key . ' Chart.'),
+				'attributes callback' => '' . $attcallback . '',
+				'process callback' => '' . $proccallback . '',
+				'tips callback' => 'ma_gcs_shortcode_tip'
+		);
+	}
+	return $shortcodes;
+}
+/**
+ * Attributes form element for random Shortcode.
+ *
+ * Used by shortcode_wysiwyg module to add form elements for attributes.
+ */
+function _ma_gcs_formbuild($type) {
+	$key = $type;
+	$value = $key.'chart';
+	$form['' . $value . '-link'] = array(
+			'#name' => t('link'),
+			'#title' => t("Enter $key Sheets URL"),
+			'#type' => 'textfield',
+			'#states' => array(
+					'visible' => array(
+							':input[name="shortcode"]' => array("value" => "$value"),
+					),
+			),
+	);
+
+	$form['' . $value . '-title'] = array(
+			'#name' => t('title'),
+			'#title' => t("Enter A $key Chart Title"),
+			'#type' => 'textfield',
+			'#size' => 40,
+			'#states' => array(
+					'visible' => array(
+							':input[name="shortcode"]' => array('value' => "$value"),
+					),
+			),
+	);
+
+	$form['' . $value . '-subtitle'] = array(
+			'#name' => t('subtitle'),
+			'#title' => t('Enter a Sub-Title'),
+			'#type' => 'textfield',
+			'#size' => 40,
+			'#states' => array(
+					'visible' => array(
+							':input[name="shortcode"]' => array('value' => "$value"),
+					),
+			),
+	);
+
+	// To make the fieldset collapsible
+	$form['' . $value . '-set'] = array(
+			'#type' => 'fieldset',
+			'#title' => t('Colors'),
+			'#collapsible' => FALSE, // Added
+			'#collapsed' => FALSE,  // Added
+			'#states' => array(
+					'visible' => array(
+							':input[name="shortcode"]' => array('value' => "$value"),
+					),
+			),
+	);
+
+	for($i = 1; $i < 9; $i++) {
+		$form ['' . $value . '-set']['' . $value . '-col' . $i] = array (
+				'#name' => t('col'.$i),
+				'#type' => 'textfield',
+				'#title' => t('Color #' . $i),
+				'#default_value' => variable_get('ma_gcs_color' . $i, ''),
+				'#size' => 8,
+				'#states' => array(
+						'visible' => array(
+								':input[name="shortcode"]' => array('value' => "$value"),
+						),
+				),
+		);
+	}
+	return $form;
 }
 
+
+function ma_gcs_shortcode_piechart_attributes($form, &$form_state) {
+	//$form = _ma_gcs_formbuild('Pie');
+	return _ma_gcs_formbuild('pie');
+}
 /**
  * Define our variables (parameters) for each shortcode
  */
-function ma_gcs_theme() {
+function _ma_gcs_base_variables() {
   return array(
-    'shortcode_piechart' => array(
-      'variables' => array(
-        'type' => 'PieChart',  
-        'link' => '',
-        'title' => '',
-        'subtitle' => '',
-        'col1' => '',
-        'col2' => '',
-        'col3' => '',
-        'col4' => '',
-        'col5' => '',
-        'col6' => '',
-        'col7' => '',
-        'col8' => '',
-      ),
-    ),
+    'link' => '',
+    'title' => '',
+    'subtitle' => '',
+    'col1' => '',
+    'col2' => '',
+    'col3' => '',
+    'col4' => '',
+    'col5' => '',
+    'col6' => '',
+    'col7' => '',
+    'col8' => '',
   );
+}    
+
+function ma_gcs_theme() {
+	return array(
+			'shortcode_piechart' => array (
+					'variables' => _ma_gcs_base_variables() 
+			),
+			'shortcode_barchart' => array (
+					'variables' => _ma_gcs_base_variables() 
+			),
+			'shortcode_columnchart' => array (
+					'variables' => _ma_gcs_base_variables() 
+			),
+			'shortcode_tablechart' => array (
+					'variables' => _ma_gcs_base_variables() 
+			), 
+	);
+// 	$array['shortcode_barchart']['variables'] += array ('isstacked' => '');
+// 	$array['shortcode_columnchart']['variables'] += array ('isstacked' => '');
+// 	$array['shortcode_tablechart']['variables'] += array ('legal1' => '');
+// 	$array['shortcode_tablechart']['variables'] += array ('legal2' => '' );
+
 }
+
+function ma_gcs_shortcode_piechart($attrs) {
+
+	$attrs = shortcode_attrs ( array (
+			'link' => '',
+			'title' => '',
+			'subtitle' => '',
+			'col1' => variable_get('ma_gcs_color1'),
+			'col2' => variable_get('ma_gcs_color2'),
+			'col3' => variable_get('ma_gcs_color3'),
+			'col4' => variable_get('ma_gcs_color4'),
+			'col5' => variable_get('ma_gcs_color5'),
+			'col6' => variable_get('ma_gcs_color6'),
+			'col7' => variable_get('ma_gcs_color7'),
+			'col8' => variable_get('ma_gcs_color8'),
+	), $attrs );
+
+	return theme ( 'shortcode_piechart', array (
+			'link' => $attrs ['link'],
+			'title' => $attrs ['title'],
+			'subtitle' => $attrs ['subtitle'],
+			'col1' => $attrs['col1'],
+			'col2' => $attrs['col2'],
+			'col3' => $attrs['col3'],
+			'col4' => $attrs['col4'],
+			'col5' => $attrs['col5'],
+			'col6' => $attrs['col6'],
+			'col7' => $attrs['col7'],
+			'col8' => $attrs['col8'],
+	) );
+}
+
+/**
+ * This function uses the attributes passed in to return the HTML of this shortcode.
+ */
+function theme_shortcode_piechart($vars) {
+	$thisisrandom = generateRandomString ();
+	$linkme = $vars ['link'];
+	$titleme = $vars ['title'];
+	$subtitle = $vars ['subtitle'];
+	$colors = array();
+	for($x = 1; $x < 9; $x++) {
+		$thiscolor = check_plain($vars['col'.$x]);
+		$colors[$x] = $thiscolor;
+	}
+	$strColors = implode(",",$colors);
+	//drupal_add_js ( array ('magcs' => array ('colors' => $colors)), 'setting' );
+	$returnstring = '<div class="shortcodes" id="'
+	. $thisisrandom . '" data-type="piechart"  data-link="'
+	. $linkme . '" data-title="'
+	. $titleme . '" data-subtitle="'
+	. $subtitle . '" data-id="'
+	. $thisisrandom . '" data-colors="'
+	. $strColors . '" style="width: 900px; height: 500px;"></div>';
+	return $returnstring;
+}
+
+
+
+
+
+
+
+
 
 
 /**
