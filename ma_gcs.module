@@ -38,13 +38,12 @@ function _ma_gcs_chart_types() {
 function ma_gcs_shortcode_info() {
 	$chartarray=_ma_gcs_chart_types();
 	foreach ($chartarray as $key => $value) {
-		$attcallback = 'ma_gcs_shortcode_' . $value . '_attributes';
-		$proccallback = 'ma_gcs_shortcode_' . $value;
 		$shortcodes["$value"] = array(
 			'title' => ("Google $key Chart"),
 			'description' => ("Embed a Google $key Chart."),
-			'attributes callback' => $attcallback,
-			'process callback' => $proccallback
+			'attributes callback' => 'ma_gcs_shortcode_' . $value . '_attributes',
+			'process callback' => 'ma_gcs_shortcode_' . $value . '',
+			'tips callback' => 'ma_gcs_shortcode_' . $value . '_tip'
 		);
 	}
 	return $shortcodes;
@@ -58,17 +57,7 @@ function _ma_gcs_formbuild($type) {
 	$key = $type;
 	$value = $key.'chart';
 	$value = strtolower($value);
-	
-// 	$form['' . $value . '-type'] = array(
-// 		'#name' => t('type'),
-// 		'#type' => 'hidden',
-// 		'#default_value' => "$value",
-// 		'#states' => array(
-// 			'visible' => array(
-// 				':input[name="shortcode"]' => array("value" => "$value"),
-// 			),
-// 		),
-// 	);	
+
 	$form['' . $value . '-link'] = array(
 		'#name' => t('link'),
 		'#title' => t("Enter $key Sheets URL"),
@@ -152,7 +141,6 @@ function _ma_gcs_formbuild($type) {
 	return $form;
 }
 
-
 function ma_gcs_shortcode_piechart_attributes($form, &$form_state) {
 	$pieform = _ma_gcs_formbuild('Pie');
 	return $pieform; 
@@ -168,6 +156,10 @@ function ma_gcs_shortcode_barchart_attributes($form, &$form_state) {
 	return $barform;
 }
 
+function ma_gcs_shortcode_tablechart_attributes($form, &$form_state) {
+	$tableform = _ma_gcs_formbuild('Table');
+	return $tableform;
+}
 
 /**
  * Define our variables (parameters) for each shortcode
@@ -210,36 +202,79 @@ function ma_gcs_theme() {
  	return $array;
 }
 
-function ma_gcs_shortcode_piechart($attrs) {
+function _ma_gcs_shortcode($attrs) {
 	$attrs = shortcode_attrs( _ma_gcs_base_variables(),$attrs);
- 	$attributearray = array();
- 	foreach ($attrs as $key => $value) {
- 		$attributearray += array("$key" => "$value");
- 	}
+	$attributearray = array();
+	foreach ($attrs as $key => $value) {
+		$attributearray += array("$key" => "$value");
+	}
+	return $attributearray;
+}
+
+function ma_gcs_shortcode_piechart($attrs) {
+	$attributearray = _ma_gcs_shortcode($attrs);
  	$attributearray['type'] = "piechart";
- 	return theme ( 'shortcode', $attributearray );
+ 	return theme ( 'shortcode_piechart', $attributearray );
+}
+
+function ma_gcs_shortcode_columnchart($attrs) {
+	$attributearray = _ma_gcs_shortcode($attrs);
+	$attributearray['type'] = "columnchart";
+	return theme ( 'shortcode_columnchart', $attributearray );
+}
+
+function ma_gcs_shortcode_barchart($attrs) {
+	$attributearray = _ma_gcs_shortcode($attrs);
+	$attributearray['type'] = "barchart";
+	return theme ( 'shortcode_barchart', $attributearray );
+}
+
+function ma_gcs_shortcode_tablechart($attrs) {
+	$attributearray = _ma_gcs_shortcode($attrs);
+	$attributearray['type'] = "tablechart";
+	return theme ( 'shortcode_tablechart', $attributearray );
 }
 
 /**
  * This function uses the attributes passed in to return the HTML of this shortcode.
  */
-function theme_shortcode($vars) {
+
+function _ma_gcs_shortcode_theme($vars) {
 	$thisisrandom = generateRandomString ();
 	$returnstring = '<div class="shortcodes"';
 	$returnstring .= ' id="' . $thisisrandom . '"';
-	$returnstring .= ' data-id="' . $thisisrandom . '"'; 
+	$returnstring .= ' data-id="' . $thisisrandom . '"';
 	foreach ($vars as $key => $value) {
 		$returnstring .= ' data-' . $key . '="' . $value . '"';
- 	}
+	}
 	$returnstring .= ' style="width: 900px; height: 500px;"></div>';
 	return $returnstring;
 }
 
+function theme_shortcode_piechart($vars) {
+	$returnstring = _ma_gcs_shortcode_theme($vars);
+	return $returnstring;
+}
+
+function theme_shortcode_barchart($vars) {
+	$returnstring = _ma_gcs_shortcode_theme($vars);
+	return $returnstring;
+}
+
+function theme_shortcode_columnchart($vars) {
+	$returnstring = _ma_gcs_shortcode_theme($vars);
+	return $returnstring;
+}
+
+function theme_shortcode_tablechart($vars) {
+	$returnstring = _ma_gcs_shortcode_theme($vars);
+	return $returnstring;
+}
 /**
  * This function outputs some tips to the user beneath the WYSIWYG editor so they know
  * what the shortcode does and how to use it.
  */
-function ma_gcs_shortcode_tip($format, $long) {
+function _ma_gcs_shortcode_tip($format, $long) {
 	$output = array();
 	$output[] = '<p><strong>' . t('[chartType link="http://URLhere.com"][/chartType]') . '</strong> ';
 	if ($long) {
@@ -248,8 +283,28 @@ function ma_gcs_shortcode_tip($format, $long) {
 	else {
 		$output[] = t('Outputs text that links to a URL.') . '</p>';
 	}
-
+	
 	return implode(' ', $output);
+}
+function ma_gcs_shortcode_piechart_tip($format, $long) {
+	$format = $format;
+	$long = $long;
+	return _ma_gcs_shortcode_tip($format, $long);
+}
+function ma_gcs_shortcode_tablechart_tip($format, $long) {
+	$format = $format;
+	$long = $long;
+	return _ma_gcs_shortcode_tip($format, $long);
+}
+function ma_gcs_shortcode_barchart_tip($format, $long) {
+	$format = $format;
+	$long = $long;
+	return _ma_gcs_shortcode_tip($format, $long);
+}
+function ma_gcs_shortcode_columnchart_tip($format, $long) {
+	$format = $format;
+	$long = $long;
+	return _ma_gcs_shortcode_tip($format, $long);
 }
 /**
  * This function generates a ranomd string to assign as a div id for the google chart (in case they have more than one on a page).
