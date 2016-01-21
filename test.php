@@ -66,76 +66,76 @@ function ma_gcs_shortcode_info() {
 	return $shortcodes;
 }
 
-print_r(ma_gcs_shortcode_info());
-print_r(_ma_gcs_formbuild('Pie'));
-function _ma_gcs_formbuild($type) {
-	$key = $type;
-	$value = $key.'Chart';
-	$form['' . $value . '-link'] = array(
-		'#name' => ('link'),
-		'#title' => ("Enter $key Sheets URL"),
-		'#type' => 'textfield',
-		'#states' => array(
-			'visible' => array(
-				':input[name="shortcode"]' => array("value" => "$value"),
-			),
-		),
+function ma_gcs_shortcode_barchart_attributes($form, &$form_state) {
+	$barform = _ma_gcs_formbuild('Bar');
+	$stacked = array(
+			'True' => t('True'),
+			'False' => t('False'),
 	);
-
-	$form['' . $value . '-title'] = array(
-		'#name' => ('title'),
-		'#title' => ("Enter A $key Chart Title"),
-		'#type' => 'textfield',
-		'#size' => 40,
-		'#states' => array(
+	$barform['barchart-isstacked']['#name'] = t('isstacked');
+	$barform['barchart-isstacked']['#title'] = t('Is this a Stacked Chart');
+	$barform['barchart-isstacked']['#type'] = 'select';
+	$barform['barchart-isstacked']['#description'] = t('this only applies to bar and column charts');
+	$barform['barchart-isstacked']['#options'] = $stacked;
+	$barform['barchart-isstacked']['#options']['#states'] = array(
 			'visible' => array(
-				':input[name="shortcode"]' => array('value' => "$value"),
+					':input[name="shortcode"]' => array('value' => 'barchart'),
 			),
-		),
 	);
-
-	$form['' . $value . '-subtitle'] = array(
-		'#name' => ('subtitle'),
-		'#title' => ('Enter a Sub-Title'),
-		'#type' => 'textfield',
-		'#size' => 40,
-		'#states' => array(
-			'visible' => array(
-				':input[name="shortcode"]' => array('value' => "$value"),
-			),
-		),
-	);
-
-	// To make the fieldset collapsible
-	$form['' . $value . '-set'] = array(
-		'#type' => 'fieldset',
-		'#title' => ('Colors'),
-		'#collapsible' => FALSE, // Added
-		'#collapsed' => FALSE,  // Added
-		'#states' => array(
-			'visible' => array(
-				':input[name="shortcode"]' => array('value' => "$value"),
-			),
-		),
-	);
-
-	for($i = 1; $i < 9; $i++) {
-		$form ['' . $value . '-set']['' . $value . '-col' . $i] = array (
-			'#name' => ('col'.$i),
-			'#type' => 'textfield',
-			'#title' => ('Color #' . $i),
-			'#default_value' => 'ma_gcs_color' . $i, '',
-			'#size' => 8,
-			'#states' => array(
-				'visible' => array(
-					':input[name="shortcode"]' => array('value' => "$value"),
-				),
-			),
-		);
-	}
-
-	return $form;
+	return $barform;
 }
 
+print_r(ma_gcs_shortcode_info());
+$attrs = array (
+		
+);
+$ma_gcs_color1 = 'blue';
+$ma_gcs_color2 = 'green';
+$ma_gcs_color3 = 'red';
+$ma_gcs_color4 = 'orange';
+$ma_gcs_color5 = 'hazel';
+$ma_gcs_color6 = 'aqua';
+$ma_gcs_color7 = 'me';
+$ma_gcs_color8 = 'you';
+
+function _getcolors() {
+	$col = array();
+	for($x = 1; $x < 9; $x++) {
+		$col[$x] = "ma_gcs_color$x";
+	}
+	return $col;
+}
+function shortcode_attrs($pairs, $atts) {
+	$atts = (array)$atts;
+	$out = array();
+	foreach ($pairs as $name => $default) {
+		if ( array_key_exists($name, $atts) )
+			$out[$name] = $atts[$name];
+			else
+				$out[$name] = $default;
+	}
+	return $out;
+}
+function ma_gcs_shortcode_piechart() {
+	$attrs =  array (
+			'link' => '',
+			'title' => '',
+			'subtitle' => '',
+	);
+	for($x = 1; $x < 9; $x++) {
+		$attrs += array("col$x" => "ma_gcs_color$x");
+	}
+	
+	$themearray = array ();
+	foreach ($attrs as $key => $value) {
+		$themearray += array("$key" => "$value");
+	}
+	
+	//return theme ( 'shortcode_piechart', array ( $themearray ));
+	
+	return $themearray;
+}
+
+print_r (ma_gcs_shortcode_piechart());
 
 
