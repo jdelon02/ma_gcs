@@ -15,10 +15,7 @@ google.load('visualization', '1', {
 			//console.log(myColors);
 			if ($('.shortcodes', context).length) {
 				$('.shortcodes').each(function(index) {
-					//highchartsloaded = Drupal.settings.highchartsload.highchart;
-					var theseColors = $(this).data('colors');
-					var myColors = theseColors.split(',');
-					console.log(myColors);
+
 					var mySpreadsheet = $(this).data('link');
 					var myChartType = $(this).data('type');
 					var myTitle = $(this).data('title');
@@ -26,7 +23,8 @@ google.load('visualization', '1', {
 					var myLegal1 = $(this).data('legal1');
 					var myLegal2 = $(this).data('legal2');
 					var myStacked = $(this).data('isstacked');
-					console.log('my stacked = ' + myStacked);
+					ma_gcs.colors = Drupal.
+						console.log('my stacked = ' + myStacked);
 					if (mySpreadsheet.toLowerCase().indexOf('gid=') >= 0) {
 						myGid = mySpreadsheet.substr(mySpreadsheet.indexOf("gid=") + 4);
 						var myString = mySpreadsheet.substr(mySpreadsheet.indexOf("edit"));
