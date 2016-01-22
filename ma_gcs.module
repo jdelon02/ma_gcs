@@ -1,12 +1,62 @@
 <?php
 
+
+/**
+ * Implements hook_libraries_info().
+ */
+function ma_gcs_libraries_info() {
+
+	$libraries['c3'] = array(
+			// Only used in administrative UI of Libraries API.
+			'name' => 'C3',
+			'vendor url' => 'http://c3js.org',
+			'download url' => 'https://github.com/masayuki0812/c3/releases/latest',
+			'files' => array(
+					'js' => array('c3.min.js'),
+					'css' => array('c3.min.css'),
+			),
+			'versions' => array(
+					'0.4.10' => array(
+							'files' => array(
+									'js' => array('c3.min.js'),
+									'css' => array('c3.min.css'),
+							),
+					),
+			),
+			'version' => '0.4.10',
+			'dependencies' => array('d3'),
+	);
+
+	$libraries['d3'] = array(
+			// Only used in administrative UI of Libraries API.
+			'name' => 'D3',
+			'vendor url' => 'http://d3js.org',
+			'download url' => 'https://github.com/mbostock/d3',
+			'files' => array(
+					'js' => array('d3.min.js'),
+			),
+			'versions' => array(
+					'3.5.0' => array(
+							'files' => array(
+									'js' => array('d3.min.js'),
+							),
+					),
+			),
+			'version' => '3.5.0',
+	);
+
+	return $libraries;
+}
+
 /**
  * Initialize the module
 */
 function ma_gcs_init() {
-	drupal_add_js('https://www.google.com/jsapi', 'external');
+	libraries_load('c3');
+	libraries_load('d3');
+	//drupal_add_js('https://www.google.com/jsapi', 'external');
 	drupal_add_css(drupal_get_path('module', 'ma_gcs') .'/css/ma_gcs.css');
-	drupal_add_js(drupal_get_path('module', 'ma_gcs') . '/js/ma_gcs.js');
+  drupal_add_js(drupal_get_path('module', 'ma_gcs') . '/js/ma_gcs.js');
 }
 
 /**
@@ -27,6 +77,8 @@ function ma_gcs_menu() {
 }
 
 function _ma_gcs_chart_types() {
+//	Spline Chart, Step Chart, Area Chart, Bar Chart, Scatter Chart, Pie Chart, Donut Chart, Gauge Chart
+	
 	return array(
 		'Pie' => 'piechart',
 		'Bar' => 'barchart',
@@ -240,18 +292,40 @@ function ma_gcs_shortcode_tablechart($attrs) {
  */
 
 function _ma_gcs_shortcode_theme($vars) {
+	$link = $vars['link'];
+	$newurl = array();
+		$linkparts = explode('/', rtrim($link, '/'));
+	$newurl = array();
+	if(($linkparts[0] != "http:") && ($linkparts[0] != "https:")) {
+		$newurl = explode('/', rtrim("https://$link", '/'));
+	}
+	else {
+		$newurl = explode('/', rtrim($link, '/'));
+	}
+	$chartID = $newurl[5];
+	$newlinkparts = explode('=', rtrim($link, '='));
+	$gid = '';
+	if(($newlinkparts[0] = "http:") || ($newlinkparts[0] = "https:")) {
+		$gid = $newlinkparts[1];
+	}
+	
 	$thisisrandom = generateRandomString ();
 	$returnstring = '<div class="shortcodes"';
 	$returnstring .= ' id="' . $thisisrandom . '"';
+	$returnstring .= ' data-chartid="' . $chartID . '"';
+	$returnstring .= ' data-gid="' . $gid . '"';
 	$returnstring .= ' data-id="' . $thisisrandom . '"';
 	foreach ($vars as $key => $value) {
-		$returnstring .= ' data-' . $key . '="' . $value . '"';
+		if($key != 'link') {
+			$returnstring .= ' data-' . $key . '="' . $value . '"';
+		}
 	}
-	$returnstring .= ' style="width: 900px; height: 500px;"></div>';
+	$returnstring .= '"></div>';
 	return $returnstring;
 }
 
 function theme_shortcode_piechart($vars) {
+	
 	$returnstring = _ma_gcs_shortcode_theme($vars);
 	return $returnstring;
 }
@@ -274,9 +348,9 @@ function theme_shortcode_tablechart($vars) {
  * This function outputs some tips to the user beneath the WYSIWYG editor so they know
  * what the shortcode does and how to use it.
  */
-function _ma_gcs_shortcode_tip($format, $long) {
+function _ma_gcs_shortcode_tip($type, $format, $long) {
 	$output = array();
-	$output[] = '<p><strong>' . t('[chartType link="http://URLhere.com"][/chartType]') . '</strong> ';
+	$output[] = '<p><strong>' . t('[' . $type . 'Type link="http://URLhere.com"][/' . $type . 'Type]') . '</strong> ';
 	if ($long) {
 		$output[] = t('Outputs a link that is displayed as a chart.') . '</p>';
 	}
@@ -287,29 +361,33 @@ function _ma_gcs_shortcode_tip($format, $long) {
 	return implode(' ', $output);
 }
 function ma_gcs_shortcode_piechart_tip($format, $long) {
+	$type = "Pie";
 	$format = $format;
 	$long = $long;
-	return _ma_gcs_shortcode_tip($format, $long);
+	return _ma_gcs_shortcode_tip($type, $format, $long);
 }
 function ma_gcs_shortcode_tablechart_tip($format, $long) {
+	$type = "Table";
 	$format = $format;
 	$long = $long;
-	return _ma_gcs_shortcode_tip($format, $long);
+	return _ma_gcs_shortcode_tip($type, $format, $long);
 }
 function ma_gcs_shortcode_barchart_tip($format, $long) {
+	$type = "Bar";
 	$format = $format;
 	$long = $long;
-	return _ma_gcs_shortcode_tip($format, $long);
+	return _ma_gcs_shortcode_tip($type, $format, $long);
 }
 function ma_gcs_shortcode_columnchart_tip($format, $long) {
+	$type = "Column";
 	$format = $format;
 	$long = $long;
-	return _ma_gcs_shortcode_tip($format, $long);
+	return _ma_gcs_shortcode_tip($type, $format, $long);
 }
 /**
  * This function generates a ranomd string to assign as a div id for the google chart (in case they have more than one on a page).
  */
 function generateRandomString($length = 5) {
-  return substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length);
+  return substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length);
 }
 
