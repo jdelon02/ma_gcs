@@ -1,4 +1,17 @@
 (function($) {
+//  Drupal.behaviors.ma_mouseout = {
+//    attach : function(context, settings) {
+//      $("colorset").mouseup(function (e) {
+//        $(this).mouseup(function (e) {
+//        if (!$(this).is(e.target) // if the target of the click isn't the container...
+//          && $(this).has(e.target).length === 0) // ... nor a descendant of the container
+//        {
+//          $(this).hide();
+//        }
+//      }
+//    });
+//  }     
+  
   Drupal.behaviors.ma_gcs = {
     attach : function(context, settings) {
       if ($('.shortcodes', context).length) {
@@ -6,18 +19,19 @@
           var myChartType = $(this).data('type');
           var myChartID = $(this).data('chartid');
           var myChartGid = $(this).data('gid');
-          var myTitle = $(this).data('title');
-          var mySubTitle = $(this).data('subtitle');
-          var myLegal1 = $(this).data('legal1');
-          var myLegal2 = $(this).data('legal2');
+          var myxTitle = $(this).data('xtitle');
+          var myyTitle = $(this).data('ytitle');
+          var myLegend = $(this).data('islegend');
+          var myDirection = $(this).data('isdirection');
           var myStacked = $(this).data('isstacked');
+          var myFilled = $(this).data('isfilled');
           var randomId = $(this).data('id');
           var colorvalue = [];
           var thisColColor;
           for (var i = 1; i < 9; i++) {
             colorvalue.push($(this).data('col' + i));
           }
-
+console.log($(this));
           var myURL = "https://spreadsheets.google.com/feeds/list/" + myChartID + "/od6/public/values?gid=" + myChartGid + "&alt=json";
           $.getJSON(myURL, function (data) {
             for (var i = 0; i < data.feed.entry.length; i++) {

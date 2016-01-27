@@ -5,66 +5,7 @@
   /*line-height: 1.25;*/
   /* this is the parent of each element that this module generates */
 }
-h3.rbftitle {
- padding-top: 0;
- padding-bottom: 0;
- margin-bottom: 0;
-}
-p.rbfsubtext {
-	font-family: 'Merriweather', 'Georgia', 'Times', 'Times New Roman', serif;
-	letter-spacing: .5px;
-  font-size: 8px;
-  font-style: italic;
-}
-/* This is only for styling tables */
-.google-visualization-table {
-	/* this is the container div */
-}
-.google-visualization-table-table {
-	font-family: 'Merriweather', 'Georgia', 'Times', 'Times New Roman', serif;
-	letter-spacing: .5px;
 
-	/* this is the inner table */
-}
-.google-visualization-table-table .td {
-	padding-top: 0px !important;
-	padding-bottom: 0px !important;
-	border: solid #eee;
-  border-width: 1px 0px 0px 0;
- }
-  .headerRow {
-		background-color: #364d6e;
-		color: white;
-		border: 0px solid #364d6e;
-  }
-  .tableRow {
-
-  }
-  .oddTableRow {
-
-  }
-  .selectedTableRow {
-
-  }
-	.hoverTableRow {
-
-	}
-	.headerCell {
-
-	}
-	td.tableCell {
-		padding-top: 0px !important;
-		padding-bottom: 0px !important;
-
-	}
-	td.google-visualization-table-td-number {
-		padding-top: 0px !important;
-		padding-bottom: 0px !important;
-	}
-	.rowNumberCell {
-
-	}
-	
 #shortcode-wysiwyg-form label {
 	font-size: 16px;
   font-weight: 400;
@@ -74,37 +15,78 @@ p.rbfsubtext {
   font-weight: 400;
 } 
 #shortcode-wysiwyg-form .form-item {
-	margin: 0 0 10px;
-	vertical-align: baseline;
 }
-#shortcode-wysiwyg-form .form-wrapper {
-	/* width: 100%; */
-}
-#shortcode-wysiwyg-form .fieldset-wrapper {
+
+#shortcode-wysiwyg-form .colorset .fieldset-wrapper {
 	float: left;
 }
-#shortcode-wysiwyg-form .fieldset-wrapper .form-item label {
-  font-size: 14px;
-  font-weight: 400;
-}
-#shortcode-wysiwyg-form .fieldset-wrapper .form-item {
+#shortcode-wysiwyg-form .colorset .fieldset-wrapper .form-item {
 	width: 31%;
 	float: left;
 }
-#shortcode-wysiwyg-form .form-item-title {
-	float: left;
-	width: 47%;	
+#shortcode-wysiwyg-form .colorset .fieldset-wrapper .form-item label {
+  display: inline;
+  width: 65%;
+  height: 16px;
+  line-height: 16px;
+  vertical-align: middle;
 }
-#shortcode-wysiwyg-form .form-item-subtitle {
-	float: left;
-  width: 47%;
+#shortcode-wysiwyg-form .colorset .fieldset-wrapper .form-item input {
+  float: right;
+  width: 35%;
+  height: 16px;
+  line-height: 16px;
+  margin-right: 25px;
 }
-#shortcode-wysiwyg-form .form-item-legal1 {
+#shortcode-wysiwyg-form .optionset .fieldset-wrapper .form-item {
+	font-size: 14px;
+	height: 32px;
+  line-height: 32px;
+}
+
+#shortcode-wysiwyg-form .optionset .fieldset-wrapper .form-item label {
+  display: inline;
+  width: 60%;
+  height: 16px;
+  line-height: 16px;
+}
+#shortcode-wysiwyg-form .optionset .fieldset-wrapper .form-item input {
+  float: right;
+  width: 40%;
+  height: 16px;
+  line-height: 16px;
+} 
+#shortcode-wysiwyg-form .optionset .fieldset-wrapper .form-item select {
+  float: right;
+  width: 42.5%;
+  height: 32px;
+  line-height: 32px;
+}  
+
+#shortcode-wysiwyg-form .optionset .fieldset-wrapper .form-item-isstacked {
+  width: 46%;
   float: left;
-  width: 47%;
 }
-#shortcode-wysiwyg-form .form-item-legal2 {
-  float: left;
-  width: 47%;
+#shortcode-wysiwyg-form .optionset .fieldset-wrapper .form-item-isstacked label {
+	 display: inline;
 }
+#shortcode-wysiwyg-form .optionset .fieldset-wrapper .form-item-isstacked select {
+  width: 100px;
+  height: 32px;
+  line-height: 32px;
+}
+#shortcode-wysiwyg-form .optionset .fieldset-wrapper .form-item-isfilled {
+  width: 46%;
+  float: right;
+}
+#shortcode-wysiwyg-form .optionset .fieldset-wrapper .form-item-isfilled label {
+   display: inline;
+}
+#shortcode-wysiwyg-form .optionset .fieldset-wrapper .form-item-isfilled select {
+	width: 100px;
+	height: 32px;
+  line-height: 32px;
+}
+
+
 
