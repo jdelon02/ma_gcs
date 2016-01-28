@@ -78,7 +78,7 @@ function ma_gcs_menu() {
 
 function _ma_gcs_chart_types() {
 //	Spline Chart, Step Chart, Area Chart, Bar Chart, Scatter Chart, Pie Chart, Donut Chart, Gauge Chart
-	
+
 	return array(
 		'Pie' => 'piechart',
 		'Bar' => 'barchart',
@@ -119,7 +119,7 @@ function _ma_gcs_formbuild($type) {
 			),
 		),
 	);
-	
+
 	$form['' . $value . '-title'] = array(
 			'#name' => t('title'),
 			'#title' => t("Enter The $key Chart Title"),
@@ -131,7 +131,7 @@ function _ma_gcs_formbuild($type) {
 					),
 			),
 	);
-	
+
 	$form['' . $value . '-subtitle'] = array(
 			'#name' => t('subtitle'),
 			'#title' => t("Enter The $key Chart SubTitle"),
@@ -181,13 +181,13 @@ function _ma_gcs_formbuild($type) {
 	);
 
 	$legend = array(
-			'Bottom' => t('On The Bottom'),
-			'Right' => t('On The Right')
+			'bottom' => t('On The Bottom'),
+			'right' => t('On The Right')
 	);
-	
+
 	$form['' . $value . '-optionset']['' . $value . '-islegend'] = array(
 			'#name' => t('islegend'),
-			'#title' => t('Where would you like the Legend to appear'),
+			'#title' => t('Where would you like the legend to appear?'),
 			'#type' => 'select',
 			'#options' => $legend,
 			'#states' => array(
@@ -196,16 +196,30 @@ function _ma_gcs_formbuild($type) {
 					),
 			),
 	);
-	
-	
+
+
 	#For the line and bar charts: option for vertical/horizontal chart (I believe this option will cover the line chart you mentioned and the bar/line charttype can be merged).
 	#For the line chart: an independent drop down option with: stacked/unstacked; horizontal/vertical; and filled/unfilled.
-	
+
 	if ($key == "Bar" || $key == "Line") {
-		
+		$stacked = array(
+				'True' => t('Yes'),
+				'False' => t('No')
+		);
 		$direction = array(
 				'Vertical' => t('Vertical Layout'),
 				'Horizontal' => t('Horizontal Layout')
+		);
+		$form['' . $value . '-optionset']['' . $value . '-isstacked'] = array(
+				'#name' => t('isstacked'),
+				'#title' => t('Is this a Stacked Chart?'),
+				'#type' => 'select',
+				'#options' => $stacked,
+				'#states' => array(
+						'visible' => array(
+								':input[name="shortcode"]' => array('value' => "$value"),
+						),
+				),
 		);
 		$form['' . $value . '-optionset']['' . $value . '-isdirection'] = array(
 				'#name' => t('isdirection'),
@@ -219,32 +233,16 @@ function _ma_gcs_formbuild($type) {
 				),
 		);
 	}
-	if ($key == "Line") {	
-		$stacked = array(
-				'True' => t('Yes'),
-				'False' => t('No')
-		);
+	if ($key == "Line") {
 		$fillerup = array(
 				'True' => t('Yes'),
 				'False' => t('No')
-		);
-		$form['' . $value . '-optionset']['' . $value . '-isstacked'] = array(
-				'#name' => t('isstacked'),
-				'#title' => t('Is this a Stacked Chart?'),
-				'#type' => 'select',
-				'#description' => t('this only applies to line charts'),
-				'#options' => $stacked,
-				'#states' => array(
-						'visible' => array(
-								':input[name="shortcode"]' => array('value' => "$value"),
-						),
-				),
 		);
 		$form['' . $value . '-optionset']['' . $value . '-isfilled'] = array(
 				'#name' => t('isfilled'),
 				'#title' => t('Is this a filled chart?'),
 				'#type' => 'select',
-				'#description' => t('this only applies to line charts'),
+				'#description' => t('This only applies to line charts'),
 				'#options' => $fillerup,
 				'#states' => array(
 						'visible' => array(
@@ -281,13 +279,13 @@ function _ma_gcs_formbuild($type) {
 			),
 		);
 	}
-	
+
 	return $form;
 }
 
 function ma_gcs_shortcode_piechart_attributes($form, &$form_state) {
 	$pieform = _ma_gcs_formbuild('Pie');
-	return $pieform; 
+	return $pieform;
 }
 
 function ma_gcs_shortcode_linechart_attributes($form, &$form_state) {
@@ -310,14 +308,14 @@ function ma_gcs_shortcode_tablechart_attributes($form, &$form_state) {
  */
 function _ma_gcs_base_variables() {
   return array(
-  	'type' => '',	
+  	'type' => '',
     'link' => '',
   	'title' => '',
   	'subtitle' => '',
     'xtitle' => '',
     'ytitle' => '',
-  	'islegend' => '',	
-  	'isdirection' => '',	
+  	'islegend' => '',
+  	'isdirection' => '',
   	'isstacked' => '',
   	'isfilled' => '',
   	'col1' => '',
@@ -329,22 +327,22 @@ function _ma_gcs_base_variables() {
     'col7' => '',
     'col8' => '',
   );
-}    
+}
 
 function ma_gcs_theme() {
 	$array = array(
 		'shortcode_piechart' => array (
-			'variables' => _ma_gcs_base_variables() 
+			'variables' => _ma_gcs_base_variables()
 		),
 		'shortcode_barchart' => array (
-			'variables' => _ma_gcs_base_variables() 
+			'variables' => _ma_gcs_base_variables()
 		),
 		'shortcode_linechart' => array (
-			'variables' => _ma_gcs_base_variables() 
+			'variables' => _ma_gcs_base_variables()
 		),
 		'shortcode_tablechart' => array (
-			'variables' => _ma_gcs_base_variables() 
-		), 
+			'variables' => _ma_gcs_base_variables()
+		),
 	);
  	return $array;
 }
@@ -405,7 +403,7 @@ function _ma_gcs_shortcode_theme($vars) {
 	if(($newlinkparts[0] = "http:") || ($newlinkparts[0] = "https:")) {
 		$gid = $newlinkparts[1];
 	}
-	
+
 	$thisisrandom = generateRandomString ();
 	$returnstring = '';
 	if($title) {
@@ -429,7 +427,7 @@ function _ma_gcs_shortcode_theme($vars) {
 }
 
 function theme_shortcode_piechart($vars) {
-	
+
 	$returnstring = _ma_gcs_shortcode_theme($vars);
 	return $returnstring;
 }
@@ -461,7 +459,7 @@ function _ma_gcs_shortcode_tip($type, $format, $long) {
 	else {
 		$output[] = t('Outputs text that links to a URL.') . '</p>';
 	}
-	
+
 	return implode(' ', $output);
 }
 function ma_gcs_shortcode_piechart_tip($format, $long) {
@@ -494,4 +492,3 @@ function ma_gcs_shortcode_linechart_tip($format, $long) {
 function generateRandomString($length = 5) {
   return substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length);
 }
-

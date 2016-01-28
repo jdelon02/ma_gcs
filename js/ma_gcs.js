@@ -10,8 +10,8 @@
 //        }
 //      }
 //    });
-//  }     
-  
+//  }
+
   Drupal.behaviors.ma_gcs = {
     attach : function(context, settings) {
       if ($('.shortcodes', context).length) {
@@ -31,7 +31,6 @@
           for (var i = 1; i < 9; i++) {
             colorvalue.push($(this).data('col' + i));
           }
-console.log($(this));
           var myURL = "https://spreadsheets.google.com/feeds/list/" + myChartID + "/od6/public/values?gid=" + myChartGid + "&alt=json";
           $.getJSON(myURL, function (data) {
             for (var i = 0; i < data.feed.entry.length; i++) {
@@ -50,6 +49,7 @@ console.log($(this));
               }
               //C3 Formatting
               var datap = data.feed.entry;
+              console.log(datap);
               var datacategories = Object.keys(datap[0]);
               var emptyarray = [];
               var dataarray = [];
@@ -69,10 +69,17 @@ console.log($(this));
                 labelobject[emptyarray[0]] = emptyarray[emptyarray.length - 1];
                 emptyarray = [];
               }
-              var linetype = 'area';
+              var rotated = false;
+              if (myDirection === 'Horizontal')
+              {
+                rotated = true;
+              }
               if (myStacked === 'False') {
                 datacategories = [];
-                linetype = 'line';
+              }
+              var linetype = 'line';
+              if (myFilled === 'True') {
+                linetype = 'area';
               }
               switch (myChartType) {
                 case 'piechart' :
@@ -88,11 +95,11 @@ console.log($(this));
                       pattern: colorvalue
                     },
                     legend: {
-                      position: 'bottom'
+                      position: myLegend
                     }
                   });
                   break;
-                case 'columnchart' :
+                case 'linechart' :
                   var chart = c3.generate({
                     bindto: document.getElementById(randomId),
                     data: {
@@ -105,22 +112,23 @@ console.log($(this));
                     axis: {
                       x: {
                         label: {
-                          text: myTitle,
+                          text: myxTitle,
                           position: 'outer-center'
                         }
                       },
                       y: {
                         label: {
-                          text: mySubTitle,
+                          text: myyTitle,
                           position: 'outer-middle'
                         }
-                      }
+                      },
+                      rotated: rotated
                     },
                     color: {
                       pattern: colorvalue
                     },
                     legend: {
-                      position: 'bottom'
+                      position: myLegend
                     }
                   });
                   break;
@@ -137,27 +145,25 @@ console.log($(this));
                     axis: {
                       x: {
                         label: {
-                          text: myTitle,
+                          text: myxTitle,
                           position: 'outer-center'
                         }
                       },
                       y: {
                         label: {
-                          text: mySubTitle,
+                          text: myyTitle,
                           position: 'outer-middle'
                         }
                       },
-                      //rotated: true
+                      rotated: rotated
                     },
                     color: {
                       pattern: colorvalue
                     },
                     legend: {
-                      position: 'bottom'
+                      position: myLegend
                     }
                   });
-                  break;
-                case 'linechart' :
                   break;
                 case 'tablechart' :
                   break;

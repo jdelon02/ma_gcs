@@ -9,11 +9,11 @@
 #shortcode-wysiwyg-form label {
 	font-size: 16px;
   font-weight: 400;
-}	
+}
 #shortcode-wysiwyg-form .fieldset-legend {
   font-size: 16px;
   font-weight: 400;
-} 
+}
 #shortcode-wysiwyg-form .form-item {
 }
 
@@ -55,38 +55,10 @@
   width: 40%;
   height: 16px;
   line-height: 16px;
-} 
+}
 #shortcode-wysiwyg-form .optionset .fieldset-wrapper .form-item select {
   float: right;
   width: 42.5%;
   height: 32px;
   line-height: 32px;
-}  
-
-#shortcode-wysiwyg-form .optionset .fieldset-wrapper .form-item-isstacked {
-  width: 46%;
-  float: left;
 }
-#shortcode-wysiwyg-form .optionset .fieldset-wrapper .form-item-isstacked label {
-	 display: inline;
-}
-#shortcode-wysiwyg-form .optionset .fieldset-wrapper .form-item-isstacked select {
-  width: 100px;
-  height: 32px;
-  line-height: 32px;
-}
-#shortcode-wysiwyg-form .optionset .fieldset-wrapper .form-item-isfilled {
-  width: 46%;
-  float: right;
-}
-#shortcode-wysiwyg-form .optionset .fieldset-wrapper .form-item-isfilled label {
-   display: inline;
-}
-#shortcode-wysiwyg-form .optionset .fieldset-wrapper .form-item-isfilled select {
-	width: 100px;
-	height: 32px;
-  line-height: 32px;
-}
-
-
-
