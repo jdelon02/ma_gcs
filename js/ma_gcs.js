@@ -122,6 +122,9 @@
                           position: 'outer-middle'
                         }
                       },
+                      tick: {
+                        format: d3.format("$,.2r")
+                      },
                       rotated: rotated
                     },
                     color: {
@@ -154,6 +157,9 @@
                           text: myyTitle,
                           position: 'outer-middle'
                         }
+                      },
+                      tick: {
+                        format: d3.format("$,.2r")
                       },
                       rotated: rotated
                     },
