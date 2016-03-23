@@ -120,6 +120,18 @@ function _ma_gcs_formbuild($type) {
 		),
 	);
 
+	$form['' . $value . '-worksheet'] = array(
+		'#name' => t('worksheet'),
+		'#title' => t("Enter $key workheet position"),
+		'#description' => t('This identifies which worksheet to pull data from. Count from the left.'),
+		'#type' => 'textfield',
+		'#states' => array(
+			'visible' => array(
+				':input[name="shortcode"]' => array("value" => "$value"),
+			),
+		),
+	);
+
 	$form['' . $value . '-title'] = array(
 			'#name' => t('title'),
 			'#title' => t("Enter The $key Chart Title"),
@@ -310,7 +322,8 @@ function _ma_gcs_base_variables() {
   return array(
   	'type' => '',
     'link' => '',
-  	'title' => '',
+  	'worksheet' => '',
+		'title' => '',
   	'subtitle' => '',
     'xtitle' => '',
     'ytitle' => '',
@@ -400,9 +413,9 @@ function _ma_gcs_shortcode_theme($vars) {
 	$chartID = $newurl[5];
 	$newlinkparts = explode('=', rtrim($link, '='));
 	$gid = '';
-	if(($newlinkparts[0] = "http:") || ($newlinkparts[0] = "https:")) {
-		$gid = $newlinkparts[1];
-	}
+	//if(($newlinkparts[0] = "http:") || ($newlinkparts[0] = "https:")) {
+		$gid = $vars['workheet'];
+	//}
 
 	$thisisrandom = generateRandomString ();
 	$returnstring = '';
