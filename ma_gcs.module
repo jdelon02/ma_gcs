@@ -414,7 +414,7 @@ function _ma_gcs_shortcode_theme($vars) {
 	$newlinkparts = explode('=', rtrim($link, '='));
 	$gid = '';
 	//if(($newlinkparts[0] = "http:") || ($newlinkparts[0] = "https:")) {
-		$gid = $vars['workheet'];
+		$gid = $vars['worksheet'];
 	//}
 
 	$thisisrandom = generateRandomString ();
