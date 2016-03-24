@@ -1,13 +1,13 @@
 .shortcodes {
 	font-family: 'Merriweather', 'Georgia', 'Times', 'Times New Roman', serif;
-	font-size: 12px;
+	/*font-size: 12px;*/
   letter-spacing: .5px;
   /*line-height: 1.25;*/
   /* this is the parent of each element that this module generates */
 }
 
 .c3-legend-item {
-	font-size: 9px !important;
+	/*font-size: 9px !important;*/
 }
 
 .tick text{
