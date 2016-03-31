@@ -49,6 +49,7 @@
               }
               //C3 Formatting
               var datap = data.feed.entry;
+              console.log('datap');
               console.log(datap);
               var datacategories = Object.keys(datap[0]);
               var emptyarray = [];
@@ -69,6 +70,10 @@
                 labelobject[emptyarray[0]] = emptyarray[emptyarray.length - 1];
                 emptyarray = [];
               }
+              console.log('dataarray');
+              console.log(dataarray);
+              console.log('labelobject');
+              console.log(labelobject);
               var rotated = false;
               if (myDirection === 'Horizontal')
               {
@@ -156,9 +161,6 @@
                         label: {
                           text: myyTitle,
                           position: 'outer-middle'
-                        },
-                        tick: {
-                          format: d3.format("$,.2r")
                         },
                       },
                       rotated: rotated

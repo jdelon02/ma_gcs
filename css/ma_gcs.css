@@ -1,7 +1,6 @@
 .shortcodes {
 	font-family: 'Merriweather', 'Georgia', 'Times', 'Times New Roman', serif;
 	font-size: 12px;
-  letter-spacing: .5px;
   /*line-height: 1.25;*/
   /* this is the parent of each element that this module generates */
 }
