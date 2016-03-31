@@ -54,6 +54,7 @@
               console.log('datap');
               console.log(datap);
               var datacategories = Object.keys(datap[0]);
+              console.log(datacategories);
               var emptyarray = [];
               var dataarray = [];
               var labelobject = {};
