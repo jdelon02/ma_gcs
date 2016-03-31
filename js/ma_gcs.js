@@ -67,7 +67,13 @@
                   }
                 }
                 dataarray.push(emptyarray);
-                labelobject[emptyarray[0]] = emptyarray[emptyarray.length - 1];
+                if (emptyarray.length > 1)
+                {
+                  labelobject[emptyarray[0]] = emptyarray[emptyarray.length - 1];
+                }
+                else {
+                  labelobject[emptyarray[0]] = emptyarray[emptyarray.length];
+                }
                 emptyarray = [];
               }
               console.log('dataarray');
