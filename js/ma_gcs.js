@@ -67,6 +67,10 @@
                   }
                 }
                 dataarray.push(emptyarray);
+                console.log('emptyarray');
+                console.log(emptyarray);
+                console.log('dataarray');
+                console.log(dataarray);
                 if (emptyarray.length > 1)
                 {
                   labelobject[emptyarray[0]] = emptyarray[emptyarray.length - 1];
@@ -74,12 +78,12 @@
                 else {
                   labelobject[emptyarray[0]] = emptyarray[emptyarray.length];
                 }
+                console.log('labelobject');
+                console.log(labelobject);
                 emptyarray = [];
               }
               console.log('dataarray');
               console.log(dataarray);
-              console.log('labelobject');
-              console.log(labelobject);
               var rotated = false;
               if (myDirection === 'Horizontal')
               {
