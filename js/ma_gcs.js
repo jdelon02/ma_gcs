@@ -35,7 +35,7 @@
           $.getJSON(myURL, function (data) {
             console.log('data');
             console.log(data);
-            for (var k = 0; k < data.feed.entry.length; k++) {
+            //for (var i = 0; i < data.feed.entry.length; i++) {
               for (var i = 0; i < data.feed.entry.length; i++) {
                   for (var key in data.feed.entry[i]) {
                       if (data.feed.entry[i].hasOwnProperty(key) && key.substr(0,4) === 'gsx$') {
@@ -189,7 +189,7 @@
                 case 'tablechart' :
                   break;
               }
-            }
+            //}
           });
         }); // each function
       } // if context.length
