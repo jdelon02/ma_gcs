@@ -244,6 +244,17 @@ function _ma_gcs_formbuild($type) {
 						),
 				),
 		);
+		$form['' . $value . '-optionset']['' . $value . '-iscurrency'] = array(
+				'#name' => t('iscurrency'),
+				'#title' => t('Should the y-axis values be formatted as currency?'),
+				'#type' => 'select',
+				'#options' => $direction,
+				'#states' => array(
+						'visible' => array(
+								':input[name="shortcode"]' => array('value' => "$value"),
+						),
+				),
+		);
 	}
 	if ($key == "Line") {
 		$fillerup = array(
@@ -331,6 +342,7 @@ function _ma_gcs_base_variables() {
   	'isdirection' => '',
   	'isstacked' => '',
   	'isfilled' => '',
+		'iscurrency' => '',
   	'col1' => '',
     'col2' => '',
     'col3' => '',
