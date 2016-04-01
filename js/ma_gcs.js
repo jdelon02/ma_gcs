@@ -166,6 +166,7 @@
                     axis: {
                       x: {
                         label: {
+                          type: 'category',
                           text: myxTitle,
                           position: 'outer-center'
                         }
