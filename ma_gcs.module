@@ -218,6 +218,10 @@ function _ma_gcs_formbuild($type) {
 				'True' => t('Yes'),
 				'False' => t('No')
 		);
+		$currency = array(
+				'True' => t('Yes'),
+				'False' => t('No')
+		);
 		$direction = array(
 				'Vertical' => t('Vertical Layout'),
 				'Horizontal' => t('Horizontal Layout')
@@ -248,7 +252,7 @@ function _ma_gcs_formbuild($type) {
 				'#name' => t('iscurrency'),
 				'#title' => t('Should the y-axis values be formatted as currency?'),
 				'#type' => 'select',
-				'#options' => $direction,
+				'#options' => $currency,
 				'#states' => array(
 						'visible' => array(
 								':input[name="shortcode"]' => array('value' => "$value"),
