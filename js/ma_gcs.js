@@ -75,11 +75,10 @@
               emptyarray = [];
             }
             var rotated = false;
-            var currencyformat = d3.format(".0%");
+            var currencyformat = d3.format("");
             if (myCurrency === 'True') {
               var currencyformat = d3.format("$,f");
             }
-            console.log(currencyformat);
             if (myDirection === 'Horizontal')
             {
               rotated = true;
