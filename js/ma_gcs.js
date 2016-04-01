@@ -29,7 +29,6 @@
           var randomId = $(this).data('id');
           var colorvalue = [];
           var thisColColor;
-          console.log(myCurrency);
           for (var i = 1; i < 9; i++) {
             colorvalue.push($(this).data('col' + i));
           }
@@ -76,6 +75,11 @@
               emptyarray = [];
             }
             var rotated = false;
+            var currencyformat = 'd3.format("")';
+            if (myCurrency === 'True') {
+              var currencyformat = 'd3.format("$,f")';
+            }
+            console.log(currencyformat);
             if (myDirection === 'Horizontal')
             {
               rotated = true;
