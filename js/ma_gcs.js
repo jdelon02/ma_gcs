@@ -140,7 +140,7 @@
                           position: 'outer-middle'
                         },
                         tick: {
-                          format: d3.format("$,.2r")
+                          format: d3.format("$,.2f")
                         },
                       },
                       rotated: rotated
