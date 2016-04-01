@@ -250,7 +250,7 @@ function _ma_gcs_formbuild($type) {
 		);
 		$form['' . $value . '-optionset']['' . $value . '-iscurrency'] = array(
 				'#name' => t('iscurrency'),
-				'#title' => t('Should the y-axis values be formatted as currency?'),
+				'#title' => t('Format the y-axis as currency?'),
 				'#type' => 'select',
 				'#options' => $currency,
 				'#states' => array(
