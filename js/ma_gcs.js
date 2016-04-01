@@ -132,7 +132,7 @@
                         position: 'outer-middle'
                       },
                       tick: {
-                        format: d3.format("$,f")
+                        format: currencyformat
                       },
                     },
                     rotated: rotated
@@ -167,6 +167,9 @@
                       label: {
                         text: myyTitle,
                         position: 'outer-middle'
+                      },
+                      tick: {
+                        format: currencyformat
                       },
                     },
                     rotated: rotated
