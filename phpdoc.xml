@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<phpdoc>
+	<title>MA Google Charts Shortcodes</title>
+	<parser>
+		<extensions>
+			<extension>module</extension>
+			<extension>inc</extension>
+			<extension>install</extension>
+			<extension>php</extension>
+			<extension>php3</extension>
+			<extension>phtml</extension>
+		</extensions>
+	</parser>
+	<transformer>
+		<target>docs</target>
+	</transformer>
+	<files>
+		<directory>.</directory>
+		<ignore>vendor/*</ignore>
+	</files>
+</phpdoc>
