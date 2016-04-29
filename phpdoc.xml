@@ -2,7 +2,7 @@
 <phpdoc>
 	<title>MA Google Charts Shortcodes</title>
 	<parser>
-		<target>docs/php</target>
+		<target>docs</target>
 		<extensions>
 			<markers>
 	            <item>TODO</item>
@@ -15,7 +15,7 @@
 		</extensions>
 	</parser>
 	<transformer>
-		<target>docs/php</target>
+		<target>docs</target>
 	</transformer>
 	<files>
 		<directory>.</directory>
@@ -23,6 +23,6 @@
 		<ignore>node_modules/*</ignore>
 	</files>
 	<transformations>
-        <template name="abstract"/>
+        <template name="responsive"/>
     </transformations>
 </phpdoc>

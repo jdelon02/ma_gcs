@@ -1,0 +1,8 @@
+[debug] ----------------------------------------------------------------------
+[debug] Command:      /usr/local/Cellar/node/4.2.1/bin/node /usr/local/bin/firebase serve -p 4000
+[debug] Platform:     darwin
+[debug] Node Version: v4.2.1
+[debug] Time:         Fri Apr 29 2016 16:22:11 GMT-0400 (EDT)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[info] Listening at http://localhost:4000

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project title="MA Google Charts Shortcodes" version="2.8.5">
+  <partials/>
+  <file path="ma_gcs.admin.inc" generated-path="ma_gcs.admin.inc.html" hash="d6d85148331bcf78d81ad8fa12fbc665" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJyVUstu2zAQPItfMU2MSnKMOL61cNyiSB+X3Az0UgQCI61sAtSj5CqoW/jfu6RcOwejbSRAK3BnZhczvH3fb3ul5tOpwhRrYg/eEkzrWbclYXAWXY0vXbexhLutdoz1tnNcdhX5ayHNVT20JZuuRaOLTekLXTWmzXL8Usmk7lyDFbRzeocsXyqVyFE2MXK4WELqLd6GenUVCQfGt/SgVXa2cymuBfFw0hEc0kve9ZRi9Q4p0w+uDdkqnSmER5qG7aEbNXA5qhwBFdV6sFw8aTuMwCftjH60VGyIszMLzIS1uAlvmh9lvPk5st88U/alM32wJHYYGS4+juNwNy6DiyiJk5Cj74NxVEXK5w/3608qAcSxZC+mOeLBtfA7z9QUnphNu/FFNCvDaJpg98cov2prKs3kUXbOUckIGM0hTQn1L8kFRyI1i7IzvI61kBvBFEL6V4SmRvaKmp4lqWdUCTV67dOH8/nmIz2ZxMPSkm5lxEsUloEexvvh0bPseFKa4WaGRY7VaiVmp4dRyXw+iW1By6xztEUeVffhQ9bTgTi0EsIf6/9zPYxSyYs4cd3wf1rquNA+XA7JXKnfMoMXZw==</source>
+  </file>
+  <file path="ma_gcs.module" generated-path="ma_gcs.module.html" hash="ef7c04ecb2d4ebdc8261914bb1309ab6" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>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</source>
+  </file>
+  <file path="newfile.php" generated-path="newfile.html" hash="ce407ff5715c837d02b1aba7975bf512" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJyzsS/IKOACAAaLAc4=</source>
+  </file>
+  <file path="test.php" generated-path="test.html" hash="1abaac41861b16e199a094c09a83b600" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJx9VO9T2zgQ/e6/Yo96SDIktbkAZRrSDE3p/WqBIS05jmEYxVrHShTJY8mE3E3/965kOw1zN/cpznr3vX1PTz4b5VkOQRSFKSKHIXCdmNdzrecSXyd6FZm8QMZNhmijJElGS9wMz/64uHv3ai748PDn/tFx0MzuZdbm5m20O/QCzPWZSApjo8OjOO2V/bvn8bz/LE3+3Hu+nF7Pln/eXk9+vbr6rPPx1Jrb3pQzHWl+EuXlTIokemKyRDNy5P349PT45PTNm71BkBEfFu3WWCuLyvbsJse3wPKcZpgVWkULo1WrMwicWJighY0uCxhPbsFtteNAq1Hxf1bQNqNMDlE9fp3sbx+cOfH50mB/c7wcX92c8ovsJJne3E0/3Mrp6jL+csHTm+Vffb5c/s1/SfaNUIQ+tEWJ+05SvK9Lm5d2mJinVr3reVGwjYE1tqSE0iBIZrEIQiIztC5zr9skLFS49r27RY/wsVSJ8wCshkSrJyysFy4UFZgxOhHk0RNWY0HatNMSX7SHbIepkNiFkKMUK0H8HfgHAgCRQrsdZkxxicSb6hxV09wqWp0O/DQcwsfzT5OLegIgFNQZD6o/64x6HYYUCpv10zlaIm+Au3AUx/EuO4Hv/Tc40A4FtMNFxUG/Z6S5VHaHoePqBwc7M7QUab8PxcN9uHig0R/NrjBo+r41D6E4OKirdS1NpDbYrNzxL/2rAm1ZKE9ARVdyZ/JBg7BByJllRPfCaYoh6eu+CKsqVzMsQKeAEleUcAPtlVClgUOYYcJcLtYIJhOppa4UbIaQisJYKPS6E4TeA8dUeeF4O9CDw4rjq9np9g4qtkIDEISSzVBug/boGer5ATgx1I0sycjzupUZqB7JYNLvg3pfmeqqg+BbHWzO4TduurAoiVhQ3lilYs1oVRKw2o26R2gJ7q9FdcZ1juj3DCqBA38wNa/b0R+p5xZb3vcF3TpyHxhdKKspaxmR/Ds2W8jFD8itD/RBmFFE2n63bkO2eHCHBtur2KSJb8mvidw6crrozqnfJ1eXASaZBveBekSVaE6oDYDPwOhd8B0korf6</source>
+  </file>
+  <package name="Default" full_name="Default"/>
+  <package name="global" full_name="global"/>
+  <deprecated count="0"/>
+</project>
