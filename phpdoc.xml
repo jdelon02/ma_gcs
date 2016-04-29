@@ -2,20 +2,27 @@
 <phpdoc>
 	<title>MA Google Charts Shortcodes</title>
 	<parser>
+		<target>docs/php</target>
 		<extensions>
+			<markers>
+	            <item>TODO</item>
+	            <item>FIXME</item>
+	        </markers>
 			<extension>module</extension>
 			<extension>inc</extension>
 			<extension>install</extension>
 			<extension>php</extension>
-			<extension>php3</extension>
-			<extension>phtml</extension>
 		</extensions>
 	</parser>
 	<transformer>
-		<target>docs</target>
+		<target>docs/php</target>
 	</transformer>
 	<files>
 		<directory>.</directory>
 		<ignore>vendor/*</ignore>
+		<ignore>node_modules/*</ignore>
 	</files>
+	<transformations>
+        <template name="abstract"/>
+    </transformations>
 </phpdoc>

@@ -1,9 +1,10 @@
 {
   "firebase": "magcs",
-  "public": "docs",
+  "public": "docs/",
   "ignore": [
     "firebase.json",
     "**/.*",
+    "**/vendor/**",
     "**/node_modules/**"
   ]
 }

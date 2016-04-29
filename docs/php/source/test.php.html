@@ -1,0 +1,102 @@
+<html>
+    <head>
+        <script
+            type="text/javascript"
+            src="../js/jquery-1.4.2.min.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../syntax_highlighter/scripts/shCore.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../syntax_highlighter/scripts/shBrushJScript.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../syntax_highlighter/scripts/shBrushPhp.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../syntax_highlighter/scripts/shBrushXml.js">
+        </script>
+        <link
+            href="../syntax_highlighter/styles/shCore.css" rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="../syntax_highlighter/styles/shCoreEclipse.css"
+            rel="stylesheet" type="text/css"
+        />
+        <link
+            href="../syntax_highlighter/styles/shThemeWordpress.css"
+            rel="stylesheet" type="text/css"
+        />
+    </head>
+    <body>
+        <pre class="brush: php">&lt;?php 
+//$feed = docs.google.com/spreadsheet/ccc?key=&lt;KEY&gt;#gid=12345
+$feed = &quot;https://spreadsheets.google.com/feeds/list/140f-u3YxCg3xlspx-xNWPbkXVPSHOOMopCWtsV-Wdao/od6/public/values?gid=308856877&quot;;
+header('Content-type: application/json');
+ 
+// Set your CSV feed
+//$feed = 'https://docs.google.com/spreadsheet/pub?hl=en_US&amp;hl=en_US&amp;key=0Akse3y5kCOR8dEh6cWRYWDVlWmN0TEdfRkZ3dkkzdGc&amp;single=true&amp;gid=0&amp;output=csv';
+ 
+// Arrays we'll use later
+$keys = array();
+$newArray = array();
+ 
+// Function to convert CSV into associative array
+function csvToArray($file, $delimiter) { 
+  if (($handle = fopen($file, 'r')) !== FALSE) { 
+    $i = 0; 
+    while (($lineArray = fgetcsv($handle, 4000, $delimiter, '&quot;')) !== FALSE) { 
+      for ($j = 0; $j &lt; count($lineArray); $j++) { 
+        $arr[$i][$j] = $lineArray[$j]; 
+      } 
+      $i++; 
+    } 
+    fclose($handle); 
+  } 
+  return $arr; 
+} 
+ 
+// Do it
+$data = csvToArray($feed, ',');
+ 
+// Set number of elements (minus 1 because we shift off the first row)
+$count = count($data) - 1;
+ 
+//Use first row for names  
+$labels = array_shift($data);  
+ 
+foreach ($labels as $label) {
+  $keys[] = $label;
+}
+ 
+// Add Ids, just in case we want them later
+$keys[] = 'id';
+ 
+for ($i = 0; $i &lt; $count; $i++) {
+  $data[$i][] = $i;
+}
+ 
+// Bring it all together
+for ($j = 0; $j &lt; $count; $j++) {
+  $d = array_combine($keys, $data[$j]);
+  $newArray[$j] = $d;
+}
+ 
+// Print it out as JSON
+echo json_encode($newArray);
+ 
+?&gt;
+</pre>
+        <script type="text/javascript">
+             SyntaxHighlighter.all();
+             jQuery('.gutter div').each(function(key, data){
+                jQuery(data).prepend('<a name="L'+jQuery(data).text()+'"/>');
+             });
+        </script>
+    </body>
+</html>
