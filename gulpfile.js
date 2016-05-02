@@ -60,21 +60,21 @@ gulp.task('phpdoc',
 gulp.task('pdepend',
         shell.task(
                 ['mkdir -p ' + pdependDocs,
-                 './vendor/bin/pdepend --summary-xml=' + pdependDocs + '/summary.xml --jdepend-chart=' + pdependDocs + '/chart.svg --overview-pyramid=' + pdependDocs + '/pyramid.svg --ignore=vendor,node_modules --suffix=php,inc,modules .'
+                 './vendor/bin/pdepend --summary-xml=' + pdependDocs + '/summary.xml --jdepend-chart=' + pdependDocs + '/chart.svg --overview-pyramid=' + pdependDocs + '/pyramid.svg --ignore=vendor,node_modules,test.php --suffix=php,inc,modules .'
         ]));
 
-//nope
+//works, but not setup for Drupal, so kind of pointless...
 gulp.task('phpmd', function () {
-    return gulp.src(['./**/*.php', './**/*.module', './**/*.inc', '!node_modules/', '!vendor/**/*'])
+    return gulp.src(['./**/*.php', './**/*.module', './**/*.inc', '!node_modules/', '!vendor/**/*', '!./**/test.php'])
         // Validate code using PHP Mess Detector
         .pipe(phpmd({
             bin: 'vendor/bin/phpmd',
             ruleset: 'cleancode,codesize,controversial,design,naming,unusedcode',
             format: 'text',
         }))
-        // Log all problems that was found
-        .on('error', gutil.log)
-        .pipe(phpmd.reporter('log'));
+    	// Log all problems that was found
+        .on('error', console.error)
+        //.pipe(phpmd.reporter('log'));
 });
 
 
