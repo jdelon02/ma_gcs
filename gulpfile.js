@@ -5,6 +5,7 @@ var phplint = require('phplint').lint;
 var phpcs = require('gulp-phpcs');
 var shell = require('gulp-shell'),
 pdependDocs = 'docs/pdepend';
+var std = './vendor/drupal/coder/coder_sniffer/Drupal';
 
 
 
@@ -22,7 +23,7 @@ gulp.task('phpcs', function () {
     return gulp.src(['./**/*.php', './**/*.module', './**/*.inc', '!node_modules/', '!vendor/**/*'])
         .pipe(phpcs({
             bin: 'vendor/bin/phpcs',
-            standard: 'Drupal',
+            standard: std,
             warningSeverity: 0
         }))
         .pipe(phpcs.reporter('log'));
@@ -30,7 +31,7 @@ gulp.task('phpcs', function () {
 
 gulp.task('phpcbf', 
 		shell.task(
-				['vendor/bin/phpcbf --standard=Drupal --ignore=vendor/,node_modules/ views/ templates/ ./'
+				['vendor/bin/phpcbf --standard='+std+' --ignore=vendor/,node_modules/ views/ templates/ ./'
 		]));
 
 gulp.task('phpdoc', 
