@@ -1,0 +1,658 @@
+<?php
+
+/**
+ * @file
+ */
+
+/**
+ * Implements hook_libraries_info().
+ * just a test.
+ */
+function ma_gcs_libraries_info() {
+
+  $libraries['c3'] = array(
+    // Only used in administrative UI of Libraries API.
+    'name' => 'C3',
+    'vendor url' => 'http://c3js.org',
+    'download url' => 'https://github.com/masayuki0812/c3/releases/latest',
+    'files' => array(
+      'js' => array(
+        'c3.min.js',
+      ),
+      'css' => array(
+        'c3.min.css',
+      ),
+    ),
+    'versions' => array(
+      '0.4.10' => array(
+        'files' => array(
+          'js' => array(
+            'c3.min.js',
+          ),
+          'css' => array(
+            'c3.min.css',
+          ),
+        ),
+      ),
+    ),
+    'version' => '0.4.10',
+    'dependencies' => array(
+      'd3',
+    ),
+  );
+
+  $libraries['d3'] = array(
+    // Only used in administrative UI of Libraries API.
+    'name' => 'D3',
+    'vendor url' => 'http://d3js.org',
+    'download url' => 'https://github.com/mbostock/d3',
+    'files' => array(
+      'js' => array(
+        'd3.min.js',
+      ),
+    ),
+    'versions' => array(
+      '3.5.0' => array(
+        'files' => array(
+          'js' => array(
+            'd3.min.js',
+          ),
+        ),
+      ),
+    ),
+    'version' => '3.5.0',
+  );
+
+  return $libraries;
+}
+
+/**
+ * Initialize the module
+ * Still testing gulpfile.
+ */
+function ma_gcs_init() {
+  libraries_load('c3');
+  libraries_load('d3');
+  // drupal_add_js('https://www.google.com/jsapi', 'external');.
+  drupal_add_css(drupal_get_path('module', 'ma_gcs') . '/css/ma_gcs.css');
+  drupal_add_js(drupal_get_path('module', 'ma_gcs') . '/js/ma_gcs.js');
+}
+
+/**
+ * Define our shortcodes and their titles, descriptions, and callback functions.
+ */
+function ma_gcs_menu() {
+  $items = array();
+  $items['admin/config/services/ma_gcs'] = array(
+    'title' => 'Google Charts Shortcodes',
+    'description' => 'Configuration for Google Charts Shortcodes',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array(
+      'ma_gcs_admin',
+    ),
+    'access arguments' => array(
+      'administer site configuration',
+    ),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'ma_gcs.admin.inc',
+  );
+  return $items;
+}
+
+/**
+ *
+ */
+function _ma_gcs_chart_types() {
+  // Spline Chart, Step Chart, Area Chart, Bar Chart, Scatter Chart, Pie Chart,
+  // Donut Chart, Gauge Chart.
+  return array(
+    'Pie' => 'piechart',
+    'Bar' => 'barchart',
+    'Line' => 'linechart',
+  );
+}
+
+/**
+ *
+ */
+function ma_gcs_shortcode_info() {
+  $chartarray = _ma_gcs_chart_types();
+  foreach ($chartarray as $key => $value) {
+    $shortcodes["$value"] = array(
+      'title' => ("Google $key Chart"),
+      'description' => ("Embed a Google $key Chart."),
+      'attributes callback' => 'ma_gcs_shortcode_' . $value . '_attributes',
+      'process callback' => 'ma_gcs_shortcode_' . $value . '',
+      'tips callback' => 'ma_gcs_shortcode_' . $value . '_tip',
+    );
+  }
+  return $shortcodes;
+}
+
+/**
+ * Attributes form element for random Shortcode.
+ *
+ * Used by shortcode_wysiwyg module to add form elements for attributes.
+ */
+function _ma_gcs_formbuild($type) {
+  $key = $type;
+  $value = $key . 'chart';
+  $value = strtolower($value);
+
+  $form['' . $value . '-link'] = array(
+    '#name' => t('link'),
+    '#title' => t("Enter $key Sheets URL"),
+    '#type' => 'textfield',
+    '#states' => array(
+      'visible' => array(
+        ':input[name="shortcode"]' => array(
+          "value" => "$value",
+        ),
+      ),
+    ),
+  );
+
+  $form['' . $value . '-worksheet'] = array(
+    '#name' => t('worksheet'),
+    '#title' => t("Enter $key workheet position"),
+    '#description' => t('This identifies which worksheet to pull data from. Count from the left.'),
+    '#type' => 'textfield',
+    '#states' => array(
+      'visible' => array(
+        ':input[name="shortcode"]' => array(
+          "value" => "$value",
+        ),
+      ),
+    ),
+  );
+
+  $form['' . $value . '-title'] = array(
+    '#name' => t('title'),
+    '#title' => t("Enter The $key Chart Title"),
+    '#type' => 'textfield',
+    '#size' => 40,
+    '#states' => array(
+      'visible' => array(
+        ':input[name="shortcode"]' => array(
+          'value' => "$value",
+        ),
+      ),
+    ),
+  );
+
+  $form['' . $value . '-subtitle'] = array(
+    '#name' => t('subtitle'),
+    '#title' => t("Enter The $key Chart SubTitle"),
+    '#type' => 'textfield',
+    '#size' => 40,
+    '#states' => array(
+      'visible' => array(
+        ':input[name="shortcode"]' => array(
+          'value' => "$value",
+        ),
+      ),
+    ),
+  );
+  // To make the fieldset collapsible.
+  $form['' . $value . '-optionset'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Chart Options'),
+  // Added.
+    '#collapsible' => TRUE,
+  // Added.
+    '#collapsed' => FALSE,
+    '#attributes' => array(
+      'class' => array(
+        'optionset',
+      ),
+    ),
+    '#states' => array(
+      'visible' => array(
+        ':input[name="shortcode"]' => array(
+          'value' => "$value",
+        ),
+      ),
+    ),
+  );
+  $form['' . $value . '-optionset']['' . $value . '-xtitle'] = array(
+    '#name' => t('xtitle'),
+    '#title' => t("Enter The X-Axis $key Chart Title"),
+    '#type' => 'textfield',
+    '#size' => 40,
+    '#states' => array(
+      'visible' => array(
+        ':input[name="shortcode"]' => array(
+          'value' => "$value",
+        ),
+      ),
+    ),
+  );
+
+  $form['' . $value . '-optionset']['' . $value . '-ytitle'] = array(
+    '#name' => t('ytitle'),
+    '#title' => t("Enter The Y-Axis $key Chart Title"),
+    '#type' => 'textfield',
+    '#size' => 40,
+    '#states' => array(
+      'visible' => array(
+        ':input[name="shortcode"]' => array(
+          'value' => "$value",
+        ),
+      ),
+    ),
+  );
+
+  $legend = array(
+    'bottom' => t('On The Bottom'),
+    'right' => t('On The Right'),
+  );
+
+  $form['' . $value . '-optionset']['' . $value . '-islegend'] = array(
+    '#name' => t('islegend'),
+    '#title' => t('Where would you like the legend to appear?'),
+    '#type' => 'select',
+    '#options' => $legend,
+    '#states' => array(
+      'visible' => array(
+        ':input[name="shortcode"]' => array(
+          'value' => "$value",
+        ),
+      ),
+    ),
+  );
+
+  // For the line and bar charts: option for vertical/horizontal chart (I
+  // believe this option will cover the line chart you mentioned and the
+  // bar/line charttype can be merged).
+  // For the line chart: an independent drop down option with:
+  // stacked/unstacked; horizontal/vertical; and filled/unfilled.
+  if ($key == "Bar" || $key == "Line") {
+    $stacked = array(
+      'True' => t('Yes'),
+      'False' => t('No'),
+    );
+    $currency = array(
+      'True' => t('Yes'),
+      'False' => t('No'),
+    );
+    $direction = array(
+      'Vertical' => t('Vertical Layout'),
+      'Horizontal' => t('Horizontal Layout'),
+    );
+    $form['' . $value . '-optionset']['' . $value . '-isstacked'] = array(
+      '#name' => t('isstacked'),
+      '#title' => t('Is this a Stacked Chart?'),
+      '#type' => 'select',
+      '#options' => $stacked,
+      '#states' => array(
+        'visible' => array(
+          ':input[name="shortcode"]' => array(
+            'value' => "$value",
+          ),
+        ),
+      ),
+    );
+    $form['' . $value . '-optionset']['' . $value . '-isdirection'] = array(
+      '#name' => t('isdirection'),
+      '#title' => t('Which direction does the chart go?'),
+      '#type' => 'select',
+      '#options' => $direction,
+      '#states' => array(
+        'visible' => array(
+          ':input[name="shortcode"]' => array(
+            'value' => "$value",
+          ),
+        ),
+      ),
+    );
+    $form['' . $value . '-optionset']['' . $value . '-iscurrency'] = array(
+      '#name' => t('iscurrency'),
+      '#title' => t('Format the y-axis as currency?'),
+      '#type' => 'select',
+      '#options' => $currency,
+      '#states' => array(
+        'visible' => array(
+          ':input[name="shortcode"]' => array(
+            'value' => "$value",
+          ),
+        ),
+      ),
+    );
+  }
+  if ($key == "Line") {
+    $fillerup = array(
+      'True' => t('Yes'),
+      'False' => t('No'),
+    );
+    $form['' . $value . '-optionset']['' . $value . '-isfilled'] = array(
+      '#name' => t('isfilled'),
+      '#title' => t('Is this a filled chart?'),
+      '#type' => 'select',
+      '#description' => t('This only applies to line charts'),
+      '#options' => $fillerup,
+      '#states' => array(
+        'visible' => array(
+          ':input[name="shortcode"]' => array(
+            'value' => "$value",
+          ),
+        ),
+      ),
+    );
+  }
+  // To make the fieldset collapsible.
+  $form['' . $value . '-colorset'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Colors'),
+  // Added.
+    '#collapsible' => TRUE,
+  // Added.
+    '#collapsed' => TRUE,
+    '#attributes' => array(
+      'class' => array(
+        'colorset',
+      ),
+    ),
+    '#states' => array(
+      'visible' => array(
+        ':input[name="shortcode"]' => array(
+          'value' => "$value",
+        ),
+      ),
+    ),
+  );
+
+  for ($i = 1; $i < 9; $i++) {
+    $form['' . $value . '-colorset']['' . $value . '-col' . $i] = array(
+      '#name' => t('col' . $i),
+      '#type' => 'textfield',
+      '#title' => t('Color #' . $i),
+      '#default_value' => variable_get('ma_gcs_color' . $i, ''),
+      '#size' => 8,
+      '#states' => array(
+        'visible' => array(
+          ':input[name="shortcode"]' => array(
+            'value' => "$value",
+          ),
+        ),
+      ),
+    );
+  }
+
+  return $form;
+}
+
+/**
+ *
+ */
+function ma_gcs_shortcode_piechart_attributes($form, &$form_state) {
+  $pieform = _ma_gcs_formbuild('Pie');
+  return $pieform;
+}
+
+/**
+ *
+ */
+function ma_gcs_shortcode_linechart_attributes($form, &$form_state) {
+  $lineform = _ma_gcs_formbuild('Line');
+  return $lineform;
+}
+
+/**
+ *
+ */
+function ma_gcs_shortcode_barchart_attributes($form, &$form_state) {
+  $barform = _ma_gcs_formbuild('Bar');
+  return $barform;
+}
+
+/**
+ *
+ */
+function ma_gcs_shortcode_tablechart_attributes($form, &$form_state) {
+  $tableform = _ma_gcs_formbuild('Table');
+  return $tableform;
+}
+
+/**
+ * Define our variables (parameters) for each shortcode.
+ */
+function _ma_gcs_base_variables() {
+  return array(
+    'type' => '',
+    'link' => '',
+    'worksheet' => '',
+    'title' => '',
+    'subtitle' => '',
+    'xtitle' => '',
+    'ytitle' => '',
+    'islegend' => '',
+    'isdirection' => '',
+    'isstacked' => '',
+    'isfilled' => '',
+    'iscurrency' => '',
+    'col1' => '',
+    'col2' => '',
+    'col3' => '',
+    'col4' => '',
+    'col5' => '',
+    'col6' => '',
+    'col7' => '',
+    'col8' => '',
+  );
+}
+
+/**
+ *
+ */
+function ma_gcs_theme() {
+  $array = array(
+    'shortcode_piechart' => array(
+      'variables' => _ma_gcs_base_variables(),
+    ),
+    'shortcode_barchart' => array(
+      'variables' => _ma_gcs_base_variables(),
+    ),
+    'shortcode_linechart' => array(
+      'variables' => _ma_gcs_base_variables(),
+    ),
+    'shortcode_tablechart' => array(
+      'variables' => _ma_gcs_base_variables(),
+    ),
+  );
+  return $array;
+}
+
+/**
+ *
+ */
+function _ma_gcs_shortcode($attrs) {
+  $attrs = shortcode_attrs(_ma_gcs_base_variables(), $attrs);
+  $attributearray = array();
+  foreach ($attrs as $key => $value) {
+    $attributearray += array(
+      "$key" => "$value",
+    );
+  }
+  return $attributearray;
+}
+
+/**
+ *
+ */
+function ma_gcs_shortcode_piechart($attrs) {
+  $attributearray = _ma_gcs_shortcode($attrs);
+  $attributearray['type'] = "piechart";
+  return theme('shortcode_piechart', $attributearray);
+}
+
+/**
+ *
+ */
+function ma_gcs_shortcode_linechart($attrs) {
+  $attributearray = _ma_gcs_shortcode($attrs);
+  $attributearray['type'] = "linechart";
+  return theme('shortcode_linechart', $attributearray);
+}
+
+/**
+ *
+ */
+function ma_gcs_shortcode_barchart($attrs) {
+  $attributearray = _ma_gcs_shortcode($attrs);
+  $attributearray['type'] = "barchart";
+  return theme('shortcode_barchart', $attributearray);
+}
+
+/**
+ *
+ */
+function ma_gcs_shortcode_tablechart($attrs) {
+  $attributearray = _ma_gcs_shortcode($attrs);
+  $attributearray['type'] = "tablechart";
+  return theme('shortcode_tablechart', $attributearray);
+}
+
+/**
+ * This function uses the attributes passed in to return the HTML of this
+ * shortcode.
+ */
+function _ma_gcs_shortcode_theme($vars) {
+  $link = $vars['link'];
+  $title = $vars['title'];
+  $subtitle = $vars['subtitle'];
+  $newurl = array();
+  $linkparts = explode('/', rtrim($link, '/'));
+  $newurl = array();
+  if (($linkparts[0] != "http:") && ($linkparts[0] != "https:")) {
+    $newurl = explode('/', rtrim("https://$link", '/'));
+  }
+  else {
+    $newurl = explode('/', rtrim($link, '/'));
+  }
+  $chartID = $newurl[5];
+  $newlinkparts = explode('=', rtrim($link, '='));
+  $gid = '';
+  // if(($newlinkparts[0] = "http:") || ($newlinkparts[0] = "https:")) {.
+  $gid = $vars['worksheet'];
+  // }.
+  $thisisrandom = generateRandomString();
+  $returnstring = '';
+  if ($title) {
+    $returnstring .= '<div class="shortcodetitle">' . $title . '</div>';
+  }
+  if ($subtitle) {
+    $returnstring .= '<div class="shortcodesubtitle">' . $subtitle . '</div>';
+  }
+  $returnstring .= '<div class="shortcodes"';
+  $returnstring .= ' id="' . $thisisrandom . '"';
+  $returnstring .= ' data-chartid="' . $chartID . '"';
+  $returnstring .= ' data-gid="' . $gid . '"';
+  $returnstring .= ' data-id="' . $thisisrandom . '"';
+  foreach ($vars as $key => $value) {
+    if (($key != 'link') || ($key != 'title') || ($key != 'subtitle')) {
+      $returnstring .= ' data-' . $key . '="' . $value . '"';
+    }
+  }
+  $returnstring .= '"></div>';
+  return $returnstring;
+}
+
+/**
+ *
+ */
+function theme_shortcode_piechart($vars) {
+
+  $returnstring = _ma_gcs_shortcode_theme($vars);
+  return $returnstring;
+}
+
+/**
+ *
+ */
+function theme_shortcode_barchart($vars) {
+  $returnstring = _ma_gcs_shortcode_theme($vars);
+  return $returnstring;
+}
+
+/**
+ *
+ */
+function theme_shortcode_linechart($vars) {
+  $returnstring = _ma_gcs_shortcode_theme($vars);
+  return $returnstring;
+}
+
+/**
+ *
+ */
+function theme_shortcode_tablechart($vars) {
+  $returnstring = _ma_gcs_shortcode_theme($vars);
+  return $returnstring;
+}
+
+/**
+ * This function outputs some tips to the user beneath the WYSIWYG editor so
+ * they know
+ * what the shortcode does and how to use it.
+ */
+function _ma_gcs_shortcode_tip($type, $format, $long) {
+  $output = array();
+  $output[] = '<p><strong>' . t('[' . $type . 'Type link="http://URLhere.com"][/' . $type . 'Type]') . '</strong> ';
+  if ($long) {
+    $output[] = t('Outputs a link that is displayed as a chart.') . '</p>';
+  }
+  else {
+    $output[] = t('Outputs text that links to a URL.') . '</p>';
+  }
+
+  return implode(' ', $output);
+}
+
+/**
+ *
+ */
+function ma_gcs_shortcode_piechart_tip($format, $long) {
+  $type = "Pie";
+  $format = $format;
+  $long = $long;
+  return _ma_gcs_shortcode_tip($type, $format, $long);
+}
+
+/**
+ *
+ */
+function ma_gcs_shortcode_tablechart_tip($format, $long) {
+  $type = "Table";
+  $format = $format;
+  $long = $long;
+  return _ma_gcs_shortcode_tip($type, $format, $long);
+}
+
+/**
+ *
+ */
+function ma_gcs_shortcode_barchart_tip($format, $long) {
+  $type = "Bar";
+  $format = $format;
+  $long = $long;
+  return _ma_gcs_shortcode_tip($type, $format, $long);
+}
+
+/**
+ *
+ */
+function ma_gcs_shortcode_linechart_tip($format, $long) {
+  $type = "Line";
+  $format = $format;
+  $long = $long;
+  return _ma_gcs_shortcode_tip($type, $format, $long);
+}
+
+/**
+ * This function generates a ranomd string to assign as a div id for the google
+ * chart (in case they have more than one on a page).
+ */
+function generateRandomString($length = 5) {
+  return substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length);
+}
+
