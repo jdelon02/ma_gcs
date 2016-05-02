@@ -2,6 +2,7 @@
 
 /**
  * Implements hook_libraries_info().
+ * just a test
  */
 function ma_gcs_libraries_info() {
   
@@ -63,6 +64,7 @@ function ma_gcs_libraries_info() {
 
 /**
  * Initialize the module
+ * Still testing gulpfile
  */
 function ma_gcs_init() {
   libraries_load('c3');
