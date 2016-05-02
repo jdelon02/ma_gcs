@@ -12,31 +12,31 @@ function ma_gcs_libraries_info() {
 
   $libraries['c3'] = array(
     // Only used in administrative UI of Libraries API.
-	    'name' => 'C3',
+    'name' => 'C3',
     'vendor url' => 'http://c3js.org',
     'download url' => 'https://github.com/masayuki0812/c3/releases/latest',
     'files' => array(
       'js' => array(
-        	'c3.min.js',
+        'c3.min.js',
       ),
       'css' => array(
         'c3.min.css',
       ),
     ),
     'versions' => array(
-      				'0.4.10' => array(
+      '0.4.10' => array(
         'files' => array(
           'js' => array(
             'c3.min.js',
           ),
           'css' => array(
             'c3.min.css',
-         			 ),
+          ),
         ),
       ),
     ),
     'version' => '0.4.10',
-			    'dependencies' => array(
+    'dependencies' => array(
       'd3',
     ),
   );
@@ -69,7 +69,6 @@ function ma_gcs_libraries_info() {
 /**
  * Initialize the module
  * Still testing gulpfile.
- * Some more testing of the gulpfile
  */
 function ma_gcs_init() {
   libraries_load('c3');

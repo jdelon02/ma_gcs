@@ -1,40 +1,1152 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project title="MA Google Charts Shortcodes" version="2.8.5">
   <partials/>
-  <file path="ma_gcs.admin.inc" generated-path="ma_gcs.admin.inc.html" hash="d6d85148331bcf78d81ad8fa12fbc665" package="Default">
+  <file path="src/src/test.php" generated-path="src.src.test.html" hash="764a09fe43a6ae94230f9b6a9e76be3e" package="Default">
     <docblock line="0">
       <description></description>
       <long-description></long-description>
+      <tag name="file" line="0" description="$feed = docs.google.com/spreadsheet/ccc?key=&lt;KEY&gt;#gid=12345."/>
       <tag name="package" line="0" description="Default"/>
     </docblock>
+    <function namespace="" line="19" package="Default">
+      <name>csvToArray</name>
+      <full_name>\csvToArray()</full_name>
+      <docblock line="19">
+        <description>Function to convert CSV into associative array.</description>
+        <long-description></long-description>
+        <tag name="package" line="19" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$file</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="0" by_reference="false">
+        <name>$delimiter</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
     <parse_markers>
       <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="19" code="PPC:ERR-50015">Argument $file is missing from the Docblock of csvToArray</error>
+      <error line="19" code="PPC:ERR-50015">Argument $delimiter is missing from the Docblock of csvToArray</error>
     </parse_markers>
-    <source>eJyVUstu2zAQPItfMU2MSnKMOL61cNyiSB+X3Az0UgQCI61sAtSj5CqoW/jfu6RcOwejbSRAK3BnZhczvH3fb3ul5tOpwhRrYg/eEkzrWbclYXAWXY0vXbexhLutdoz1tnNcdhX5ayHNVT20JZuuRaOLTekLXTWmzXL8Usmk7lyDFbRzeocsXyqVyFE2MXK4WELqLd6GenUVCQfGt/SgVXa2cymuBfFw0hEc0kve9ZRi9Q4p0w+uDdkqnSmER5qG7aEbNXA5qhwBFdV6sFw8aTuMwCftjH60VGyIszMLzIS1uAlvmh9lvPk5st88U/alM32wJHYYGS4+juNwNy6DiyiJk5Cj74NxVEXK5w/3608qAcSxZC+mOeLBtfA7z9QUnphNu/FFNCvDaJpg98cov2prKs3kUXbOUckIGM0hTQn1L8kFRyI1i7IzvI61kBvBFEL6V4SmRvaKmp4lqWdUCTV67dOH8/nmIz2ZxMPSkm5lxEsUloEexvvh0bPseFKa4WaGRY7VaiVmp4dRyXw+iW1By6xztEUeVffhQ9bTgTi0EsIf6/9zPYxSyYs4cd3wf1rquNA+XA7JXKnfMoMXZw==</source>
+    <source>eJx9VGFT2zgQ/e5fscd5cAJJbBqgTEOOcim99toCQ1pSyjCMYq1jJYrksWRCetP/3pUdhzDX6SdrVrvvvd198vFJlmZeuLPjwQ68ToREd/ATRA594Do2nYnWE4mdWM9Dk+XIuEkRbRjH8ckMl/3jD2c3f/05Eby/96K7f9Ch+tDzaoSt1NrMvAo3S59BujwTSmFsuLcfJe2ie/M4mHQfpcke24/no8vx7Ov15fDdxcUnnQ1G1ly3R5zpUPPDMCvGUsThA5MFmhMnoRsdHR0cHr18udXzUuLDvBEMtLKobNsuM3wFLMuohlmhVTg1WgXNnueFIQzRwlIXOQyG1+BEuWDdRVB38buBkJqTVPZR3X8Zbq8PbkTR6cxgd3kwG1xcHfGz9DAeXd2M3lzL0fw8+nzGk6vZty6fzb7zf+JtIxSh921e4LZrKdrWhc0K24/NQ9Bzqk7znC0NLDCQEgqDIJnFvOP5xGVILXP3DerLV7gokzeD9bLfFip2UwCrIdbqAXNb9i4UBZgxOhY0pQesKqu1JnUNafmsS+iG70zTAp+jFHNBQprwnwcgEmg0/JQpLpHoE52hqnODPGg24Y9+H96efhyeVQUAvqDEqFeeFyllOgQpFNY9JBO0xFzDtmA/iqJNaoLe+iU0kIAcGv60ZAD6HlPThbIbBE0X3919KiFF1PutL+5u/ekdVT7lukBvlfZj9fXF7m4VqyJJLLXBWmzTXbmLHG2RqxK65/0ovfdGg7C0P84sI5pnwyUDUletTZuqYj7GHHQCKHFO1jbQmAtVGNiDMcbMWWKBYFKRWMpKwKYIiciNhVwvmp5fdu6Iqgk42ia0Ya+i+GI2ssu5KTZHQ/okG6NcO+y+JFiVUyllIotTmvIqjxmojtVIS3veVnN00br7U87hPTctmBbEKchcrGpgwUglaZ8/M3iJEAgeVJREJ1ZLFbTUqrdeuYwVrdNXLrGkFjXt3zk9NJo7MHpFVpO1Usfxf5+sIadPkOsZ0E9gTKZolNJaNdn0rlz3+v3V/uE1+SWRW0dOb9vN6d/hxXnHwzjV4H5K96hizQm1BiC4n1taucU=</source>
   </file>
-  <file path="ma_gcs.module" generated-path="ma_gcs.module.html" hash="ef7c04ecb2d4ebdc8261914bb1309ab6" package="Default">
+  <file path="src/src/src/test.php" generated-path="src.src.src.test.html" hash="764a09fe43a6ae94230f9b6a9e76be3e" package="Default">
     <docblock line="0">
       <description></description>
       <long-description></long-description>
+      <tag name="file" line="0" description="$feed = docs.google.com/spreadsheet/ccc?key=&lt;KEY&gt;#gid=12345."/>
       <tag name="package" line="0" description="Default"/>
     </docblock>
+    <function namespace="" line="19" package="Default">
+      <name>csvToArray</name>
+      <full_name>\csvToArray()</full_name>
+      <docblock line="19">
+        <description>Function to convert CSV into associative array.</description>
+        <long-description></long-description>
+        <tag name="package" line="19" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$file</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="0" by_reference="false">
+        <name>$delimiter</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
     <parse_markers>
       <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="19" code="PPC:ERR-50015">Argument $file is missing from the Docblock of csvToArray</error>
+      <error line="19" code="PPC:ERR-50015">Argument $delimiter is missing from the Docblock of csvToArray</error>
     </parse_markers>
-    <source>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</source>
+    <source>eJx9VGFT2zgQ/e5fscd5cAJJbBqgTEOOcim99toCQ1pSyjCMYq1jJYrksWRCetP/3pUdhzDX6SdrVrvvvd198vFJlmZeuLPjwQ68ToREd/ATRA594Do2nYnWE4mdWM9Dk+XIuEkRbRjH8ckMl/3jD2c3f/05Eby/96K7f9Ch+tDzaoSt1NrMvAo3S59BujwTSmFsuLcfJe2ie/M4mHQfpcke24/no8vx7Ov15fDdxcUnnQ1G1ly3R5zpUPPDMCvGUsThA5MFmhMnoRsdHR0cHr18udXzUuLDvBEMtLKobNsuM3wFLMuohlmhVTg1WgXNnueFIQzRwlIXOQyG1+BEuWDdRVB38buBkJqTVPZR3X8Zbq8PbkTR6cxgd3kwG1xcHfGz9DAeXd2M3lzL0fw8+nzGk6vZty6fzb7zf+JtIxSh921e4LZrKdrWhc0K24/NQ9Bzqk7znC0NLDCQEgqDIJnFvOP5xGVILXP3DerLV7gokzeD9bLfFip2UwCrIdbqAXNb9i4UBZgxOhY0pQesKqu1JnUNafmsS+iG70zTAp+jFHNBQprwnwcgEmg0/JQpLpHoE52hqnODPGg24Y9+H96efhyeVQUAvqDEqFeeFyllOgQpFNY9JBO0xFzDtmA/iqJNaoLe+iU0kIAcGv60ZAD6HlPThbIbBE0X3919KiFF1PutL+5u/ekdVT7lukBvlfZj9fXF7m4VqyJJLLXBWmzTXbmLHG2RqxK65/0ovfdGg7C0P84sI5pnwyUDUletTZuqYj7GHHQCKHFO1jbQmAtVGNiDMcbMWWKBYFKRWMpKwKYIiciNhVwvmp5fdu6Iqgk42ia0Ya+i+GI2ssu5KTZHQ/okG6NcO+y+JFiVUyllIotTmvIqjxmojtVIS3veVnN00br7U87hPTctmBbEKchcrGpgwUglaZ8/M3iJEAgeVJREJ1ZLFbTUqrdeuYwVrdNXLrGkFjXt3zk9NJo7MHpFVpO1Usfxf5+sIadPkOsZ0E9gTKZolNJaNdn0rlz3+v3V/uE1+SWRW0dOb9vN6d/hxXnHwzjV4H5K96hizQm1BiC4n1taucU=</source>
   </file>
-  <file path="newfile.php" generated-path="newfile.html" hash="ce407ff5715c837d02b1aba7975bf512" package="Default">
+  <file path="ma_gcs.admin.inc" generated-path="ma_gcs.admin.inc.html" hash="3e553d05a02711d40a155b8ba24fc773" package="Default">
     <docblock line="0">
       <description></description>
       <long-description></long-description>
+      <tag name="file" line="0" description=""/>
       <tag name="package" line="0" description="Default"/>
     </docblock>
+    <function namespace="" line="13" package="Default">
+      <name>ma_gcs_admin</name>
+      <full_name>\ma_gcs_admin()</full_name>
+      <docblock line="13">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="13" description="Default"/>
+      </docblock>
+    </function>
+    <function namespace="" line="33" package="Default">
+      <name>ma_gcs_admin_validate</name>
+      <full_name>\ma_gcs_admin_validate()</full_name>
+      <docblock line="33">
+        <description>Validates correct format of url.</description>
+        <long-description></long-description>
+        <tag name="package" line="33" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$form</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="0" by_reference="true">
+        <name>$form_state</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
     <parse_markers>
       <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="13" code="PPC:ERR-50011">No summary for function \ma_gcs_admin()</error>
+      <error line="33" code="PPC:ERR-50015">Argument $form is missing from the Docblock of ma_gcs_admin_validate</error>
+      <error line="33" code="PPC:ERR-50015">Argument $form_state is missing from the Docblock of ma_gcs_admin_validate</error>
     </parse_markers>
-    <source>eJyzsS/IKOACAAaLAc4=</source>
+    <source>eJyVUk1r3DAQvftXTJNQyRuzzt5SHPeDpO2lt4VcQjCKPd4VyJYrjUO2xf+9kuzuOrCBDRaMmJn3Zvyebr502y6K0sUiggV8raVCd0n3mTWSBdoiyNaSaEuE3ijQNfzUeqMQbrfCEKy32lCpK7TLOTqN6r4tSeoWGlFsSluIqpEtj+FvBHBRa9NADsIYseNx5lLuuCTwC+nyqwxcvIFPPl5ejqAJ9sAmwlIrbRgsXcvjniv0AbBz2nXIIP8MjPCFaomqYgkcypLUVA88cD4yzVoqrEWvqHgWqh9bn4WR4klhsUHiR9ZIHGp15T8Wz4is/DPir1+x29LIzisUasTP7saBcDsuBGeBdM5k8HcvDVYB8ePbr/X3UAoCDqOIBqk3LdidJWwKi0Sy3djCK8eDfq552Ht8L5SsBKGFUhuDJXkTGkHeZuf28m0nvSwBOrIm8DHEwj0VwtGwUyyVNfAP2HS04zP8AwuiW/Z41O34P9o9iZAvFYrWDTmdIpvwfr7tnywZPqNK4CqBVQx5njvV2WEcQJq6mb7HQdzEY9hVnC2n/mGKqCzOSPrWGfOeH8720NNBEHb398Ny2au9hvBshugfmcEk5Q==</source>
   </file>
-  <file path="test.php" generated-path="test.html" hash="1abaac41861b16e199a094c09a83b600" package="Default">
+  <file path="src/ma_gcs.admin.inc" generated-path="src.ma_gcs.admin.inc.html" hash="91a244bb4f4bfd3a33456ef470efcd0e" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="file" line="0" description=""/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <function namespace="" line="13" package="Default">
+      <name>ma_gcs_admin</name>
+      <full_name>\ma_gcs_admin()</full_name>
+      <docblock line="13">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="13" description="Default"/>
+      </docblock>
+    </function>
+    <function namespace="" line="33" package="Default">
+      <name>ma_gcs_admin_validate</name>
+      <full_name>\ma_gcs_admin_validate()</full_name>
+      <docblock line="33">
+        <description>Validates correct format of url.</description>
+        <long-description></long-description>
+        <tag name="package" line="33" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$form</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="0" by_reference="true">
+        <name>$form_state</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="13" code="PPC:ERR-50011">No summary for function \ma_gcs_admin()</error>
+      <error line="33" code="PPC:ERR-50015">Argument $form is missing from the Docblock of ma_gcs_admin_validate</error>
+      <error line="33" code="PPC:ERR-50015">Argument $form_state is missing from the Docblock of ma_gcs_admin_validate</error>
+    </parse_markers>
+    <source>eJyVUk1vnDAQvfMrpklUmw1asrdUhH4o/bjktlIvUYQcGHYtGUztIeq24r/XNnSh0lbaiMNYM/PeDO/N3Ydu30VRulpFsIKPtVToHukxs0WyQHsE2VoSbYnQGwW6hm9a7xTC/V4Ygu1eGyp1hXa9RKdR3bclSd1CI4pdaQtRNbLlMfyOAK5qbRrIQRgjDjzOIpdzKeBX0mU3Gbh4B+98vL4eIRPokU10pVbaMFi7lqcjU+gDYJd06JBB/h4Y4U+qJaqKJXNVkprKgQYuR6K5o8Ja9IqKF6H6sfNFGCmeFRY7JH5iicShNjf+Y/HMY+WvEX675LalkZ3XJpSIX3wex8H9uA1cBMoFj8EfvTRYBcDXTw/bL6HklAMYvHoGqTct2IMlbAqLRLLd2cJLxoNwrnU4WvtdKFkJQgulNgZL8uo3gry7zuT1/w30igToyJrA2xALdyGE3qlznJQ18DfYdHTgC/QjC2pb9nTS5Pgv2l1CyJcKReuGnE+RTXg/3/bPlgxfUCVwk8AmhjzPneJsHgeQpm6m73EQN/EUdhNn66l/mCIqiwuSvnW2vOaHsyP0fBCE3f17Xi77Z68hnMwQ/QGuOyOF</source>
+  </file>
+  <file path="src/src/ma_gcs.module" generated-path="src.src.ma_gcs.module.html" hash="3de4aaafadd52687c2d77e007112babc" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="file" line="0" description=""/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <function namespace="" line="11" package="Default">
+      <name>ma_gcs_libraries_info</name>
+      <full_name>\ma_gcs_libraries_info()</full_name>
+      <docblock line="11">
+        <description>Implements hook_libraries_info().</description>
+        <long-description>just a test.</long-description>
+        <tag name="package" line="11" description="Default"/>
+      </docblock>
+    </function>
+    <function namespace="" line="73" package="Default">
+      <name>ma_gcs_init</name>
+      <full_name>\ma_gcs_init()</full_name>
+      <docblock line="73">
+        <description>Initialize the module
+Still testing gulpfile.</description>
+        <long-description></long-description>
+        <tag name="package" line="73" description="Default"/>
+      </docblock>
+    </function>
+    <function namespace="" line="84" package="Default">
+      <name>ma_gcs_menu</name>
+      <full_name>\ma_gcs_menu()</full_name>
+      <docblock line="84">
+        <description>Define our shortcodes and their titles, descriptions, and callback functions.</description>
+        <long-description></long-description>
+        <tag name="package" line="84" description="Default"/>
+      </docblock>
+    </function>
+    <function namespace="" line="105" package="Default">
+      <name>_ma_gcs_chart_types</name>
+      <full_name>\_ma_gcs_chart_types()</full_name>
+      <docblock line="105">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="105" description="Default"/>
+      </docblock>
+    </function>
+    <function namespace="" line="118" package="Default">
+      <name>ma_gcs_shortcode_info</name>
+      <full_name>\ma_gcs_shortcode_info()</full_name>
+      <docblock line="118">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="118" description="Default"/>
+      </docblock>
+    </function>
+    <function namespace="" line="137" package="Default">
+      <name>_ma_gcs_formbuild</name>
+      <full_name>\_ma_gcs_formbuild()</full_name>
+      <docblock line="137">
+        <description>Attributes form element for random Shortcode.</description>
+        <long-description>Used by shortcode_wysiwyg module to add form elements for attributes.</long-description>
+        <tag name="package" line="137" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$type</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="387" package="Default">
+      <name>ma_gcs_shortcode_piechart_attributes</name>
+      <full_name>\ma_gcs_shortcode_piechart_attributes()</full_name>
+      <docblock line="387">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="387" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$form</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="0" by_reference="true">
+        <name>$form_state</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="395" package="Default">
+      <name>ma_gcs_shortcode_linechart_attributes</name>
+      <full_name>\ma_gcs_shortcode_linechart_attributes()</full_name>
+      <docblock line="395">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="395" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$form</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="0" by_reference="true">
+        <name>$form_state</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="403" package="Default">
+      <name>ma_gcs_shortcode_barchart_attributes</name>
+      <full_name>\ma_gcs_shortcode_barchart_attributes()</full_name>
+      <docblock line="403">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="403" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$form</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="0" by_reference="true">
+        <name>$form_state</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="411" package="Default">
+      <name>ma_gcs_shortcode_tablechart_attributes</name>
+      <full_name>\ma_gcs_shortcode_tablechart_attributes()</full_name>
+      <docblock line="411">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="411" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$form</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="0" by_reference="true">
+        <name>$form_state</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="419" package="Default">
+      <name>_ma_gcs_base_variables</name>
+      <full_name>\_ma_gcs_base_variables()</full_name>
+      <docblock line="419">
+        <description>Define our variables (parameters) for each shortcode.</description>
+        <long-description></long-description>
+        <tag name="package" line="419" description="Default"/>
+      </docblock>
+    </function>
+    <function namespace="" line="447" package="Default">
+      <name>ma_gcs_theme</name>
+      <full_name>\ma_gcs_theme()</full_name>
+      <docblock line="447">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="447" description="Default"/>
+      </docblock>
+    </function>
+    <function namespace="" line="468" package="Default">
+      <name>_ma_gcs_shortcode</name>
+      <full_name>\_ma_gcs_shortcode()</full_name>
+      <docblock line="468">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="468" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$attrs</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="482" package="Default">
+      <name>ma_gcs_shortcode_piechart</name>
+      <full_name>\ma_gcs_shortcode_piechart()</full_name>
+      <docblock line="482">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="482" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$attrs</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="491" package="Default">
+      <name>ma_gcs_shortcode_linechart</name>
+      <full_name>\ma_gcs_shortcode_linechart()</full_name>
+      <docblock line="491">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="491" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$attrs</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="500" package="Default">
+      <name>ma_gcs_shortcode_barchart</name>
+      <full_name>\ma_gcs_shortcode_barchart()</full_name>
+      <docblock line="500">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="500" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$attrs</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="509" package="Default">
+      <name>ma_gcs_shortcode_tablechart</name>
+      <full_name>\ma_gcs_shortcode_tablechart()</full_name>
+      <docblock line="509">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="509" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$attrs</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="519" package="Default">
+      <name>_ma_gcs_shortcode_theme</name>
+      <full_name>\_ma_gcs_shortcode_theme()</full_name>
+      <docblock line="519">
+        <description>This function uses the attributes passed in to return the HTML of this
+shortcode.</description>
+        <long-description></long-description>
+        <tag name="package" line="519" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$vars</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="563" package="Default">
+      <name>theme_shortcode_piechart</name>
+      <full_name>\theme_shortcode_piechart()</full_name>
+      <docblock line="563">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="563" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$vars</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="572" package="Default">
+      <name>theme_shortcode_barchart</name>
+      <full_name>\theme_shortcode_barchart()</full_name>
+      <docblock line="572">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="572" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$vars</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="580" package="Default">
+      <name>theme_shortcode_linechart</name>
+      <full_name>\theme_shortcode_linechart()</full_name>
+      <docblock line="580">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="580" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$vars</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="588" package="Default">
+      <name>theme_shortcode_tablechart</name>
+      <full_name>\theme_shortcode_tablechart()</full_name>
+      <docblock line="588">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="588" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$vars</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="598" package="Default">
+      <name>_ma_gcs_shortcode_tip</name>
+      <full_name>\_ma_gcs_shortcode_tip()</full_name>
+      <docblock line="598">
+        <description>This function outputs some tips to the user beneath the WYSIWYG editor so
+they know
+what the shortcode does and how to use it.</description>
+        <long-description></long-description>
+        <tag name="package" line="598" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$type</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="0" by_reference="false">
+        <name>$format</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="0" by_reference="false">
+        <name>$long</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="614" package="Default">
+      <name>ma_gcs_shortcode_piechart_tip</name>
+      <full_name>\ma_gcs_shortcode_piechart_tip()</full_name>
+      <docblock line="614">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="614" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$format</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="0" by_reference="false">
+        <name>$long</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="624" package="Default">
+      <name>ma_gcs_shortcode_tablechart_tip</name>
+      <full_name>\ma_gcs_shortcode_tablechart_tip()</full_name>
+      <docblock line="624">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="624" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$format</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="0" by_reference="false">
+        <name>$long</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="634" package="Default">
+      <name>ma_gcs_shortcode_barchart_tip</name>
+      <full_name>\ma_gcs_shortcode_barchart_tip()</full_name>
+      <docblock line="634">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="634" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$format</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="0" by_reference="false">
+        <name>$long</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="644" package="Default">
+      <name>ma_gcs_shortcode_linechart_tip</name>
+      <full_name>\ma_gcs_shortcode_linechart_tip()</full_name>
+      <docblock line="644">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="644" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$format</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="0" by_reference="false">
+        <name>$long</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="655" package="Default">
+      <name>generateRandomString</name>
+      <full_name>\generateRandomString()</full_name>
+      <docblock line="655">
+        <description>This function generates a ranomd string to assign as a div id for the google
+chart (in case they have more than one on a page).</description>
+        <long-description></long-description>
+        <tag name="package" line="655" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$length</name>
+        <default>5</default>
+        <type/>
+      </argument>
+    </function>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="105" code="PPC:ERR-50011">No summary for function \_ma_gcs_chart_types()</error>
+      <error line="118" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_info()</error>
+      <error line="137" code="PPC:ERR-50015">Argument $type is missing from the Docblock of _ma_gcs_formbuild</error>
+      <error line="387" code="PPC:ERR-50015">Argument $form is missing from the Docblock of ma_gcs_shortcode_piechart_attributes</error>
+      <error line="387" code="PPC:ERR-50015">Argument $form_state is missing from the Docblock of ma_gcs_shortcode_piechart_attributes</error>
+      <error line="387" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_piechart_attributes()</error>
+      <error line="395" code="PPC:ERR-50015">Argument $form is missing from the Docblock of ma_gcs_shortcode_linechart_attributes</error>
+      <error line="395" code="PPC:ERR-50015">Argument $form_state is missing from the Docblock of ma_gcs_shortcode_linechart_attributes</error>
+      <error line="395" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_linechart_attributes()</error>
+      <error line="403" code="PPC:ERR-50015">Argument $form is missing from the Docblock of ma_gcs_shortcode_barchart_attributes</error>
+      <error line="403" code="PPC:ERR-50015">Argument $form_state is missing from the Docblock of ma_gcs_shortcode_barchart_attributes</error>
+      <error line="403" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_barchart_attributes()</error>
+      <error line="411" code="PPC:ERR-50015">Argument $form is missing from the Docblock of ma_gcs_shortcode_tablechart_attributes</error>
+      <error line="411" code="PPC:ERR-50015">Argument $form_state is missing from the Docblock of ma_gcs_shortcode_tablechart_attributes</error>
+      <error line="411" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_tablechart_attributes()</error>
+      <error line="447" code="PPC:ERR-50011">No summary for function \ma_gcs_theme()</error>
+      <error line="468" code="PPC:ERR-50015">Argument $attrs is missing from the Docblock of _ma_gcs_shortcode</error>
+      <error line="468" code="PPC:ERR-50011">No summary for function \_ma_gcs_shortcode()</error>
+      <error line="482" code="PPC:ERR-50015">Argument $attrs is missing from the Docblock of ma_gcs_shortcode_piechart</error>
+      <error line="482" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_piechart()</error>
+      <error line="491" code="PPC:ERR-50015">Argument $attrs is missing from the Docblock of ma_gcs_shortcode_linechart</error>
+      <error line="491" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_linechart()</error>
+      <error line="500" code="PPC:ERR-50015">Argument $attrs is missing from the Docblock of ma_gcs_shortcode_barchart</error>
+      <error line="500" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_barchart()</error>
+      <error line="509" code="PPC:ERR-50015">Argument $attrs is missing from the Docblock of ma_gcs_shortcode_tablechart</error>
+      <error line="509" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_tablechart()</error>
+      <error line="519" code="PPC:ERR-50015">Argument $vars is missing from the Docblock of _ma_gcs_shortcode_theme</error>
+      <error line="563" code="PPC:ERR-50015">Argument $vars is missing from the Docblock of theme_shortcode_piechart</error>
+      <error line="563" code="PPC:ERR-50011">No summary for function \theme_shortcode_piechart()</error>
+      <error line="572" code="PPC:ERR-50015">Argument $vars is missing from the Docblock of theme_shortcode_barchart</error>
+      <error line="572" code="PPC:ERR-50011">No summary for function \theme_shortcode_barchart()</error>
+      <error line="580" code="PPC:ERR-50015">Argument $vars is missing from the Docblock of theme_shortcode_linechart</error>
+      <error line="580" code="PPC:ERR-50011">No summary for function \theme_shortcode_linechart()</error>
+      <error line="588" code="PPC:ERR-50015">Argument $vars is missing from the Docblock of theme_shortcode_tablechart</error>
+      <error line="588" code="PPC:ERR-50011">No summary for function \theme_shortcode_tablechart()</error>
+      <error line="598" code="PPC:ERR-50015">Argument $type is missing from the Docblock of _ma_gcs_shortcode_tip</error>
+      <error line="598" code="PPC:ERR-50015">Argument $format is missing from the Docblock of _ma_gcs_shortcode_tip</error>
+      <error line="598" code="PPC:ERR-50015">Argument $long is missing from the Docblock of _ma_gcs_shortcode_tip</error>
+      <error line="614" code="PPC:ERR-50015">Argument $format is missing from the Docblock of ma_gcs_shortcode_piechart_tip</error>
+      <error line="614" code="PPC:ERR-50015">Argument $long is missing from the Docblock of ma_gcs_shortcode_piechart_tip</error>
+      <error line="614" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_piechart_tip()</error>
+      <error line="624" code="PPC:ERR-50015">Argument $format is missing from the Docblock of ma_gcs_shortcode_tablechart_tip</error>
+      <error line="624" code="PPC:ERR-50015">Argument $long is missing from the Docblock of ma_gcs_shortcode_tablechart_tip</error>
+      <error line="624" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_tablechart_tip()</error>
+      <error line="634" code="PPC:ERR-50015">Argument $format is missing from the Docblock of ma_gcs_shortcode_barchart_tip</error>
+      <error line="634" code="PPC:ERR-50015">Argument $long is missing from the Docblock of ma_gcs_shortcode_barchart_tip</error>
+      <error line="634" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_barchart_tip()</error>
+      <error line="644" code="PPC:ERR-50015">Argument $format is missing from the Docblock of ma_gcs_shortcode_linechart_tip</error>
+      <error line="644" code="PPC:ERR-50015">Argument $long is missing from the Docblock of ma_gcs_shortcode_linechart_tip</error>
+      <error line="644" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_linechart_tip()</error>
+      <error line="655" code="PPC:ERR-50015">Argument $length is missing from the Docblock of generateRandomString</error>
+    </parse_markers>
+    <source>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</source>
+  </file>
+  <file path="src/src/ma_gcs.admin.inc" generated-path="src.src.ma_gcs.admin.inc.html" hash="137df7fe547ff564ecaa375db92b80ff" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="file" line="0" description=""/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <function namespace="" line="14" package="Default">
+      <name>ma_gcs_admin</name>
+      <full_name>\ma_gcs_admin()</full_name>
+      <docblock line="14">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="14" description="Default"/>
+      </docblock>
+    </function>
+    <function namespace="" line="35" package="Default">
+      <name>ma_gcs_admin_validate</name>
+      <full_name>\ma_gcs_admin_validate()</full_name>
+      <docblock line="35">
+        <description>Validates correct format of url.</description>
+        <long-description>testing gulpf=ile nblalsdgjhsdfkgjh.</long-description>
+        <tag name="package" line="35" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$form</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="0" by_reference="true">
+        <name>$form_state</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="14" code="PPC:ERR-50011">No summary for function \ma_gcs_admin()</error>
+      <error line="35" code="PPC:ERR-50015">Argument $form is missing from the Docblock of ma_gcs_admin_validate</error>
+      <error line="35" code="PPC:ERR-50015">Argument $form_state is missing from the Docblock of ma_gcs_admin_validate</error>
+    </parse_markers>
+    <source>eJyVUk1vnEAMvfMr3CQqsEG72VsqQj+Uflx6W6mXKEKzYGDa4aMzJuq24r/HM9CFShtpKw4e2X7vGT/fveuqzvM2q5UHK3hfSIX82BwzOyQDVCHIxpBoMoReK2gL+NK2pUK4r4Qm2FWtpqzN0ayXaPcu+iYj2TZQi7TMTCryWjZBCH88gKui1TUkILQWhyCMPc5xCoIrydltDBzv4I2N19cjZAI9+BNd1qpW+7Dmlscjk+sD8C/p0KEPyVvwCX9RIVHlfjRXJamp7GjgciSaO3IsRK8ofRKqHzufhJZirzAtkYITQ0SM2t7Yzw9nHiN/j/DbJbfJtOzsblyJgouPoxzcj9PAhaNc8Gj82UuNuQN8/vB192ms8eoABrs+jdTrBszBENapQSLZlCa1Owvc5rh1ONr7TSiZC0IDWas1ZmTXXwuyDrPR1k3gquWAslddkfCBQLNXQpm8/F6ZvPjBYf2y03Z1TmJUj+C1iylfE6G19BzLZQHBK6w7OgQL9IPvbDH+48lrCP+i+WRcPlMoGhY5nyKe8Fbf9HtDOlhQRXATwTaEJEnYGn+WA9hsWNP2MIQVT2G3Ybye+ocpojK4IOkbtu9/fjg+Qs8HgZvdvufh4n/mGtxpDd4z7GkydA==</source>
+  </file>
+  <file path="src/ma_gcs.module" generated-path="src.ma_gcs.module.html" hash="3de4aaafadd52687c2d77e007112babc" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="file" line="0" description=""/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <function namespace="" line="11" package="Default">
+      <name>ma_gcs_libraries_info</name>
+      <full_name>\ma_gcs_libraries_info()</full_name>
+      <docblock line="11">
+        <description>Implements hook_libraries_info().</description>
+        <long-description>just a test.</long-description>
+        <tag name="package" line="11" description="Default"/>
+      </docblock>
+    </function>
+    <function namespace="" line="73" package="Default">
+      <name>ma_gcs_init</name>
+      <full_name>\ma_gcs_init()</full_name>
+      <docblock line="73">
+        <description>Initialize the module
+Still testing gulpfile.</description>
+        <long-description></long-description>
+        <tag name="package" line="73" description="Default"/>
+      </docblock>
+    </function>
+    <function namespace="" line="84" package="Default">
+      <name>ma_gcs_menu</name>
+      <full_name>\ma_gcs_menu()</full_name>
+      <docblock line="84">
+        <description>Define our shortcodes and their titles, descriptions, and callback functions.</description>
+        <long-description></long-description>
+        <tag name="package" line="84" description="Default"/>
+      </docblock>
+    </function>
+    <function namespace="" line="105" package="Default">
+      <name>_ma_gcs_chart_types</name>
+      <full_name>\_ma_gcs_chart_types()</full_name>
+      <docblock line="105">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="105" description="Default"/>
+      </docblock>
+    </function>
+    <function namespace="" line="118" package="Default">
+      <name>ma_gcs_shortcode_info</name>
+      <full_name>\ma_gcs_shortcode_info()</full_name>
+      <docblock line="118">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="118" description="Default"/>
+      </docblock>
+    </function>
+    <function namespace="" line="137" package="Default">
+      <name>_ma_gcs_formbuild</name>
+      <full_name>\_ma_gcs_formbuild()</full_name>
+      <docblock line="137">
+        <description>Attributes form element for random Shortcode.</description>
+        <long-description>Used by shortcode_wysiwyg module to add form elements for attributes.</long-description>
+        <tag name="package" line="137" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$type</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="387" package="Default">
+      <name>ma_gcs_shortcode_piechart_attributes</name>
+      <full_name>\ma_gcs_shortcode_piechart_attributes()</full_name>
+      <docblock line="387">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="387" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$form</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="0" by_reference="true">
+        <name>$form_state</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="395" package="Default">
+      <name>ma_gcs_shortcode_linechart_attributes</name>
+      <full_name>\ma_gcs_shortcode_linechart_attributes()</full_name>
+      <docblock line="395">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="395" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$form</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="0" by_reference="true">
+        <name>$form_state</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="403" package="Default">
+      <name>ma_gcs_shortcode_barchart_attributes</name>
+      <full_name>\ma_gcs_shortcode_barchart_attributes()</full_name>
+      <docblock line="403">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="403" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$form</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="0" by_reference="true">
+        <name>$form_state</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="411" package="Default">
+      <name>ma_gcs_shortcode_tablechart_attributes</name>
+      <full_name>\ma_gcs_shortcode_tablechart_attributes()</full_name>
+      <docblock line="411">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="411" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$form</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="0" by_reference="true">
+        <name>$form_state</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="419" package="Default">
+      <name>_ma_gcs_base_variables</name>
+      <full_name>\_ma_gcs_base_variables()</full_name>
+      <docblock line="419">
+        <description>Define our variables (parameters) for each shortcode.</description>
+        <long-description></long-description>
+        <tag name="package" line="419" description="Default"/>
+      </docblock>
+    </function>
+    <function namespace="" line="447" package="Default">
+      <name>ma_gcs_theme</name>
+      <full_name>\ma_gcs_theme()</full_name>
+      <docblock line="447">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="447" description="Default"/>
+      </docblock>
+    </function>
+    <function namespace="" line="468" package="Default">
+      <name>_ma_gcs_shortcode</name>
+      <full_name>\_ma_gcs_shortcode()</full_name>
+      <docblock line="468">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="468" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$attrs</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="482" package="Default">
+      <name>ma_gcs_shortcode_piechart</name>
+      <full_name>\ma_gcs_shortcode_piechart()</full_name>
+      <docblock line="482">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="482" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$attrs</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="491" package="Default">
+      <name>ma_gcs_shortcode_linechart</name>
+      <full_name>\ma_gcs_shortcode_linechart()</full_name>
+      <docblock line="491">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="491" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$attrs</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="500" package="Default">
+      <name>ma_gcs_shortcode_barchart</name>
+      <full_name>\ma_gcs_shortcode_barchart()</full_name>
+      <docblock line="500">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="500" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$attrs</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="509" package="Default">
+      <name>ma_gcs_shortcode_tablechart</name>
+      <full_name>\ma_gcs_shortcode_tablechart()</full_name>
+      <docblock line="509">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="509" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$attrs</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="519" package="Default">
+      <name>_ma_gcs_shortcode_theme</name>
+      <full_name>\_ma_gcs_shortcode_theme()</full_name>
+      <docblock line="519">
+        <description>This function uses the attributes passed in to return the HTML of this
+shortcode.</description>
+        <long-description></long-description>
+        <tag name="package" line="519" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$vars</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="563" package="Default">
+      <name>theme_shortcode_piechart</name>
+      <full_name>\theme_shortcode_piechart()</full_name>
+      <docblock line="563">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="563" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$vars</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="572" package="Default">
+      <name>theme_shortcode_barchart</name>
+      <full_name>\theme_shortcode_barchart()</full_name>
+      <docblock line="572">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="572" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$vars</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="580" package="Default">
+      <name>theme_shortcode_linechart</name>
+      <full_name>\theme_shortcode_linechart()</full_name>
+      <docblock line="580">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="580" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$vars</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="588" package="Default">
+      <name>theme_shortcode_tablechart</name>
+      <full_name>\theme_shortcode_tablechart()</full_name>
+      <docblock line="588">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="588" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$vars</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="598" package="Default">
+      <name>_ma_gcs_shortcode_tip</name>
+      <full_name>\_ma_gcs_shortcode_tip()</full_name>
+      <docblock line="598">
+        <description>This function outputs some tips to the user beneath the WYSIWYG editor so
+they know
+what the shortcode does and how to use it.</description>
+        <long-description></long-description>
+        <tag name="package" line="598" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$type</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="0" by_reference="false">
+        <name>$format</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="0" by_reference="false">
+        <name>$long</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="614" package="Default">
+      <name>ma_gcs_shortcode_piechart_tip</name>
+      <full_name>\ma_gcs_shortcode_piechart_tip()</full_name>
+      <docblock line="614">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="614" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$format</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="0" by_reference="false">
+        <name>$long</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="624" package="Default">
+      <name>ma_gcs_shortcode_tablechart_tip</name>
+      <full_name>\ma_gcs_shortcode_tablechart_tip()</full_name>
+      <docblock line="624">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="624" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$format</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="0" by_reference="false">
+        <name>$long</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="634" package="Default">
+      <name>ma_gcs_shortcode_barchart_tip</name>
+      <full_name>\ma_gcs_shortcode_barchart_tip()</full_name>
+      <docblock line="634">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="634" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$format</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="0" by_reference="false">
+        <name>$long</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="644" package="Default">
+      <name>ma_gcs_shortcode_linechart_tip</name>
+      <full_name>\ma_gcs_shortcode_linechart_tip()</full_name>
+      <docblock line="644">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="644" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$format</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="0" by_reference="false">
+        <name>$long</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="655" package="Default">
+      <name>generateRandomString</name>
+      <full_name>\generateRandomString()</full_name>
+      <docblock line="655">
+        <description>This function generates a ranomd string to assign as a div id for the google
+chart (in case they have more than one on a page).</description>
+        <long-description></long-description>
+        <tag name="package" line="655" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$length</name>
+        <default>5</default>
+        <type/>
+      </argument>
+    </function>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="105" code="PPC:ERR-50011">No summary for function \_ma_gcs_chart_types()</error>
+      <error line="118" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_info()</error>
+      <error line="137" code="PPC:ERR-50015">Argument $type is missing from the Docblock of _ma_gcs_formbuild</error>
+      <error line="387" code="PPC:ERR-50015">Argument $form is missing from the Docblock of ma_gcs_shortcode_piechart_attributes</error>
+      <error line="387" code="PPC:ERR-50015">Argument $form_state is missing from the Docblock of ma_gcs_shortcode_piechart_attributes</error>
+      <error line="387" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_piechart_attributes()</error>
+      <error line="395" code="PPC:ERR-50015">Argument $form is missing from the Docblock of ma_gcs_shortcode_linechart_attributes</error>
+      <error line="395" code="PPC:ERR-50015">Argument $form_state is missing from the Docblock of ma_gcs_shortcode_linechart_attributes</error>
+      <error line="395" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_linechart_attributes()</error>
+      <error line="403" code="PPC:ERR-50015">Argument $form is missing from the Docblock of ma_gcs_shortcode_barchart_attributes</error>
+      <error line="403" code="PPC:ERR-50015">Argument $form_state is missing from the Docblock of ma_gcs_shortcode_barchart_attributes</error>
+      <error line="403" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_barchart_attributes()</error>
+      <error line="411" code="PPC:ERR-50015">Argument $form is missing from the Docblock of ma_gcs_shortcode_tablechart_attributes</error>
+      <error line="411" code="PPC:ERR-50015">Argument $form_state is missing from the Docblock of ma_gcs_shortcode_tablechart_attributes</error>
+      <error line="411" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_tablechart_attributes()</error>
+      <error line="447" code="PPC:ERR-50011">No summary for function \ma_gcs_theme()</error>
+      <error line="468" code="PPC:ERR-50015">Argument $attrs is missing from the Docblock of _ma_gcs_shortcode</error>
+      <error line="468" code="PPC:ERR-50011">No summary for function \_ma_gcs_shortcode()</error>
+      <error line="482" code="PPC:ERR-50015">Argument $attrs is missing from the Docblock of ma_gcs_shortcode_piechart</error>
+      <error line="482" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_piechart()</error>
+      <error line="491" code="PPC:ERR-50015">Argument $attrs is missing from the Docblock of ma_gcs_shortcode_linechart</error>
+      <error line="491" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_linechart()</error>
+      <error line="500" code="PPC:ERR-50015">Argument $attrs is missing from the Docblock of ma_gcs_shortcode_barchart</error>
+      <error line="500" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_barchart()</error>
+      <error line="509" code="PPC:ERR-50015">Argument $attrs is missing from the Docblock of ma_gcs_shortcode_tablechart</error>
+      <error line="509" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_tablechart()</error>
+      <error line="519" code="PPC:ERR-50015">Argument $vars is missing from the Docblock of _ma_gcs_shortcode_theme</error>
+      <error line="563" code="PPC:ERR-50015">Argument $vars is missing from the Docblock of theme_shortcode_piechart</error>
+      <error line="563" code="PPC:ERR-50011">No summary for function \theme_shortcode_piechart()</error>
+      <error line="572" code="PPC:ERR-50015">Argument $vars is missing from the Docblock of theme_shortcode_barchart</error>
+      <error line="572" code="PPC:ERR-50011">No summary for function \theme_shortcode_barchart()</error>
+      <error line="580" code="PPC:ERR-50015">Argument $vars is missing from the Docblock of theme_shortcode_linechart</error>
+      <error line="580" code="PPC:ERR-50011">No summary for function \theme_shortcode_linechart()</error>
+      <error line="588" code="PPC:ERR-50015">Argument $vars is missing from the Docblock of theme_shortcode_tablechart</error>
+      <error line="588" code="PPC:ERR-50011">No summary for function \theme_shortcode_tablechart()</error>
+      <error line="598" code="PPC:ERR-50015">Argument $type is missing from the Docblock of _ma_gcs_shortcode_tip</error>
+      <error line="598" code="PPC:ERR-50015">Argument $format is missing from the Docblock of _ma_gcs_shortcode_tip</error>
+      <error line="598" code="PPC:ERR-50015">Argument $long is missing from the Docblock of _ma_gcs_shortcode_tip</error>
+      <error line="614" code="PPC:ERR-50015">Argument $format is missing from the Docblock of ma_gcs_shortcode_piechart_tip</error>
+      <error line="614" code="PPC:ERR-50015">Argument $long is missing from the Docblock of ma_gcs_shortcode_piechart_tip</error>
+      <error line="614" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_piechart_tip()</error>
+      <error line="624" code="PPC:ERR-50015">Argument $format is missing from the Docblock of ma_gcs_shortcode_tablechart_tip</error>
+      <error line="624" code="PPC:ERR-50015">Argument $long is missing from the Docblock of ma_gcs_shortcode_tablechart_tip</error>
+      <error line="624" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_tablechart_tip()</error>
+      <error line="634" code="PPC:ERR-50015">Argument $format is missing from the Docblock of ma_gcs_shortcode_barchart_tip</error>
+      <error line="634" code="PPC:ERR-50015">Argument $long is missing from the Docblock of ma_gcs_shortcode_barchart_tip</error>
+      <error line="634" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_barchart_tip()</error>
+      <error line="644" code="PPC:ERR-50015">Argument $format is missing from the Docblock of ma_gcs_shortcode_linechart_tip</error>
+      <error line="644" code="PPC:ERR-50015">Argument $long is missing from the Docblock of ma_gcs_shortcode_linechart_tip</error>
+      <error line="644" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_linechart_tip()</error>
+      <error line="655" code="PPC:ERR-50015">Argument $length is missing from the Docblock of generateRandomString</error>
+    </parse_markers>
+    <source>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</source>
+  </file>
+  <file path="src/src/src/newfile.php" generated-path="src.src.src.newfile.html" hash="9bb1034bfe8e0317a16ee9b3d80d4c2f" package="Default">
     <docblock line="0">
       <description></description>
       <long-description></long-description>
@@ -43,9 +1155,1102 @@
     <parse_markers>
       <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
     </parse_markers>
-    <source>eJx9VO9T2zgQ/e6/Yo96SDIktbkAZRrSDE3p/WqBIS05jmEYxVrHShTJY8mE3E3/965kOw1zN/cpznr3vX1PTz4b5VkOQRSFKSKHIXCdmNdzrecSXyd6FZm8QMZNhmijJElGS9wMz/64uHv3ai748PDn/tFx0MzuZdbm5m20O/QCzPWZSApjo8OjOO2V/bvn8bz/LE3+3Hu+nF7Pln/eXk9+vbr6rPPx1Jrb3pQzHWl+EuXlTIokemKyRDNy5P349PT45PTNm71BkBEfFu3WWCuLyvbsJse3wPKcZpgVWkULo1WrMwicWJighY0uCxhPbsFtteNAq1Hxf1bQNqNMDlE9fp3sbx+cOfH50mB/c7wcX92c8ovsJJne3E0/3Mrp6jL+csHTm+Vffb5c/s1/SfaNUIQ+tEWJ+05SvK9Lm5d2mJinVr3reVGwjYE1tqSE0iBIZrEIQiIztC5zr9skLFS49r27RY/wsVSJ8wCshkSrJyysFy4UFZgxOhHk0RNWY0HatNMSX7SHbIepkNiFkKMUK0H8HfgHAgCRQrsdZkxxicSb6hxV09wqWp0O/DQcwsfzT5OLegIgFNQZD6o/64x6HYYUCpv10zlaIm+Au3AUx/EuO4Hv/Tc40A4FtMNFxUG/Z6S5VHaHoePqBwc7M7QUab8PxcN9uHig0R/NrjBo+r41D6E4OKirdS1NpDbYrNzxL/2rAm1ZKE9ARVdyZ/JBg7BByJllRPfCaYoh6eu+CKsqVzMsQKeAEleUcAPtlVClgUOYYcJcLtYIJhOppa4UbIaQisJYKPS6E4TeA8dUeeF4O9CDw4rjq9np9g4qtkIDEISSzVBug/boGer5ATgx1I0sycjzupUZqB7JYNLvg3pfmeqqg+BbHWzO4TduurAoiVhQ3lilYs1oVRKw2o26R2gJ7q9FdcZ1juj3DCqBA38wNa/b0R+p5xZb3vcF3TpyHxhdKKspaxmR/Ds2W8jFD8itD/RBmFFE2n63bkO2eHCHBtur2KSJb8mvidw6crrozqnfJ1eXASaZBveBekSVaE6oDYDPwOhd8B0korf6</source>
+    <source>eJyzsS/IKODi0tfS4lLQUnBIy8xJBTL0uQBFvAU8</source>
+  </file>
+  <file path="src/src/src/ma_gcs.module" generated-path="src.src.src.ma_gcs.module.html" hash="3de4aaafadd52687c2d77e007112babc" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="file" line="0" description=""/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <function namespace="" line="11" package="Default">
+      <name>ma_gcs_libraries_info</name>
+      <full_name>\ma_gcs_libraries_info()</full_name>
+      <docblock line="11">
+        <description>Implements hook_libraries_info().</description>
+        <long-description>just a test.</long-description>
+        <tag name="package" line="11" description="Default"/>
+      </docblock>
+    </function>
+    <function namespace="" line="73" package="Default">
+      <name>ma_gcs_init</name>
+      <full_name>\ma_gcs_init()</full_name>
+      <docblock line="73">
+        <description>Initialize the module
+Still testing gulpfile.</description>
+        <long-description></long-description>
+        <tag name="package" line="73" description="Default"/>
+      </docblock>
+    </function>
+    <function namespace="" line="84" package="Default">
+      <name>ma_gcs_menu</name>
+      <full_name>\ma_gcs_menu()</full_name>
+      <docblock line="84">
+        <description>Define our shortcodes and their titles, descriptions, and callback functions.</description>
+        <long-description></long-description>
+        <tag name="package" line="84" description="Default"/>
+      </docblock>
+    </function>
+    <function namespace="" line="105" package="Default">
+      <name>_ma_gcs_chart_types</name>
+      <full_name>\_ma_gcs_chart_types()</full_name>
+      <docblock line="105">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="105" description="Default"/>
+      </docblock>
+    </function>
+    <function namespace="" line="118" package="Default">
+      <name>ma_gcs_shortcode_info</name>
+      <full_name>\ma_gcs_shortcode_info()</full_name>
+      <docblock line="118">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="118" description="Default"/>
+      </docblock>
+    </function>
+    <function namespace="" line="137" package="Default">
+      <name>_ma_gcs_formbuild</name>
+      <full_name>\_ma_gcs_formbuild()</full_name>
+      <docblock line="137">
+        <description>Attributes form element for random Shortcode.</description>
+        <long-description>Used by shortcode_wysiwyg module to add form elements for attributes.</long-description>
+        <tag name="package" line="137" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$type</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="387" package="Default">
+      <name>ma_gcs_shortcode_piechart_attributes</name>
+      <full_name>\ma_gcs_shortcode_piechart_attributes()</full_name>
+      <docblock line="387">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="387" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$form</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="0" by_reference="true">
+        <name>$form_state</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="395" package="Default">
+      <name>ma_gcs_shortcode_linechart_attributes</name>
+      <full_name>\ma_gcs_shortcode_linechart_attributes()</full_name>
+      <docblock line="395">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="395" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$form</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="0" by_reference="true">
+        <name>$form_state</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="403" package="Default">
+      <name>ma_gcs_shortcode_barchart_attributes</name>
+      <full_name>\ma_gcs_shortcode_barchart_attributes()</full_name>
+      <docblock line="403">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="403" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$form</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="0" by_reference="true">
+        <name>$form_state</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="411" package="Default">
+      <name>ma_gcs_shortcode_tablechart_attributes</name>
+      <full_name>\ma_gcs_shortcode_tablechart_attributes()</full_name>
+      <docblock line="411">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="411" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$form</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="0" by_reference="true">
+        <name>$form_state</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="419" package="Default">
+      <name>_ma_gcs_base_variables</name>
+      <full_name>\_ma_gcs_base_variables()</full_name>
+      <docblock line="419">
+        <description>Define our variables (parameters) for each shortcode.</description>
+        <long-description></long-description>
+        <tag name="package" line="419" description="Default"/>
+      </docblock>
+    </function>
+    <function namespace="" line="447" package="Default">
+      <name>ma_gcs_theme</name>
+      <full_name>\ma_gcs_theme()</full_name>
+      <docblock line="447">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="447" description="Default"/>
+      </docblock>
+    </function>
+    <function namespace="" line="468" package="Default">
+      <name>_ma_gcs_shortcode</name>
+      <full_name>\_ma_gcs_shortcode()</full_name>
+      <docblock line="468">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="468" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$attrs</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="482" package="Default">
+      <name>ma_gcs_shortcode_piechart</name>
+      <full_name>\ma_gcs_shortcode_piechart()</full_name>
+      <docblock line="482">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="482" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$attrs</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="491" package="Default">
+      <name>ma_gcs_shortcode_linechart</name>
+      <full_name>\ma_gcs_shortcode_linechart()</full_name>
+      <docblock line="491">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="491" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$attrs</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="500" package="Default">
+      <name>ma_gcs_shortcode_barchart</name>
+      <full_name>\ma_gcs_shortcode_barchart()</full_name>
+      <docblock line="500">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="500" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$attrs</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="509" package="Default">
+      <name>ma_gcs_shortcode_tablechart</name>
+      <full_name>\ma_gcs_shortcode_tablechart()</full_name>
+      <docblock line="509">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="509" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$attrs</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="519" package="Default">
+      <name>_ma_gcs_shortcode_theme</name>
+      <full_name>\_ma_gcs_shortcode_theme()</full_name>
+      <docblock line="519">
+        <description>This function uses the attributes passed in to return the HTML of this
+shortcode.</description>
+        <long-description></long-description>
+        <tag name="package" line="519" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$vars</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="563" package="Default">
+      <name>theme_shortcode_piechart</name>
+      <full_name>\theme_shortcode_piechart()</full_name>
+      <docblock line="563">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="563" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$vars</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="572" package="Default">
+      <name>theme_shortcode_barchart</name>
+      <full_name>\theme_shortcode_barchart()</full_name>
+      <docblock line="572">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="572" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$vars</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="580" package="Default">
+      <name>theme_shortcode_linechart</name>
+      <full_name>\theme_shortcode_linechart()</full_name>
+      <docblock line="580">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="580" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$vars</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="588" package="Default">
+      <name>theme_shortcode_tablechart</name>
+      <full_name>\theme_shortcode_tablechart()</full_name>
+      <docblock line="588">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="588" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$vars</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="598" package="Default">
+      <name>_ma_gcs_shortcode_tip</name>
+      <full_name>\_ma_gcs_shortcode_tip()</full_name>
+      <docblock line="598">
+        <description>This function outputs some tips to the user beneath the WYSIWYG editor so
+they know
+what the shortcode does and how to use it.</description>
+        <long-description></long-description>
+        <tag name="package" line="598" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$type</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="0" by_reference="false">
+        <name>$format</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="0" by_reference="false">
+        <name>$long</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="614" package="Default">
+      <name>ma_gcs_shortcode_piechart_tip</name>
+      <full_name>\ma_gcs_shortcode_piechart_tip()</full_name>
+      <docblock line="614">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="614" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$format</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="0" by_reference="false">
+        <name>$long</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="624" package="Default">
+      <name>ma_gcs_shortcode_tablechart_tip</name>
+      <full_name>\ma_gcs_shortcode_tablechart_tip()</full_name>
+      <docblock line="624">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="624" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$format</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="0" by_reference="false">
+        <name>$long</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="634" package="Default">
+      <name>ma_gcs_shortcode_barchart_tip</name>
+      <full_name>\ma_gcs_shortcode_barchart_tip()</full_name>
+      <docblock line="634">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="634" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$format</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="0" by_reference="false">
+        <name>$long</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="644" package="Default">
+      <name>ma_gcs_shortcode_linechart_tip</name>
+      <full_name>\ma_gcs_shortcode_linechart_tip()</full_name>
+      <docblock line="644">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="644" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$format</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="0" by_reference="false">
+        <name>$long</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="655" package="Default">
+      <name>generateRandomString</name>
+      <full_name>\generateRandomString()</full_name>
+      <docblock line="655">
+        <description>This function generates a ranomd string to assign as a div id for the google
+chart (in case they have more than one on a page).</description>
+        <long-description></long-description>
+        <tag name="package" line="655" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$length</name>
+        <default>5</default>
+        <type/>
+      </argument>
+    </function>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="105" code="PPC:ERR-50011">No summary for function \_ma_gcs_chart_types()</error>
+      <error line="118" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_info()</error>
+      <error line="137" code="PPC:ERR-50015">Argument $type is missing from the Docblock of _ma_gcs_formbuild</error>
+      <error line="387" code="PPC:ERR-50015">Argument $form is missing from the Docblock of ma_gcs_shortcode_piechart_attributes</error>
+      <error line="387" code="PPC:ERR-50015">Argument $form_state is missing from the Docblock of ma_gcs_shortcode_piechart_attributes</error>
+      <error line="387" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_piechart_attributes()</error>
+      <error line="395" code="PPC:ERR-50015">Argument $form is missing from the Docblock of ma_gcs_shortcode_linechart_attributes</error>
+      <error line="395" code="PPC:ERR-50015">Argument $form_state is missing from the Docblock of ma_gcs_shortcode_linechart_attributes</error>
+      <error line="395" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_linechart_attributes()</error>
+      <error line="403" code="PPC:ERR-50015">Argument $form is missing from the Docblock of ma_gcs_shortcode_barchart_attributes</error>
+      <error line="403" code="PPC:ERR-50015">Argument $form_state is missing from the Docblock of ma_gcs_shortcode_barchart_attributes</error>
+      <error line="403" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_barchart_attributes()</error>
+      <error line="411" code="PPC:ERR-50015">Argument $form is missing from the Docblock of ma_gcs_shortcode_tablechart_attributes</error>
+      <error line="411" code="PPC:ERR-50015">Argument $form_state is missing from the Docblock of ma_gcs_shortcode_tablechart_attributes</error>
+      <error line="411" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_tablechart_attributes()</error>
+      <error line="447" code="PPC:ERR-50011">No summary for function \ma_gcs_theme()</error>
+      <error line="468" code="PPC:ERR-50015">Argument $attrs is missing from the Docblock of _ma_gcs_shortcode</error>
+      <error line="468" code="PPC:ERR-50011">No summary for function \_ma_gcs_shortcode()</error>
+      <error line="482" code="PPC:ERR-50015">Argument $attrs is missing from the Docblock of ma_gcs_shortcode_piechart</error>
+      <error line="482" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_piechart()</error>
+      <error line="491" code="PPC:ERR-50015">Argument $attrs is missing from the Docblock of ma_gcs_shortcode_linechart</error>
+      <error line="491" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_linechart()</error>
+      <error line="500" code="PPC:ERR-50015">Argument $attrs is missing from the Docblock of ma_gcs_shortcode_barchart</error>
+      <error line="500" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_barchart()</error>
+      <error line="509" code="PPC:ERR-50015">Argument $attrs is missing from the Docblock of ma_gcs_shortcode_tablechart</error>
+      <error line="509" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_tablechart()</error>
+      <error line="519" code="PPC:ERR-50015">Argument $vars is missing from the Docblock of _ma_gcs_shortcode_theme</error>
+      <error line="563" code="PPC:ERR-50015">Argument $vars is missing from the Docblock of theme_shortcode_piechart</error>
+      <error line="563" code="PPC:ERR-50011">No summary for function \theme_shortcode_piechart()</error>
+      <error line="572" code="PPC:ERR-50015">Argument $vars is missing from the Docblock of theme_shortcode_barchart</error>
+      <error line="572" code="PPC:ERR-50011">No summary for function \theme_shortcode_barchart()</error>
+      <error line="580" code="PPC:ERR-50015">Argument $vars is missing from the Docblock of theme_shortcode_linechart</error>
+      <error line="580" code="PPC:ERR-50011">No summary for function \theme_shortcode_linechart()</error>
+      <error line="588" code="PPC:ERR-50015">Argument $vars is missing from the Docblock of theme_shortcode_tablechart</error>
+      <error line="588" code="PPC:ERR-50011">No summary for function \theme_shortcode_tablechart()</error>
+      <error line="598" code="PPC:ERR-50015">Argument $type is missing from the Docblock of _ma_gcs_shortcode_tip</error>
+      <error line="598" code="PPC:ERR-50015">Argument $format is missing from the Docblock of _ma_gcs_shortcode_tip</error>
+      <error line="598" code="PPC:ERR-50015">Argument $long is missing from the Docblock of _ma_gcs_shortcode_tip</error>
+      <error line="614" code="PPC:ERR-50015">Argument $format is missing from the Docblock of ma_gcs_shortcode_piechart_tip</error>
+      <error line="614" code="PPC:ERR-50015">Argument $long is missing from the Docblock of ma_gcs_shortcode_piechart_tip</error>
+      <error line="614" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_piechart_tip()</error>
+      <error line="624" code="PPC:ERR-50015">Argument $format is missing from the Docblock of ma_gcs_shortcode_tablechart_tip</error>
+      <error line="624" code="PPC:ERR-50015">Argument $long is missing from the Docblock of ma_gcs_shortcode_tablechart_tip</error>
+      <error line="624" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_tablechart_tip()</error>
+      <error line="634" code="PPC:ERR-50015">Argument $format is missing from the Docblock of ma_gcs_shortcode_barchart_tip</error>
+      <error line="634" code="PPC:ERR-50015">Argument $long is missing from the Docblock of ma_gcs_shortcode_barchart_tip</error>
+      <error line="634" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_barchart_tip()</error>
+      <error line="644" code="PPC:ERR-50015">Argument $format is missing from the Docblock of ma_gcs_shortcode_linechart_tip</error>
+      <error line="644" code="PPC:ERR-50015">Argument $long is missing from the Docblock of ma_gcs_shortcode_linechart_tip</error>
+      <error line="644" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_linechart_tip()</error>
+      <error line="655" code="PPC:ERR-50015">Argument $length is missing from the Docblock of generateRandomString</error>
+    </parse_markers>
+    <source>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</source>
+  </file>
+  <file path="src/src/src/ma_gcs.admin.inc" generated-path="src.src.src.ma_gcs.admin.inc.html" hash="137df7fe547ff564ecaa375db92b80ff" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="file" line="0" description=""/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <function namespace="" line="14" package="Default">
+      <name>ma_gcs_admin</name>
+      <full_name>\ma_gcs_admin()</full_name>
+      <docblock line="14">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="14" description="Default"/>
+      </docblock>
+    </function>
+    <function namespace="" line="35" package="Default">
+      <name>ma_gcs_admin_validate</name>
+      <full_name>\ma_gcs_admin_validate()</full_name>
+      <docblock line="35">
+        <description>Validates correct format of url.</description>
+        <long-description>testing gulpf=ile nblalsdgjhsdfkgjh.</long-description>
+        <tag name="package" line="35" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$form</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="0" by_reference="true">
+        <name>$form_state</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="14" code="PPC:ERR-50011">No summary for function \ma_gcs_admin()</error>
+      <error line="35" code="PPC:ERR-50015">Argument $form is missing from the Docblock of ma_gcs_admin_validate</error>
+      <error line="35" code="PPC:ERR-50015">Argument $form_state is missing from the Docblock of ma_gcs_admin_validate</error>
+    </parse_markers>
+    <source>eJyVUk1vnEAMvfMr3CQqsEG72VsqQj+Uflx6W6mXKEKzYGDa4aMzJuq24r/HM9CFShtpKw4e2X7vGT/fveuqzvM2q5UHK3hfSIX82BwzOyQDVCHIxpBoMoReK2gL+NK2pUK4r4Qm2FWtpqzN0ayXaPcu+iYj2TZQi7TMTCryWjZBCH88gKui1TUkILQWhyCMPc5xCoIrydltDBzv4I2N19cjZAI9+BNd1qpW+7Dmlscjk+sD8C/p0KEPyVvwCX9RIVHlfjRXJamp7GjgciSaO3IsRK8ofRKqHzufhJZirzAtkYITQ0SM2t7Yzw9nHiN/j/DbJbfJtOzsblyJgouPoxzcj9PAhaNc8Gj82UuNuQN8/vB192ms8eoABrs+jdTrBszBENapQSLZlCa1Owvc5rh1ONr7TSiZC0IDWas1ZmTXXwuyDrPR1k3gquWAslddkfCBQLNXQpm8/F6ZvPjBYf2y03Z1TmJUj+C1iylfE6G19BzLZQHBK6w7OgQL9IPvbDH+48lrCP+i+WRcPlMoGhY5nyKe8Fbf9HtDOlhQRXATwTaEJEnYGn+WA9hsWNP2MIQVT2G3Ybye+ocpojK4IOkbtu9/fjg+Qs8HgZvdvufh4n/mGtxpDd4z7GkydA==</source>
+  </file>
+  <file path="src/test.php" generated-path="src.test.html" hash="764a09fe43a6ae94230f9b6a9e76be3e" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="file" line="0" description="$feed = docs.google.com/spreadsheet/ccc?key=&lt;KEY&gt;#gid=12345."/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <function namespace="" line="19" package="Default">
+      <name>csvToArray</name>
+      <full_name>\csvToArray()</full_name>
+      <docblock line="19">
+        <description>Function to convert CSV into associative array.</description>
+        <long-description></long-description>
+        <tag name="package" line="19" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$file</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="0" by_reference="false">
+        <name>$delimiter</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="19" code="PPC:ERR-50015">Argument $file is missing from the Docblock of csvToArray</error>
+      <error line="19" code="PPC:ERR-50015">Argument $delimiter is missing from the Docblock of csvToArray</error>
+    </parse_markers>
+    <source>eJx9VGFT2zgQ/e5fscd5cAJJbBqgTEOOcim99toCQ1pSyjCMYq1jJYrksWRCetP/3pUdhzDX6SdrVrvvvd198vFJlmZeuLPjwQ68ToREd/ATRA594Do2nYnWE4mdWM9Dk+XIuEkRbRjH8ckMl/3jD2c3f/05Eby/96K7f9Ch+tDzaoSt1NrMvAo3S59BujwTSmFsuLcfJe2ie/M4mHQfpcke24/no8vx7Ov15fDdxcUnnQ1G1ly3R5zpUPPDMCvGUsThA5MFmhMnoRsdHR0cHr18udXzUuLDvBEMtLKobNsuM3wFLMuohlmhVTg1WgXNnueFIQzRwlIXOQyG1+BEuWDdRVB38buBkJqTVPZR3X8Zbq8PbkTR6cxgd3kwG1xcHfGz9DAeXd2M3lzL0fw8+nzGk6vZty6fzb7zf+JtIxSh921e4LZrKdrWhc0K24/NQ9Bzqk7znC0NLDCQEgqDIJnFvOP5xGVILXP3DerLV7gokzeD9bLfFip2UwCrIdbqAXNb9i4UBZgxOhY0pQesKqu1JnUNafmsS+iG70zTAp+jFHNBQprwnwcgEmg0/JQpLpHoE52hqnODPGg24Y9+H96efhyeVQUAvqDEqFeeFyllOgQpFNY9JBO0xFzDtmA/iqJNaoLe+iU0kIAcGv60ZAD6HlPThbIbBE0X3919KiFF1PutL+5u/ekdVT7lukBvlfZj9fXF7m4VqyJJLLXBWmzTXbmLHG2RqxK65/0ovfdGg7C0P84sI5pnwyUDUletTZuqYj7GHHQCKHFO1jbQmAtVGNiDMcbMWWKBYFKRWMpKwKYIiciNhVwvmp5fdu6Iqgk42ia0Ya+i+GI2ssu5KTZHQ/okG6NcO+y+JFiVUyllIotTmvIqjxmojtVIS3veVnN00br7U87hPTctmBbEKchcrGpgwUglaZ8/M3iJEAgeVJREJ1ZLFbTUqrdeuYwVrdNXLrGkFjXt3zk9NJo7MHpFVpO1Usfxf5+sIadPkOsZ0E9gTKZolNJaNdn0rlz3+v3V/uE1+SWRW0dOb9vN6d/hxXnHwzjV4H5K96hizQm1BiC4n1taucU=</source>
+  </file>
+  <file path="src/src/newfile.php" generated-path="src.src.newfile.html" hash="580330ef310dbcaede13ce3c0af78cf7" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJyFVU1r3DAQvedXDDklEG/aQyENu4FCWgiUpqQtoSw5aO3xWo0suZLczf77zkiWpYRs64ulkeZ5Pt4bf7y7u727hJ9mhH50Htw4DGoPwoNCQXujEVqpEIyFRlqsvbF78AYGa2p0bnF09MOJLV7C0A31poV1pXdKPtC7gUfcr1d/hBrxgQ2V843U1SB8t1qG9VdaXj0cAT3hWOhG2IYP4+oqumnZto6s4T3ZxraVT2QL7wID/6CVfk8n0yreR2uNPXi6E1ZLvX31PCF7sal2suHYaXnPqwla14Zy2a6WaZWd8MmjdtJoCj+vo5/camNxtaR6eLTJujHGO2/FsFrOSzpZchOuYLFYBGh+Kg3Fc21AG0+9eoIpGwcnrjPW1yOZqX2vpPnmNKPtSrRPBLMxvstY1BAIRSRYo2GzhwZbMSpfQKgS4rOphSo4Y7Tan1GMQIbRch2yoywdv3VmBwKUZPq1IDWxQSlsIBYXEjlc9m+e+aMH3yGsiX4PTMuF1BICDZm460hIJvTaW17JdjqVDkwvqRtNhq46VEPafbVSMzhdDOaeFEDkL25TYTm14naySE1N6IV/lnilDeuh7ooW9uIRYXTIyXMexw3R/pjjPQ5Xj1l7Wyv6XICJHdNzq4Nce2JX0G5o3nkhYEkmqgRxJSNkPdLupk365oJ/+3598+UsxBJGAQuYdjQjwgnspFKwweRCnRIOMnKmMe0+UBf7XoDDQVhBlZ77HCOlsOxI9MKWoy+CoK5bX2Q8a4133ym0ZEhli3gbZBNlSl86mRjLfZbOVBcX795Xb08LzKzQ/0UK+e7LUj5/TuaL7EdCDyGSFphzsoFdhxrqDutHPhBZMKcHADlXvx+wzBNqwTUDN2AtW0mxjly0S47ynC8fwMLFdnFGRGlGheeklDN057+KIs+jCf7ZunSNKxGnWuZdSbqCbXGUx91h4HCNdR+ZoSSpc0r6KZgOFZ0GRnR28bfG7CT+pJrlOqVhUrBgHv2p2j3Nj37sIR3QBPs9UlbN1HlKM45GVt00MEthTf+yBKdFH/QZZDQF9GK0MTBNgAIk/ubi7p6CQO5aTGEWjgjLAB/aHwdVdD1UqGm4cKPSdBHUPp5DIytZ6ohCX8OiRvMfcE5q7DdoQ88GQZoFFDTU6BoVa7DoUJN4/wK7L6R0</source>
+  </file>
+  <file path="ma_gcs.module" generated-path="ma_gcs.module.html" hash="22571d40ced8dd6d0b80a65a1202f3eb" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="file" line="0" description=""/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <function namespace="" line="11" package="Default">
+      <name>ma_gcs_libraries_info</name>
+      <full_name>\ma_gcs_libraries_info()</full_name>
+      <docblock line="11">
+        <description>Implements hook_libraries_info().</description>
+        <long-description>just a test.</long-description>
+        <tag name="package" line="11" description="Default"/>
+      </docblock>
+    </function>
+    <function namespace="" line="73" package="Default">
+      <name>ma_gcs_init</name>
+      <full_name>\ma_gcs_init()</full_name>
+      <docblock line="73">
+        <description>Initialize the module
+Still testing gulpfile.</description>
+        <long-description></long-description>
+        <tag name="package" line="73" description="Default"/>
+      </docblock>
+    </function>
+    <function namespace="" line="84" package="Default">
+      <name>ma_gcs_menu</name>
+      <full_name>\ma_gcs_menu()</full_name>
+      <docblock line="84">
+        <description>Define our shortcodes and their titles, descriptions, and callback functions.</description>
+        <long-description></long-description>
+        <tag name="package" line="84" description="Default"/>
+      </docblock>
+    </function>
+    <function namespace="" line="105" package="Default">
+      <name>_ma_gcs_chart_types</name>
+      <full_name>\_ma_gcs_chart_types()</full_name>
+      <docblock line="105">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="105" description="Default"/>
+      </docblock>
+    </function>
+    <function namespace="" line="118" package="Default">
+      <name>ma_gcs_shortcode_info</name>
+      <full_name>\ma_gcs_shortcode_info()</full_name>
+      <docblock line="118">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="118" description="Default"/>
+      </docblock>
+    </function>
+    <function namespace="" line="137" package="Default">
+      <name>_ma_gcs_formbuild</name>
+      <full_name>\_ma_gcs_formbuild()</full_name>
+      <docblock line="137">
+        <description>Attributes form element for random Shortcode.</description>
+        <long-description>Used by shortcode_wysiwyg module to add form elements for attributes.</long-description>
+        <tag name="package" line="137" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$type</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="387" package="Default">
+      <name>ma_gcs_shortcode_piechart_attributes</name>
+      <full_name>\ma_gcs_shortcode_piechart_attributes()</full_name>
+      <docblock line="387">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="387" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$form</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="0" by_reference="true">
+        <name>$form_state</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="395" package="Default">
+      <name>ma_gcs_shortcode_linechart_attributes</name>
+      <full_name>\ma_gcs_shortcode_linechart_attributes()</full_name>
+      <docblock line="395">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="395" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$form</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="0" by_reference="true">
+        <name>$form_state</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="403" package="Default">
+      <name>ma_gcs_shortcode_barchart_attributes</name>
+      <full_name>\ma_gcs_shortcode_barchart_attributes()</full_name>
+      <docblock line="403">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="403" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$form</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="0" by_reference="true">
+        <name>$form_state</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="411" package="Default">
+      <name>ma_gcs_shortcode_tablechart_attributes</name>
+      <full_name>\ma_gcs_shortcode_tablechart_attributes()</full_name>
+      <docblock line="411">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="411" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$form</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="0" by_reference="true">
+        <name>$form_state</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="419" package="Default">
+      <name>_ma_gcs_base_variables</name>
+      <full_name>\_ma_gcs_base_variables()</full_name>
+      <docblock line="419">
+        <description>Define our variables (parameters) for each shortcode.</description>
+        <long-description></long-description>
+        <tag name="package" line="419" description="Default"/>
+      </docblock>
+    </function>
+    <function namespace="" line="447" package="Default">
+      <name>ma_gcs_theme</name>
+      <full_name>\ma_gcs_theme()</full_name>
+      <docblock line="447">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="447" description="Default"/>
+      </docblock>
+    </function>
+    <function namespace="" line="468" package="Default">
+      <name>_ma_gcs_shortcode</name>
+      <full_name>\_ma_gcs_shortcode()</full_name>
+      <docblock line="468">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="468" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$attrs</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="482" package="Default">
+      <name>ma_gcs_shortcode_piechart</name>
+      <full_name>\ma_gcs_shortcode_piechart()</full_name>
+      <docblock line="482">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="482" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$attrs</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="491" package="Default">
+      <name>ma_gcs_shortcode_linechart</name>
+      <full_name>\ma_gcs_shortcode_linechart()</full_name>
+      <docblock line="491">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="491" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$attrs</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="500" package="Default">
+      <name>ma_gcs_shortcode_barchart</name>
+      <full_name>\ma_gcs_shortcode_barchart()</full_name>
+      <docblock line="500">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="500" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$attrs</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="509" package="Default">
+      <name>ma_gcs_shortcode_tablechart</name>
+      <full_name>\ma_gcs_shortcode_tablechart()</full_name>
+      <docblock line="509">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="509" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$attrs</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="519" package="Default">
+      <name>_ma_gcs_shortcode_theme</name>
+      <full_name>\_ma_gcs_shortcode_theme()</full_name>
+      <docblock line="519">
+        <description>This function uses the attributes passed in to return the HTML of this
+shortcode.</description>
+        <long-description></long-description>
+        <tag name="package" line="519" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$vars</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="563" package="Default">
+      <name>theme_shortcode_piechart</name>
+      <full_name>\theme_shortcode_piechart()</full_name>
+      <docblock line="563">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="563" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$vars</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="572" package="Default">
+      <name>theme_shortcode_barchart</name>
+      <full_name>\theme_shortcode_barchart()</full_name>
+      <docblock line="572">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="572" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$vars</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="580" package="Default">
+      <name>theme_shortcode_linechart</name>
+      <full_name>\theme_shortcode_linechart()</full_name>
+      <docblock line="580">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="580" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$vars</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="588" package="Default">
+      <name>theme_shortcode_tablechart</name>
+      <full_name>\theme_shortcode_tablechart()</full_name>
+      <docblock line="588">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="588" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$vars</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="598" package="Default">
+      <name>_ma_gcs_shortcode_tip</name>
+      <full_name>\_ma_gcs_shortcode_tip()</full_name>
+      <docblock line="598">
+        <description>This function outputs some tips to the user beneath the WYSIWYG editor so
+they know
+what the shortcode does and how to use it.</description>
+        <long-description></long-description>
+        <tag name="package" line="598" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$type</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="0" by_reference="false">
+        <name>$format</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="0" by_reference="false">
+        <name>$long</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="614" package="Default">
+      <name>ma_gcs_shortcode_piechart_tip</name>
+      <full_name>\ma_gcs_shortcode_piechart_tip()</full_name>
+      <docblock line="614">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="614" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$format</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="0" by_reference="false">
+        <name>$long</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="624" package="Default">
+      <name>ma_gcs_shortcode_tablechart_tip</name>
+      <full_name>\ma_gcs_shortcode_tablechart_tip()</full_name>
+      <docblock line="624">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="624" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$format</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="0" by_reference="false">
+        <name>$long</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="634" package="Default">
+      <name>ma_gcs_shortcode_barchart_tip</name>
+      <full_name>\ma_gcs_shortcode_barchart_tip()</full_name>
+      <docblock line="634">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="634" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$format</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="0" by_reference="false">
+        <name>$long</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="644" package="Default">
+      <name>ma_gcs_shortcode_linechart_tip</name>
+      <full_name>\ma_gcs_shortcode_linechart_tip()</full_name>
+      <docblock line="644">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="644" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$format</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="0" by_reference="false">
+        <name>$long</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="" line="655" package="Default">
+      <name>generateRandomString</name>
+      <full_name>\generateRandomString()</full_name>
+      <docblock line="655">
+        <description>This function generates a ranomd string to assign as a div id for the google
+chart (in case they have more than one on a page).</description>
+        <long-description></long-description>
+        <tag name="package" line="655" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$length</name>
+        <default>5</default>
+        <type/>
+      </argument>
+    </function>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="105" code="PPC:ERR-50011">No summary for function \_ma_gcs_chart_types()</error>
+      <error line="118" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_info()</error>
+      <error line="137" code="PPC:ERR-50015">Argument $type is missing from the Docblock of _ma_gcs_formbuild</error>
+      <error line="387" code="PPC:ERR-50015">Argument $form is missing from the Docblock of ma_gcs_shortcode_piechart_attributes</error>
+      <error line="387" code="PPC:ERR-50015">Argument $form_state is missing from the Docblock of ma_gcs_shortcode_piechart_attributes</error>
+      <error line="387" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_piechart_attributes()</error>
+      <error line="395" code="PPC:ERR-50015">Argument $form is missing from the Docblock of ma_gcs_shortcode_linechart_attributes</error>
+      <error line="395" code="PPC:ERR-50015">Argument $form_state is missing from the Docblock of ma_gcs_shortcode_linechart_attributes</error>
+      <error line="395" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_linechart_attributes()</error>
+      <error line="403" code="PPC:ERR-50015">Argument $form is missing from the Docblock of ma_gcs_shortcode_barchart_attributes</error>
+      <error line="403" code="PPC:ERR-50015">Argument $form_state is missing from the Docblock of ma_gcs_shortcode_barchart_attributes</error>
+      <error line="403" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_barchart_attributes()</error>
+      <error line="411" code="PPC:ERR-50015">Argument $form is missing from the Docblock of ma_gcs_shortcode_tablechart_attributes</error>
+      <error line="411" code="PPC:ERR-50015">Argument $form_state is missing from the Docblock of ma_gcs_shortcode_tablechart_attributes</error>
+      <error line="411" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_tablechart_attributes()</error>
+      <error line="447" code="PPC:ERR-50011">No summary for function \ma_gcs_theme()</error>
+      <error line="468" code="PPC:ERR-50015">Argument $attrs is missing from the Docblock of _ma_gcs_shortcode</error>
+      <error line="468" code="PPC:ERR-50011">No summary for function \_ma_gcs_shortcode()</error>
+      <error line="482" code="PPC:ERR-50015">Argument $attrs is missing from the Docblock of ma_gcs_shortcode_piechart</error>
+      <error line="482" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_piechart()</error>
+      <error line="491" code="PPC:ERR-50015">Argument $attrs is missing from the Docblock of ma_gcs_shortcode_linechart</error>
+      <error line="491" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_linechart()</error>
+      <error line="500" code="PPC:ERR-50015">Argument $attrs is missing from the Docblock of ma_gcs_shortcode_barchart</error>
+      <error line="500" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_barchart()</error>
+      <error line="509" code="PPC:ERR-50015">Argument $attrs is missing from the Docblock of ma_gcs_shortcode_tablechart</error>
+      <error line="509" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_tablechart()</error>
+      <error line="519" code="PPC:ERR-50015">Argument $vars is missing from the Docblock of _ma_gcs_shortcode_theme</error>
+      <error line="563" code="PPC:ERR-50015">Argument $vars is missing from the Docblock of theme_shortcode_piechart</error>
+      <error line="563" code="PPC:ERR-50011">No summary for function \theme_shortcode_piechart()</error>
+      <error line="572" code="PPC:ERR-50015">Argument $vars is missing from the Docblock of theme_shortcode_barchart</error>
+      <error line="572" code="PPC:ERR-50011">No summary for function \theme_shortcode_barchart()</error>
+      <error line="580" code="PPC:ERR-50015">Argument $vars is missing from the Docblock of theme_shortcode_linechart</error>
+      <error line="580" code="PPC:ERR-50011">No summary for function \theme_shortcode_linechart()</error>
+      <error line="588" code="PPC:ERR-50015">Argument $vars is missing from the Docblock of theme_shortcode_tablechart</error>
+      <error line="588" code="PPC:ERR-50011">No summary for function \theme_shortcode_tablechart()</error>
+      <error line="598" code="PPC:ERR-50015">Argument $type is missing from the Docblock of _ma_gcs_shortcode_tip</error>
+      <error line="598" code="PPC:ERR-50015">Argument $format is missing from the Docblock of _ma_gcs_shortcode_tip</error>
+      <error line="598" code="PPC:ERR-50015">Argument $long is missing from the Docblock of _ma_gcs_shortcode_tip</error>
+      <error line="614" code="PPC:ERR-50015">Argument $format is missing from the Docblock of ma_gcs_shortcode_piechart_tip</error>
+      <error line="614" code="PPC:ERR-50015">Argument $long is missing from the Docblock of ma_gcs_shortcode_piechart_tip</error>
+      <error line="614" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_piechart_tip()</error>
+      <error line="624" code="PPC:ERR-50015">Argument $format is missing from the Docblock of ma_gcs_shortcode_tablechart_tip</error>
+      <error line="624" code="PPC:ERR-50015">Argument $long is missing from the Docblock of ma_gcs_shortcode_tablechart_tip</error>
+      <error line="624" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_tablechart_tip()</error>
+      <error line="634" code="PPC:ERR-50015">Argument $format is missing from the Docblock of ma_gcs_shortcode_barchart_tip</error>
+      <error line="634" code="PPC:ERR-50015">Argument $long is missing from the Docblock of ma_gcs_shortcode_barchart_tip</error>
+      <error line="634" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_barchart_tip()</error>
+      <error line="644" code="PPC:ERR-50015">Argument $format is missing from the Docblock of ma_gcs_shortcode_linechart_tip</error>
+      <error line="644" code="PPC:ERR-50015">Argument $long is missing from the Docblock of ma_gcs_shortcode_linechart_tip</error>
+      <error line="644" code="PPC:ERR-50011">No summary for function \ma_gcs_shortcode_linechart_tip()</error>
+      <error line="655" code="PPC:ERR-50015">Argument $length is missing from the Docblock of generateRandomString</error>
+    </parse_markers>
+    <source>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</source>
+  </file>
+  <file path="newfile.php" generated-path="newfile.html" hash="9bb1034bfe8e0317a16ee9b3d80d4c2f" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJyzsS/IKODi0tfS4lLQUnBIy8xJBTL0uQBFvAU8</source>
+  </file>
+  <file path="test.php" generated-path="test.html" hash="764a09fe43a6ae94230f9b6a9e76be3e" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="file" line="0" description="$feed = docs.google.com/spreadsheet/ccc?key=&lt;KEY&gt;#gid=12345."/>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <function namespace="" line="19" package="Default">
+      <name>csvToArray</name>
+      <full_name>\csvToArray()</full_name>
+      <docblock line="19">
+        <description>Function to convert CSV into associative array.</description>
+        <long-description></long-description>
+        <tag name="package" line="19" description="Default"/>
+      </docblock>
+      <argument line="0" by_reference="false">
+        <name>$file</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="0" by_reference="false">
+        <name>$delimiter</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="19" code="PPC:ERR-50015">Argument $file is missing from the Docblock of csvToArray</error>
+      <error line="19" code="PPC:ERR-50015">Argument $delimiter is missing from the Docblock of csvToArray</error>
+    </parse_markers>
+    <source>eJx9VGFT2zgQ/e5fscd5cAJJbBqgTEOOcim99toCQ1pSyjCMYq1jJYrksWRCetP/3pUdhzDX6SdrVrvvvd198vFJlmZeuLPjwQ68ToREd/ATRA594Do2nYnWE4mdWM9Dk+XIuEkRbRjH8ckMl/3jD2c3f/05Eby/96K7f9Ch+tDzaoSt1NrMvAo3S59BujwTSmFsuLcfJe2ie/M4mHQfpcke24/no8vx7Ov15fDdxcUnnQ1G1ly3R5zpUPPDMCvGUsThA5MFmhMnoRsdHR0cHr18udXzUuLDvBEMtLKobNsuM3wFLMuohlmhVTg1WgXNnueFIQzRwlIXOQyG1+BEuWDdRVB38buBkJqTVPZR3X8Zbq8PbkTR6cxgd3kwG1xcHfGz9DAeXd2M3lzL0fw8+nzGk6vZty6fzb7zf+JtIxSh921e4LZrKdrWhc0K24/NQ9Bzqk7znC0NLDCQEgqDIJnFvOP5xGVILXP3DerLV7gokzeD9bLfFip2UwCrIdbqAXNb9i4UBZgxOhY0pQesKqu1JnUNafmsS+iG70zTAp+jFHNBQprwnwcgEmg0/JQpLpHoE52hqnODPGg24Y9+H96efhyeVQUAvqDEqFeeFyllOgQpFNY9JBO0xFzDtmA/iqJNaoLe+iU0kIAcGv60ZAD6HlPThbIbBE0X3919KiFF1PutL+5u/ekdVT7lukBvlfZj9fXF7m4VqyJJLLXBWmzTXbmLHG2RqxK65/0ovfdGg7C0P84sI5pnwyUDUletTZuqYj7GHHQCKHFO1jbQmAtVGNiDMcbMWWKBYFKRWMpKwKYIiciNhVwvmp5fdu6Iqgk42ia0Ya+i+GI2ssu5KTZHQ/okG6NcO+y+JFiVUyllIotTmvIqjxmojtVIS3veVnN00br7U87hPTctmBbEKchcrGpgwUglaZ8/M3iJEAgeVJREJ1ZLFbTUqrdeuYwVrdNXLrGkFjXt3zk9NJo7MHpFVpO1Usfxf5+sIadPkOsZ0E9gTKZolNJaNdn0rlz3+v3V/uE1+SWRW0dOb9vN6d/hxXnHwzjV4H5K96hizQm1BiC4n1taucU=</source>
+  </file>
+  <file path="src/newfile.php" generated-path="src.newfile.html" hash="9bb1034bfe8e0317a16ee9b3d80d4c2f" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+    </parse_markers>
+    <source>eJyzsS/IKODi0tfS4lLQUnBIy8xJBTL0uQBFvAU8</source>
   </file>
   <package name="Default" full_name="Default"/>
   <package name="global" full_name="global"/>
+  <namespace name="global" full_name="global"/>
   <deprecated count="0"/>
 </project>
