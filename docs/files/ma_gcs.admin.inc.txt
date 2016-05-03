@@ -9,6 +9,7 @@
  */
 
 /**
+ * switching to clean phpdocumentor theme
  */
 function ma_gcs_admin() {
   $form = array();

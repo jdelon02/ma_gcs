@@ -6,7 +6,7 @@
 
 /**
  * Implements hook_libraries_info().
- * just a test.
+ * 
  */
 function ma_gcs_libraries_info() {
 
