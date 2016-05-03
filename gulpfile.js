@@ -28,7 +28,7 @@ gulp.task('phplint', function (cb) {
     });
 });
 
-//seems to work
+//seems to work - saving now
 gulp.task('phpcs', function () {
     return gulp.src(['./**/*.php', './**/*.module', './**/*.inc', '!node_modules/', '!vendor/**/*'])
         .pipe(phpcs({
