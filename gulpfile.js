@@ -53,8 +53,7 @@ gulp.task('phpcbf', function () {
 
 //Writing this without any special config because there is an xml config doc
 //seems to work
-gulp.task('phpdoc',
-        shell.task(['./vendor/bin/phpdoc']));
+gulp.task('phpdoc', shell.task(['./vendor/bin/phpdoc']));
 
 //nope
 gulp.task('pdepend',
@@ -83,7 +82,7 @@ gulp.task('watch', function () {
         console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
     });
     // gulp.watch('composer.json', ['dump-autoload']);.
-    gulp.watch(['./**/*.php', './**/*.modules', './**/*.inc', '!vendor/**/*', '!node_modules/**/*'], ['phplint', 'phpcs']);
+    gulp.watch(['./**/*.php', './**/*.modules', './**/*.inc', '!vendor/**/*', '!node_modules/**/*', '!test.php'], ['phplint', 'phpcs']);
 });
 
 

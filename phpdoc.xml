@@ -21,6 +21,8 @@
 		<directory>.</directory>
 		<ignore>vendor/*</ignore>
 		<ignore>node_modules/*</ignore>
+		<ignore>docs/*</ignore>
+		<ignore>test.php</ignore>
 	</files>
 	<transformations>
         <template name="clean"/>
