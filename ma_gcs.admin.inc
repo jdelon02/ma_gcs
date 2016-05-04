@@ -2,10 +2,18 @@
 
 /**
  * @file
- */
-
-/**
- * Sets the instance url of Google Chart Shortcodes.
+ * This is another file that serves as a stub file for the many Examples modules
+ * in the
+ *
+ * @link http://drupal.org/project/examples Examples for Developers Project
+ *       @endlink
+ *       which you can download and experiment with.
+ *      
+ *       One might say that examples.module is an example of documentation.
+ *       However,
+ *       note that the example submodules define many doxygen groups, which may
+ *       or
+ *       may not be a good strategy for other modules.
  */
 
 /**

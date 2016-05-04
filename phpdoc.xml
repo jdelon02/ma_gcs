@@ -3,11 +3,11 @@
 	<title>MA Google Charts Shortcodes</title>
 	<parser>
 		<target>docs</target>
+		<markers>
+			<item>TODO</item>
+			<item>FIXME</item>
+		</markers>
 		<extensions>
-			<markers>
-	            <item>TODO</item>
-	            <item>FIXME</item>
-	        </markers>
 			<extension>module</extension>
 			<extension>inc</extension>
 			<extension>install</extension>
@@ -19,12 +19,13 @@
 	</transformer>
 	<files>
 		<directory>.</directory>
+		<ignore>src/*</ignore>
 		<ignore>vendor/*</ignore>
 		<ignore>node_modules/*</ignore>
 		<ignore>docs/*</ignore>
 		<ignore>test.php</ignore>
 	</files>
 	<transformations>
-        <template name="clean"/>
-    </transformations>
+		<template name="clean" />
+	</transformations>
 </phpdoc>

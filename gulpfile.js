@@ -12,13 +12,13 @@ pdependDocs = './docs/pdepend';
 var phpcbf = require('gulp-phpcbf');
 var gutil = require('gutil');
 var phpmd = require('gulp-phpmd');
-
-
+var apigen = require('gulp-apigen');
 var std = './vendor/drupal/coder/coder_sniffer/Drupal';
+
 
 //seems to work
 gulp.task('phplint', function (cb) {
-    phplint(['./**/*.php', './**/*.module', './**/*.inc', '!node_modules/**/*', '!vendor/**/*'],  { limit: 10 }, function (err, stdout, stderr) {
+    phplint(['./**/*.php', './**/*.module', './**/*.inc', '!node_modules/**/*', '!vendor/**/*'],  { limit: 20 }, function (err, stdout, stderr) {
       if (err) {
           cb(err);
       }
@@ -39,6 +39,7 @@ gulp.task('phpcs', function () {
           .pipe(phpcs.reporter('log'));
 });
 
+
 //seems to work, but not a 100% sure
 gulp.task('phpcbf', function () {
 	return gulp.src(['./**/*.php', './**/*.module', './**/*.inc', '!node_modules/', '!vendor/**/*'])
@@ -48,12 +49,20 @@ gulp.task('phpcbf', function () {
 	        warningSeverity: 0
 	    }))
 	      .on('error', gutil.log)
-	      .pipe(gulp.dest('src'));
+	      .pipe(gulp.dest('phpfixed'));
 });
+
 
 //Writing this without any special config because there is an xml config doc
 //seems to work
 gulp.task('phpdoc', shell.task(['./vendor/bin/phpdoc']));
+
+
+// option 2: with defined bin
+gulp.task('apigen', function() {
+    gulp.src('apigen.neon').pipe(apigen('./vendor/bin/apigen'));
+});
+
 
 //nope
 gulp.task('pdepend',
@@ -61,6 +70,7 @@ gulp.task('pdepend',
                 ['mkdir -p ' + pdependDocs,
                  './vendor/bin/pdepend --summary-xml=' + pdependDocs + '/summary.xml --jdepend-chart=' + pdependDocs + '/chart.svg --overview-pyramid=' + pdependDocs + '/pyramid.svg --ignore=vendor,node_modules,test.php --suffix=php,inc,modules .'
         ]));
+
 
 //works, but not setup for Drupal, so kind of pointless...
 gulp.task('phpmd', function () {

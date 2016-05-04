@@ -2,67 +2,81 @@
 
 /**
  * @file
+ * This file serves as a stub file for the many Examples modules in the
+ * 
+ * @link http://drupal.org/project/examples Examples for Developers Project
+ *       @endlink
+ *       which you can download and experiment with.
+ *      
+ *       One might say that examples.module is an example of documentation.
+ *       However,
+ *       note that the example submodules define many doxygen groups, which may
+ *       or
+ *       may not be a good strategy for other modules.
  */
 
 /**
+ * @defgroup examples Examples
+ * @{
+ *
+ * /**
  * Implements hook_libraries_info().
- * 
  */
 function ma_gcs_libraries_info() {
-
+  
   $libraries['c3'] = array(
     // Only used in administrative UI of Libraries API.
-	    'name' => 'C3',
-    'vendor url' => 'http://c3js.org',
-    'download url' => 'https://github.com/masayuki0812/c3/releases/latest',
+    'name' => 'C3', 
+    'vendor url' => 'http://c3js.org', 
+    'download url' => 'https://github.com/masayuki0812/c3/releases/latest', 
     'files' => array(
       'js' => array(
-        	'c3.min.js',
-      ),
+        'c3.min.js'
+      ), 
       'css' => array(
-        'c3.min.css',
-      ),
-    ),
+        'c3.min.css'
+      )
+    ), 
     'versions' => array(
-      				'0.4.10' => array(
+      '0.4.10' => array(
         'files' => array(
           'js' => array(
-            'c3.min.js',
-          ),
+            'c3.min.js'
+          ), 
           'css' => array(
-            'c3.min.css',
-         			 ),
-        ),
-      ),
-    ),
-    'version' => '0.4.10',
-			    'dependencies' => array(
-      'd3',
-    ),
+            'c3.min.css'
+          )
+        )
+      )
+    ), 
+    'version' => '0.4.10', 
+    'dependencies' => array(
+      'd3'
+    )
   );
-
+  
   $libraries['d3'] = array(
     // Only used in administrative UI of Libraries API.
-    'name' => 'D3',
-    'vendor url' => 'http://d3js.org',
-    'download url' => 'https://github.com/mbostock/d3',
+    'name' => 'D3', 
+    'vendor url' => 'http://d3js.org', 
+    'download url' => 'https://github.com/mbostock/d3', 
     'files' => array(
       'js' => array(
-        'd3.min.js',
-      ),
-    ),
+        'd3.min.js'
+      )
+    ), 
     'versions' => array(
       '3.5.0' => array(
         'files' => array(
           'js' => array(
-            'd3.min.js',
-          ),
-        ),
-      ),
-    ),
-    'version' => '3.5.0',
+            'd3.min.js'
+          )
+        )
+      )
+    ), 
+    'version' => '3.5.0'
   );
-
+  
   return $libraries;
 }
 
@@ -85,46 +99,44 @@ function ma_gcs_init() {
 function ma_gcs_menu() {
   $items = array();
   $items['admin/config/services/ma_gcs'] = array(
-    'title' => 'Google Charts Shortcodes',
-    'description' => 'Configuration for Google Charts Shortcodes',
-    'page callback' => 'drupal_get_form',
+    'title' => 'Google Charts Shortcodes', 
+    'description' => 'Configuration for Google Charts Shortcodes', 
+    'page callback' => 'drupal_get_form', 
     'page arguments' => array(
-      'ma_gcs_admin',
-    ),
+      'ma_gcs_admin'
+    ), 
     'access arguments' => array(
-      'administer site configuration',
-    ),
-    'type' => MENU_NORMAL_ITEM,
-    'file' => 'ma_gcs.admin.inc',
+      'administer site configuration'
+    ), 
+    'type' => MENU_NORMAL_ITEM, 
+    'file' => 'ma_gcs.admin.inc'
   );
   return $items;
 }
 
 /**
- *
  */
 function _ma_gcs_chart_types() {
   // Spline Chart, Step Chart, Area Chart, Bar Chart, Scatter Chart, Pie Chart,
   // Donut Chart, Gauge Chart.
   return array(
-    'Pie' => 'piechart',
-    'Bar' => 'barchart',
-    'Line' => 'linechart',
+    'Pie' => 'piechart', 
+    'Bar' => 'barchart', 
+    'Line' => 'linechart'
   );
 }
 
 /**
- *
  */
 function ma_gcs_shortcode_info() {
   $chartarray = _ma_gcs_chart_types();
   foreach ($chartarray as $key => $value) {
     $shortcodes["$value"] = array(
-      'title' => ("Google $key Chart"),
-      'description' => ("Embed a Google $key Chart."),
-      'attributes callback' => 'ma_gcs_shortcode_' . $value . '_attributes',
-      'process callback' => 'ma_gcs_shortcode_' . $value . '',
-      'tips callback' => 'ma_gcs_shortcode_' . $value . '_tip',
+      'title' => ("Google $key Chart"), 
+      'description' => ("Embed a Google $key Chart."), 
+      'attributes callback' => 'ma_gcs_shortcode_' . $value . '_attributes', 
+      'process callback' => 'ma_gcs_shortcode_' . $value . '', 
+      'tips callback' => 'ma_gcs_shortcode_' . $value . '_tip'
     );
   }
   return $shortcodes;
@@ -139,129 +151,129 @@ function _ma_gcs_formbuild($type) {
   $key = $type;
   $value = $key . 'chart';
   $value = strtolower($value);
-
+  
   $form['' . $value . '-link'] = array(
-    '#name' => t('link'),
-    '#title' => t("Enter $key Sheets URL"),
-    '#type' => 'textfield',
+    '#name' => t('link'), 
+    '#title' => t("Enter $key Sheets URL"), 
+    '#type' => 'textfield', 
     '#states' => array(
       'visible' => array(
         ':input[name="shortcode"]' => array(
-          "value" => "$value",
-        ),
-      ),
-    ),
+          "value" => "$value"
+        )
+      )
+    )
   );
-
+  
   $form['' . $value . '-worksheet'] = array(
-    '#name' => t('worksheet'),
-    '#title' => t("Enter $key workheet position"),
-    '#description' => t('This identifies which worksheet to pull data from. Count from the left.'),
-    '#type' => 'textfield',
+    '#name' => t('worksheet'), 
+    '#title' => t("Enter $key workheet position"), 
+    '#description' => t('This identifies which worksheet to pull data from. Count from the left.'), 
+    '#type' => 'textfield', 
     '#states' => array(
       'visible' => array(
         ':input[name="shortcode"]' => array(
-          "value" => "$value",
-        ),
-      ),
-    ),
+          "value" => "$value"
+        )
+      )
+    )
   );
-
+  
   $form['' . $value . '-title'] = array(
-    '#name' => t('title'),
-    '#title' => t("Enter The $key Chart Title"),
-    '#type' => 'textfield',
-    '#size' => 40,
+    '#name' => t('title'), 
+    '#title' => t("Enter The $key Chart Title"), 
+    '#type' => 'textfield', 
+    '#size' => 40, 
     '#states' => array(
       'visible' => array(
         ':input[name="shortcode"]' => array(
-          'value' => "$value",
-        ),
-      ),
-    ),
+          'value' => "$value"
+        )
+      )
+    )
   );
-
+  
   $form['' . $value . '-subtitle'] = array(
-    '#name' => t('subtitle'),
-    '#title' => t("Enter The $key Chart SubTitle"),
-    '#type' => 'textfield',
-    '#size' => 40,
+    '#name' => t('subtitle'), 
+    '#title' => t("Enter The $key Chart SubTitle"), 
+    '#type' => 'textfield', 
+    '#size' => 40, 
     '#states' => array(
       'visible' => array(
         ':input[name="shortcode"]' => array(
-          'value' => "$value",
-        ),
-      ),
-    ),
+          'value' => "$value"
+        )
+      )
+    )
   );
   // To make the fieldset collapsible.
   $form['' . $value . '-optionset'] = array(
-    '#type' => 'fieldset',
-    '#title' => t('Chart Options'),
-  // Added.
-    '#collapsible' => TRUE,
-  // Added.
-    '#collapsed' => FALSE,
+    '#type' => 'fieldset', 
+    '#title' => t('Chart Options'), 
+    // Added.
+    '#collapsible' => TRUE, 
+    // Added.
+    '#collapsed' => FALSE, 
     '#attributes' => array(
       'class' => array(
-        'optionset',
-      ),
-    ),
+        'optionset'
+      )
+    ), 
     '#states' => array(
       'visible' => array(
         ':input[name="shortcode"]' => array(
-          'value' => "$value",
-        ),
-      ),
-    ),
+          'value' => "$value"
+        )
+      )
+    )
   );
   $form['' . $value . '-optionset']['' . $value . '-xtitle'] = array(
-    '#name' => t('xtitle'),
-    '#title' => t("Enter The X-Axis $key Chart Title"),
-    '#type' => 'textfield',
-    '#size' => 40,
+    '#name' => t('xtitle'), 
+    '#title' => t("Enter The X-Axis $key Chart Title"), 
+    '#type' => 'textfield', 
+    '#size' => 40, 
     '#states' => array(
       'visible' => array(
         ':input[name="shortcode"]' => array(
-          'value' => "$value",
-        ),
-      ),
-    ),
+          'value' => "$value"
+        )
+      )
+    )
   );
-
+  
   $form['' . $value . '-optionset']['' . $value . '-ytitle'] = array(
-    '#name' => t('ytitle'),
-    '#title' => t("Enter The Y-Axis $key Chart Title"),
-    '#type' => 'textfield',
-    '#size' => 40,
+    '#name' => t('ytitle'), 
+    '#title' => t("Enter The Y-Axis $key Chart Title"), 
+    '#type' => 'textfield', 
+    '#size' => 40, 
     '#states' => array(
       'visible' => array(
         ':input[name="shortcode"]' => array(
-          'value' => "$value",
-        ),
-      ),
-    ),
+          'value' => "$value"
+        )
+      )
+    )
   );
-
+  
   $legend = array(
-    'bottom' => t('On The Bottom'),
-    'right' => t('On The Right'),
+    'bottom' => t('On The Bottom'), 
+    'right' => t('On The Right')
   );
-
+  
   $form['' . $value . '-optionset']['' . $value . '-islegend'] = array(
-    '#name' => t('islegend'),
-    '#title' => t('Where would you like the legend to appear?'),
-    '#type' => 'select',
-    '#options' => $legend,
+    '#name' => t('islegend'), 
+    '#title' => t('Where would you like the legend to appear?'), 
+    '#type' => 'select', 
+    '#options' => $legend, 
     '#states' => array(
       'visible' => array(
         ':input[name="shortcode"]' => array(
-          'value' => "$value",
-        ),
-      ),
-    ),
+          'value' => "$value"
+        )
+      )
+    )
   );
-
+  
   // For the line and bar charts: option for vertical/horizontal chart (I
   // believe this option will cover the line chart you mentioned and the
   // bar/line charttype can be merged).
@@ -269,121 +281,120 @@ function _ma_gcs_formbuild($type) {
   // stacked/unstacked; horizontal/vertical; and filled/unfilled.
   if ($key == "Bar" || $key == "Line") {
     $stacked = array(
-      'True' => t('Yes'),
-      'False' => t('No'),
+      'True' => t('Yes'), 
+      'False' => t('No')
     );
     $currency = array(
-      'True' => t('Yes'),
-      'False' => t('No'),
+      'True' => t('Yes'), 
+      'False' => t('No')
     );
     $direction = array(
-      'Vertical' => t('Vertical Layout'),
-      'Horizontal' => t('Horizontal Layout'),
+      'Vertical' => t('Vertical Layout'), 
+      'Horizontal' => t('Horizontal Layout')
     );
     $form['' . $value . '-optionset']['' . $value . '-isstacked'] = array(
-      '#name' => t('isstacked'),
-      '#title' => t('Is this a Stacked Chart?'),
-      '#type' => 'select',
-      '#options' => $stacked,
+      '#name' => t('isstacked'), 
+      '#title' => t('Is this a Stacked Chart?'), 
+      '#type' => 'select', 
+      '#options' => $stacked, 
       '#states' => array(
         'visible' => array(
           ':input[name="shortcode"]' => array(
-            'value' => "$value",
-          ),
-        ),
-      ),
+            'value' => "$value"
+          )
+        )
+      )
     );
     $form['' . $value . '-optionset']['' . $value . '-isdirection'] = array(
-      '#name' => t('isdirection'),
-      '#title' => t('Which direction does the chart go?'),
-      '#type' => 'select',
-      '#options' => $direction,
+      '#name' => t('isdirection'), 
+      '#title' => t('Which direction does the chart go?'), 
+      '#type' => 'select', 
+      '#options' => $direction, 
       '#states' => array(
         'visible' => array(
           ':input[name="shortcode"]' => array(
-            'value' => "$value",
-          ),
-        ),
-      ),
+            'value' => "$value"
+          )
+        )
+      )
     );
     $form['' . $value . '-optionset']['' . $value . '-iscurrency'] = array(
-      '#name' => t('iscurrency'),
-      '#title' => t('Format the y-axis as currency?'),
-      '#type' => 'select',
-      '#options' => $currency,
+      '#name' => t('iscurrency'), 
+      '#title' => t('Format the y-axis as currency?'), 
+      '#type' => 'select', 
+      '#options' => $currency, 
       '#states' => array(
         'visible' => array(
           ':input[name="shortcode"]' => array(
-            'value' => "$value",
-          ),
-        ),
-      ),
+            'value' => "$value"
+          )
+        )
+      )
     );
   }
   if ($key == "Line") {
     $fillerup = array(
-      'True' => t('Yes'),
-      'False' => t('No'),
+      'True' => t('Yes'), 
+      'False' => t('No')
     );
     $form['' . $value . '-optionset']['' . $value . '-isfilled'] = array(
-      '#name' => t('isfilled'),
-      '#title' => t('Is this a filled chart?'),
-      '#type' => 'select',
-      '#description' => t('This only applies to line charts'),
-      '#options' => $fillerup,
+      '#name' => t('isfilled'), 
+      '#title' => t('Is this a filled chart?'), 
+      '#type' => 'select', 
+      '#description' => t('This only applies to line charts'), 
+      '#options' => $fillerup, 
       '#states' => array(
         'visible' => array(
           ':input[name="shortcode"]' => array(
-            'value' => "$value",
-          ),
-        ),
-      ),
+            'value' => "$value"
+          )
+        )
+      )
     );
   }
   // To make the fieldset collapsible.
   $form['' . $value . '-colorset'] = array(
-    '#type' => 'fieldset',
-    '#title' => t('Colors'),
-  // Added.
-    '#collapsible' => TRUE,
-  // Added.
-    '#collapsed' => TRUE,
+    '#type' => 'fieldset', 
+    '#title' => t('Colors'), 
+    // Added.
+    '#collapsible' => TRUE, 
+    // Added.
+    '#collapsed' => TRUE, 
     '#attributes' => array(
       'class' => array(
-        'colorset',
-      ),
-    ),
+        'colorset'
+      )
+    ), 
     '#states' => array(
       'visible' => array(
         ':input[name="shortcode"]' => array(
-          'value' => "$value",
-        ),
-      ),
-    ),
+          'value' => "$value"
+        )
+      )
+    )
   );
-
+  
   for ($i = 1; $i < 9; $i++) {
     $form['' . $value . '-colorset']['' . $value . '-col' . $i] = array(
-      '#name' => t('col' . $i),
-      '#type' => 'textfield',
-      '#title' => t('Color #' . $i),
-      '#default_value' => variable_get('ma_gcs_color' . $i, ''),
-      '#size' => 8,
+      '#name' => t('col' . $i), 
+      '#type' => 'textfield', 
+      '#title' => t('Color #' . $i), 
+      '#default_value' => variable_get('ma_gcs_color' . $i, ''), 
+      '#size' => 8, 
       '#states' => array(
         'visible' => array(
           ':input[name="shortcode"]' => array(
-            'value' => "$value",
-          ),
-        ),
-      ),
+            'value' => "$value"
+          )
+        )
+      )
     );
   }
-
+  
   return $form;
 }
 
 /**
- *
  */
 function ma_gcs_shortcode_piechart_attributes($form, &$form_state) {
   $pieform = _ma_gcs_formbuild('Pie');
@@ -391,7 +402,6 @@ function ma_gcs_shortcode_piechart_attributes($form, &$form_state) {
 }
 
 /**
- *
  */
 function ma_gcs_shortcode_linechart_attributes($form, &$form_state) {
   $lineform = _ma_gcs_formbuild('Line');
@@ -399,7 +409,6 @@ function ma_gcs_shortcode_linechart_attributes($form, &$form_state) {
 }
 
 /**
- *
  */
 function ma_gcs_shortcode_barchart_attributes($form, &$form_state) {
   $barform = _ma_gcs_formbuild('Bar');
@@ -407,7 +416,6 @@ function ma_gcs_shortcode_barchart_attributes($form, &$form_state) {
 }
 
 /**
- *
  */
 function ma_gcs_shortcode_tablechart_attributes($form, &$form_state) {
   $tableform = _ma_gcs_formbuild('Table');
@@ -419,66 +427,63 @@ function ma_gcs_shortcode_tablechart_attributes($form, &$form_state) {
  */
 function _ma_gcs_base_variables() {
   return array(
-    'type' => '',
-    'link' => '',
-    'worksheet' => '',
-    'title' => '',
-    'subtitle' => '',
-    'xtitle' => '',
-    'ytitle' => '',
-    'islegend' => '',
-    'isdirection' => '',
-    'isstacked' => '',
-    'isfilled' => '',
-    'iscurrency' => '',
-    'col1' => '',
-    'col2' => '',
-    'col3' => '',
-    'col4' => '',
-    'col5' => '',
-    'col6' => '',
-    'col7' => '',
-    'col8' => '',
+    'type' => '', 
+    'link' => '', 
+    'worksheet' => '', 
+    'title' => '', 
+    'subtitle' => '', 
+    'xtitle' => '', 
+    'ytitle' => '', 
+    'islegend' => '', 
+    'isdirection' => '', 
+    'isstacked' => '', 
+    'isfilled' => '', 
+    'iscurrency' => '', 
+    'col1' => '', 
+    'col2' => '', 
+    'col3' => '', 
+    'col4' => '', 
+    'col5' => '', 
+    'col6' => '', 
+    'col7' => '', 
+    'col8' => ''
   );
 }
 
 /**
- *
  */
 function ma_gcs_theme() {
   $array = array(
     'shortcode_piechart' => array(
-      'variables' => _ma_gcs_base_variables(),
-    ),
+      'variables' => _ma_gcs_base_variables()
+    ), 
     'shortcode_barchart' => array(
-      'variables' => _ma_gcs_base_variables(),
-    ),
+      'variables' => _ma_gcs_base_variables()
+    ), 
     'shortcode_linechart' => array(
-      'variables' => _ma_gcs_base_variables(),
-    ),
+      'variables' => _ma_gcs_base_variables()
+    ), 
     'shortcode_tablechart' => array(
-      'variables' => _ma_gcs_base_variables(),
-    ),
+      'variables' => _ma_gcs_base_variables()
+    )
   );
   return $array;
 }
 
 /**
- *
  */
 function _ma_gcs_shortcode($attrs) {
   $attrs = shortcode_attrs(_ma_gcs_base_variables(), $attrs);
   $attributearray = array();
   foreach ($attrs as $key => $value) {
     $attributearray += array(
-      "$key" => "$value",
+      "$key" => "$value"
     );
   }
   return $attributearray;
 }
 
 /**
- *
  */
 function ma_gcs_shortcode_piechart($attrs) {
   $attributearray = _ma_gcs_shortcode($attrs);
@@ -487,7 +492,6 @@ function ma_gcs_shortcode_piechart($attrs) {
 }
 
 /**
- *
  */
 function ma_gcs_shortcode_linechart($attrs) {
   $attributearray = _ma_gcs_shortcode($attrs);
@@ -496,7 +500,6 @@ function ma_gcs_shortcode_linechart($attrs) {
 }
 
 /**
- *
  */
 function ma_gcs_shortcode_barchart($attrs) {
   $attributearray = _ma_gcs_shortcode($attrs);
@@ -505,7 +508,6 @@ function ma_gcs_shortcode_barchart($attrs) {
 }
 
 /**
- *
  */
 function ma_gcs_shortcode_tablechart($attrs) {
   $attributearray = _ma_gcs_shortcode($attrs);
@@ -559,16 +561,14 @@ function _ma_gcs_shortcode_theme($vars) {
 }
 
 /**
- *
  */
 function theme_shortcode_piechart($vars) {
-
+  
   $returnstring = _ma_gcs_shortcode_theme($vars);
   return $returnstring;
 }
 
 /**
- *
  */
 function theme_shortcode_barchart($vars) {
   $returnstring = _ma_gcs_shortcode_theme($vars);
@@ -576,7 +576,6 @@ function theme_shortcode_barchart($vars) {
 }
 
 /**
- *
  */
 function theme_shortcode_linechart($vars) {
   $returnstring = _ma_gcs_shortcode_theme($vars);
@@ -584,7 +583,6 @@ function theme_shortcode_linechart($vars) {
 }
 
 /**
- *
  */
 function theme_shortcode_tablechart($vars) {
   $returnstring = _ma_gcs_shortcode_theme($vars);
@@ -605,12 +603,11 @@ function _ma_gcs_shortcode_tip($type, $format, $long) {
   else {
     $output[] = t('Outputs text that links to a URL.') . '</p>';
   }
-
+  
   return implode(' ', $output);
 }
 
 /**
- *
  */
 function ma_gcs_shortcode_piechart_tip($format, $long) {
   $type = "Pie";
@@ -620,7 +617,6 @@ function ma_gcs_shortcode_piechart_tip($format, $long) {
 }
 
 /**
- *
  */
 function ma_gcs_shortcode_tablechart_tip($format, $long) {
   $type = "Table";
@@ -630,7 +626,6 @@ function ma_gcs_shortcode_tablechart_tip($format, $long) {
 }
 
 /**
- *
  */
 function ma_gcs_shortcode_barchart_tip($format, $long) {
   $type = "Bar";
@@ -640,7 +635,6 @@ function ma_gcs_shortcode_barchart_tip($format, $long) {
 }
 
 /**
- *
  */
 function ma_gcs_shortcode_linechart_tip($format, $long) {
   $type = "Line";
@@ -656,3 +650,9 @@ function ma_gcs_shortcode_linechart_tip($format, $long) {
 function generateRandomString($length = 5) {
   return substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length);
 }
+
+
+
+/**
+ * @} End of 'defgroup examples'.
+ */

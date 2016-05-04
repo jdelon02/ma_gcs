@@ -1,0 +1,49 @@
+\hypertarget{test_8php}{}\section{test.\+php File Reference}
+\label{test_8php}\index{test.\+php@{test.\+php}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{test_8php_aa8908c82e8e46a1c95f377e66dc6c40b}{csv\+To\+Array} (\$file, \$delimiter)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries \$feed} = \char`\"{}https\+://spreadsheets.\+google.\+com/feeds/list/140f-\/u3\+Yx\+Cg3xlspx-\/x\+N\+W\+Pbk\+X\+V\+P\+S\+H\+O\+O\+Mop\+C\+Wts\+V-\/\+Wdao/od6/public/values?gid=308856877\char`\"{}\hypertarget{test_8php_a0c64e1f194986e6f51a67a8144fa305f}{}\label{test_8php_a0c64e1f194986e6f51a67a8144fa305f}
+
+\item 
+{\bfseries \$keys} = array()\hypertarget{test_8php_af20635b6c08e03bfee9e3fc036fa80f3}{}\label{test_8php_af20635b6c08e03bfee9e3fc036fa80f3}
+
+\item 
+{\bfseries \$new\+Array} = array()\hypertarget{test_8php_a8377ba404a557d195a485b85b627c6fa}{}\label{test_8php_a8377ba404a557d195a485b85b627c6fa}
+
+\item 
+{\bfseries \$data} = \hyperlink{test_8php_aa8908c82e8e46a1c95f377e66dc6c40b}{csv\+To\+Array}(\$feed, \textquotesingle{},\textquotesingle{})\hypertarget{test_8php_a6efc15b5a2314dd4b5aaa556a375c6d6}{}\label{test_8php_a6efc15b5a2314dd4b5aaa556a375c6d6}
+
+\item 
+{\bfseries \$count} = count(\$data) -\/ 1\hypertarget{test_8php_af789423037bbc89dc7c850e761177570}{}\label{test_8php_af789423037bbc89dc7c850e761177570}
+
+\item 
+{\bfseries \$labels} = array\+\_\+shift(\$data)\hypertarget{test_8php_a00fa4df95d1b7c3dd9a2321448e90ba9}{}\label{test_8php_a00fa4df95d1b7c3dd9a2321448e90ba9}
+
+\item 
+foreach(\$labels as \$label) {\bfseries \$keys} \mbox{[}$\,$\mbox{]} = \textquotesingle{}id\textquotesingle{}\hypertarget{test_8php_a524baf5e8d5195a196fa969b2e455569}{}\label{test_8php_a524baf5e8d5195a196fa969b2e455569}
+
+\item 
+for(\$i=0;\$i$<$ \$count;\$i++) {\bfseries for} (\$j=0;\$j$<$ \$count;\$j++)\hypertarget{test_8php_a66d043b1aeb98b3819bd91c7c9c4bd7c}{}\label{test_8php_a66d043b1aeb98b3819bd91c7c9c4bd7c}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\$feed = docs.\+google.\+com/spreadsheet/ccc?key=$<$\+K\+E\+Y$>$\#gid=12345. 
+
+\subsection{Function Documentation}
+\index{test.\+php@{test.\+php}!csv\+To\+Array@{csv\+To\+Array}}
+\index{csv\+To\+Array@{csv\+To\+Array}!test.\+php@{test.\+php}}
+\subsubsection[{\texorpdfstring{csv\+To\+Array(\$file, \$delimiter)}{csvToArray($file, $delimiter)}}]{\setlength{\rightskip}{0pt plus 5cm}csv\+To\+Array (
+\begin{DoxyParamCaption}
+\item[{}]{\$file, }
+\item[{}]{\$delimiter}
+\end{DoxyParamCaption}
+)}\hypertarget{test_8php_aa8908c82e8e46a1c95f377e66dc6c40b}{}\label{test_8php_aa8908c82e8e46a1c95f377e66dc6c40b}
+Function to convert C\+SV into associative array. 

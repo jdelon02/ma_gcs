@@ -1,0 +1,53 @@
+\hypertarget{gulpfile_8js}{}\section{gulpfile.\+js File Reference}
+\label{gulpfile_8js}\index{gulpfile.\+js@{gulpfile.\+js}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+gulp {\bfseries task} (\textquotesingle{}phplint\textquotesingle{}, function(cb)\{phplint(\mbox{[}\textquotesingle{}.$\ast$.php\textquotesingle{}, \textquotesingle{}.$\ast$.module\textquotesingle{}, \textquotesingle{}.$\ast$.inc\textquotesingle{}, \textquotesingle{}!node\+\_\+modules $\ast$\textquotesingle{}, \textquotesingle{}!vendor $\ast$\textquotesingle{}\mbox{]},\{limit\+:10\}, function(err, stdout, stderr)\{               if(err)\{                               cb(err);               \}               else\{                               cb();               \}       \});\})\hypertarget{gulpfile_8js_ad46eb4df41836347ad0b52f70e3b452d}{}\label{gulpfile_8js_ad46eb4df41836347ad0b52f70e3b452d}
+
+\item 
+gulp {\bfseries task} (\textquotesingle{}phpdoc\textquotesingle{}, shell.\+task(\mbox{[}\textquotesingle{}./vendor/bin/phpdoc\textquotesingle{}\mbox{]}))\hypertarget{gulpfile_8js_a0cd0868ad03d7a95fbd0dbc638d72a1e}{}\label{gulpfile_8js_a0cd0868ad03d7a95fbd0dbc638d72a1e}
+
+\item 
+gulp {\bfseries task} (\textquotesingle{}pdepend\textquotesingle{}, shell.\+task(                                                       \mbox{[}\textquotesingle{}mkdir-\/p \textquotesingle{}+pdepend\+Docs,                                                           \textquotesingle{}./vendor/bin/pdepend-\/-\/summary-\/xml=\textquotesingle{}+pdepend\+Docs+ \textquotesingle{}/summary.\+xml-\/-\/jdepend-\/chart=\textquotesingle{}+pdepend\+Docs+ \textquotesingle{}/chart.\+svg-\/-\/overview-\/pyramid=\textquotesingle{}+pdepend\+Docs+ \textquotesingle{}/pyramid.\+svg-\/-\/ignore=vendor, node\+\_\+modules, test.\+php-\/-\/suffix=php, inc, modules.\textquotesingle{}                       \mbox{]}))\hypertarget{gulpfile_8js_a0e0e170da108193fa763df6cdb9fa199}{}\label{gulpfile_8js_a0e0e170da108193fa763df6cdb9fa199}
+
+\item 
+gulp {\bfseries task} (\textquotesingle{}default\textquotesingle{}, \mbox{[}\textquotesingle{}phplint\textquotesingle{}, \textquotesingle{}phpcs\textquotesingle{}, \textquotesingle{}phpcbf\textquotesingle{}, \textquotesingle{}phpdoc\textquotesingle{}, \textquotesingle{}watch\textquotesingle{}\mbox{]})\hypertarget{gulpfile_8js_a0051178d1d59fb9b545b65ad50e7b866}{}\label{gulpfile_8js_a0051178d1d59fb9b545b65ad50e7b866}
+
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+use {\bfseries strict}\hypertarget{gulpfile_8js_ae2475e10618961c050dcba04e8c42331}{}\label{gulpfile_8js_ae2475e10618961c050dcba04e8c42331}
+
+\item 
+var {\bfseries gulp} = require(\textquotesingle{}gulp\textquotesingle{})\hypertarget{gulpfile_8js_a58d3b85fcc531c70ce3884a7637a73e9}{}\label{gulpfile_8js_a58d3b85fcc531c70ce3884a7637a73e9}
+
+\item 
+var {\bfseries phplint} = require(\textquotesingle{}phplint\textquotesingle{}).lint\hypertarget{gulpfile_8js_a0e8b16266e3ec952249801f2a6881074}{}\label{gulpfile_8js_a0e8b16266e3ec952249801f2a6881074}
+
+\item 
+var {\bfseries phpcs} = require(\textquotesingle{}gulp-\/phpcs\textquotesingle{})\hypertarget{gulpfile_8js_a507dc9b04d99c4dcb94c168400fc4231}{}\label{gulpfile_8js_a507dc9b04d99c4dcb94c168400fc4231}
+
+\item 
+var {\bfseries shell} = require(\textquotesingle{}gulp-\/shell\textquotesingle{})\hypertarget{gulpfile_8js_a4d630ec11c962205106277167cce695a}{}\label{gulpfile_8js_a4d630ec11c962205106277167cce695a}
+
+\item 
+var {\bfseries pdepend\+Docs} = \textquotesingle{}./docs/pdepend\textquotesingle{}\hypertarget{gulpfile_8js_a18a2577c8b2d0bee1b88880a8ec58a02}{}\label{gulpfile_8js_a18a2577c8b2d0bee1b88880a8ec58a02}
+
+\item 
+var {\bfseries phpcbf} = require(\textquotesingle{}gulp-\/phpcbf\textquotesingle{})\hypertarget{gulpfile_8js_a73d5eb56b140c7c096877f0aac2dfc63}{}\label{gulpfile_8js_a73d5eb56b140c7c096877f0aac2dfc63}
+
+\item 
+var {\bfseries gutil} = require(\textquotesingle{}gutil\textquotesingle{})\hypertarget{gulpfile_8js_ae9dd2400d1e940734ab4253a5d4bdd75}{}\label{gulpfile_8js_ae9dd2400d1e940734ab4253a5d4bdd75}
+
+\item 
+var {\bfseries phpmd} = require(\textquotesingle{}gulp-\/phpmd\textquotesingle{})\hypertarget{gulpfile_8js_a61c46028608c89fb4d0b4774e2c70fa0}{}\label{gulpfile_8js_a61c46028608c89fb4d0b4774e2c70fa0}
+
+\item 
+var {\bfseries apigen} = require(\textquotesingle{}gulp-\/apigen\textquotesingle{})\hypertarget{gulpfile_8js_a0a7c88b190ddf0b314ce9b4968d11370}{}\label{gulpfile_8js_a0a7c88b190ddf0b314ce9b4968d11370}
+
+\item 
+var {\bfseries std} = \textquotesingle{}./vendor/drupal/coder/coder\+\_\+sniffer/Drupal\textquotesingle{}\hypertarget{gulpfile_8js_ae5ded16d432981eb337e47afec443a21}{}\label{gulpfile_8js_ae5ded16d432981eb337e47afec443a21}
+
+\end{DoxyCompactItemize}
