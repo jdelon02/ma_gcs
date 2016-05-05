@@ -1,6 +1,37 @@
 <?php
 
 /**
- * @file
+ * Implements hook_action_info().
+ *
+ * Declares information about actions.
+ *
+ * Any module can define actions, and then call actions_do() to make those
+ * actions happen in response to events. The trigger module provides a user
+ * interface for associating actions with module-defined triggers, and it makes
+ * sure the core triggers fire off actions when their events happen.
+ *
+ * @return array array
+ *         An associative array of action descriptions. The keys of the array
+ *         are the names of the action functions, and each corresponding value
+ *         is an associative array.
  */
+function craigdemo_action_info() {
+  return array(
+    'craigdemo_' => array(
+      'description' => t(''),
+      'type' => '',
+      'configurable' => ,
+      'hooks' => array(
+        '' => array(),
+      )
+    )
+  );
+}
 
+/**
+ */
+function function_name($param) {
+  ;
+}
+
+?>
