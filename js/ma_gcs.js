@@ -29,10 +29,13 @@
           var randomId = $(this).data('id');
           var colorvalue = [];
           var thisColColor;
+          
           for (var i = 1; i < 9; i++) {
             colorvalue.push($(this).data('col' + i));
           }
+          
           var myURL = "https://spreadsheets.google.com/feeds/list/" + myChartID + "/" + myChartGid + "/public/values?&alt=json";
+         
           $.getJSON(myURL, function (data) {
             for (var i = 0; i < data.feed.entry.length; i++) {
                 for (var key in data.feed.entry[i]) {
@@ -104,8 +107,11 @@
                     pattern: colorvalue
                   },
                   legend: {
-                    position: myLegend
-                  }
+                    position: myLegend,
+                    item : {
+                      onclick: function() {}
+                    }
+                  },
                 });
                 break;
               case 'linechart' :
@@ -140,7 +146,10 @@
                     pattern: colorvalue
                   },
                   legend: {
-                    position: myLegend
+                    position: myLegend,
+                    item : {
+                      onclick: function() {}
+                    }
                   }
                 });
                 break;
@@ -177,7 +186,10 @@
                     pattern: colorvalue
                   },
                   legend: {
-                    position: myLegend
+                    position: myLegend,
+                    item : {
+                      onclick: function() {}
+                    }
                   }
                 });
                 break;

@@ -1,4 +1,4 @@
-name = ma gcs
+name = Message Agency Google Charts Shortcodes
 description = Provides custom shortcodes tags to be used to display google charts.
 package = Message Agency
 core = 7.x
@@ -6,3 +6,4 @@ stylesheets[all][] = css/ma_gcs.css
 dependencies[] = filter
 dependencies[] = shortcode
 dependencies[] = shortcode_wysiwyg
+dependencies[] = libraries
