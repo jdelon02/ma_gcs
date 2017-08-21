@@ -1,35 +1,38 @@
 {
-    "name": "messageagency/ma_gcs",
-    "type": "Drupal Module",
-    "description": "Message Agency Google Charts Shortcode Drupal Module",
-    "keywords": ["google", "spreadsheet", "charts", "drupal", "shortcode"],
-    "homepage": "https://bitbucket.org/messageagency/ma_gcs",
-    "license": "Apache-2.0",
-    "authors": [
-        {
-            "name": "Jeremy DeLong",
-            "email": "jeremy@messageagency.com",
-            "role": "Developer"
-        },
-        {
-            "name": "Patrick Leonard",
-            "email": "patrick@messageagency.com",
-            "role": "Developer"
-        },
-        {
-            "name": "Andre Chapelle",
-            "email": "andre@messageagency.com",
-            "role": "Developer"
-        }
-    ],
-    "require": {
-        "asimlqt/php-google-spreadsheet-client": "^3.0"
-    },
-    "require-dev": {
-        "squizlabs/php_codesniffer": "^2.6",
-        "phpdocumentor/phpdocumentor": "^2.8",
-        "pdepend/pdepend": "^2.2",
-        "phpmd/phpmd": "^2.4",
-        "drupal/coder": "^8.2"
-    }
+	"name" : "jdelon02/ma_gcs",
+	"type" : "Drupal Module",
+	"description" : "Message Agency Google Charts Shortcode Drupal Module",
+	"keywords" : [
+		"google",
+		"spreadsheet",
+		"charts",
+		"drupal",
+		"shortcode"
+	],
+	"homepage" : "https://bitbucket.org/jdelon02/ma_gcs",
+	"license" : "Apache-2.0",
+	"authors" : [{
+			"name" : "Jeremy DeLong",
+			"email" : "jeremy@messageagency.com",
+			"role" : "Developer"
+		}, {
+			"name" : "Patrick Leonard",
+			"email" : "patrick@messageagency.com",
+			"role" : "Developer"
+		}, {
+			"name" : "Andre Chapelle",
+			"email" : "andre@messageagency.com",
+			"role" : "Developer"
+		}
+	],
+	"require" : {
+		"asimlqt/php-google-spreadsheet-client" : "^3.0"
+	},
+	"require-dev" : {
+		"squizlabs/php_codesniffer" : "^2.6",
+		"phpdocumentor/phpdocumentor" : "^2.8",
+		"pdepend/pdepend" : "^2.2",
+		"phpmd/phpmd" : "^2.4",
+		"drupal/coder" : "^8.2"
+	}
 }
