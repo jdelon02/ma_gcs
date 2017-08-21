@@ -12,8 +12,10 @@
 namespace Symfony\Component\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\Definition;
+use Symfony\Component\DependencyInjection\ExpressionLanguage;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\ExpressionLanguage\Expression;
 
 /**
  * Run this pass before passes that need to know more about the relation of
@@ -32,10 +34,9 @@ class AnalyzeServiceReferencesPass implements RepeatablePassInterface
     private $currentDefinition;
     private $repeatedPass;
     private $onlyConstructorArguments;
+    private $expressionLanguage;
 
     /**
-     * Constructor.
-     *
      * @param bool $onlyConstructorArguments Sets this Service Reference pass to ignore method calls
      */
     public function __construct($onlyConstructorArguments = false)
@@ -99,6 +100,8 @@ class AnalyzeServiceReferencesPass implements RepeatablePassInterface
         foreach ($arguments as $argument) {
             if (is_array($argument)) {
                 $this->processArguments($argument);
+            } elseif ($argument instanceof Expression) {
+                $this->getExpressionLanguage()->compile((string) $argument, array('this' => 'container'));
             } elseif ($argument instanceof Reference) {
                 $this->graph->connect(
                     $this->currentId,
@@ -122,7 +125,7 @@ class AnalyzeServiceReferencesPass implements RepeatablePassInterface
     /**
      * Returns a service definition given the full name or an alias.
      *
-     * @param string $id A full id or alias for a service definition.
+     * @param string $id A full id or alias for a service definition
      *
      * @return Definition|null The definition related to the supplied id
      */
@@ -144,5 +147,28 @@ class AnalyzeServiceReferencesPass implements RepeatablePassInterface
         }
 
         return $id;
+    }
+
+    private function getExpressionLanguage()
+    {
+        if (null === $this->expressionLanguage) {
+            $providers = $this->container->getExpressionLanguageProviders();
+            $this->expressionLanguage = new ExpressionLanguage(null, $providers, function ($arg) {
+                if ('""' === substr_replace($arg, '', 1, -1)) {
+                    $id = stripcslashes(substr($arg, 1, -1));
+
+                    $this->graph->connect(
+                        $this->currentId,
+                        $this->currentDefinition,
+                        $this->getDefinitionId($id),
+                        $this->getDefinition($id)
+                    );
+                }
+
+                return sprintf('$this->get(%s)', $arg);
+            });
+        }
+
+        return $this->expressionLanguage;
     }
 }

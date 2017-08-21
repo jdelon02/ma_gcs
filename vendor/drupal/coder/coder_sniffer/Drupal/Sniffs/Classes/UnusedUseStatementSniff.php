@@ -2,8 +2,6 @@
 /**
  * Drupal_Sniffs_Classes_UnusedUseStatementSniff.
  *
- * PHP version 5
- *
  * @category PHP
  * @package  PHP_CodeSniffer
  * @link     http://pear.php.net/package/PHP_CodeSniffer
@@ -76,7 +74,11 @@ class Drupal_Sniffs_Classes_UnusedUseStatementSniff implements PHP_CodeSniffer_S
         // Check if the referenced class is in the same namespace as the current
         // file. If it is then the use statement is not necessary.
         $namespacePtr = $phpcsFile->findPrevious([T_NAMESPACE], $stackPtr);
-        if ($namespacePtr !== false) {
+        // Check if the use statement does aliasing with the "as" keyword. Aliasing
+        // is allowed even in the same namespace.
+        $aliasUsed = $phpcsFile->findPrevious(T_AS, ($classPtr - 1), $stackPtr);
+
+        if ($namespacePtr !== false && $aliasUsed === false) {
             $nsEnd     = $phpcsFile->findNext(
                 [
                  T_NS_SEPARATOR,
@@ -108,6 +110,12 @@ class Drupal_Sniffs_Classes_UnusedUseStatementSniff implements PHP_CodeSniffer_S
 
         while ($classUsed !== false) {
             if (strtolower($tokens[$classUsed]['content']) === $lowerClassName) {
+                // If the name is used in a PHP 7 function return type declaration
+                // stop.
+                if ($tokens[$classUsed]['code'] === T_RETURN_TYPE) {
+                    return;
+                }
+
                 $beforeUsage = $phpcsFile->findPrevious(
                     PHP_CodeSniffer_Tokens::$emptyTokens,
                     ($classUsed - 1),
@@ -124,9 +132,9 @@ class Drupal_Sniffs_Classes_UnusedUseStatementSniff implements PHP_CodeSniffer_S
                 if ($tokens[$beforeUsage]['code'] === T_USE && empty($tokens[$beforeUsage]['conditions']) === false) {
                     return;
                 }
-            }
+            }//end if
 
-            $classUsed = $phpcsFile->findNext(T_STRING, ($classUsed + 1));
+            $classUsed = $phpcsFile->findNext([T_STRING, T_RETURN_TYPE], ($classUsed + 1));
         }//end while
 
         $warning = 'Unused use statement';
@@ -148,8 +156,39 @@ class Drupal_Sniffs_Classes_UnusedUseStatementSniff implements PHP_CodeSniffer_S
                 $i++;
             }
 
+            // Replace @var data types in doc comments with the fully qualified class
+            // name.
+            $useNamespacePtr = $phpcsFile->findNext([T_STRING], ($stackPtr + 1));
+            $useNamespaceEnd = $phpcsFile->findNext(
+                [
+                 T_NS_SEPARATOR,
+                 T_STRING,
+                ],
+                ($useNamespacePtr + 1),
+                null,
+                true
+            );
+            $fullNamespace   = $phpcsFile->getTokensAsString($useNamespacePtr, ($useNamespaceEnd - $useNamespacePtr));
+
+            $tag = $phpcsFile->findNext(T_DOC_COMMENT_TAG, ($stackPtr + 1));
+
+            while ($tag !== false) {
+                if (($tokens[$tag]['content'] === '@var' || $tokens[$tag]['content'] === '@return')
+                    && isset($tokens[($tag + 1)]) === true
+                    && $tokens[($tag + 1)]['code'] === T_DOC_COMMENT_WHITESPACE
+                    && isset($tokens[($tag + 2)]) === true
+                    && $tokens[($tag + 2)]['code'] === T_DOC_COMMENT_STRING
+                    && strpos($tokens[($tag + 2)]['content'], $tokens[$classPtr]['content']) === 0
+                ) {
+                    $replacement = '\\'.$fullNamespace.substr($tokens[($tag + 2)]['content'], strlen($tokens[$classPtr]['content']));
+                    $phpcsFile->fixer->replaceToken(($tag + 2), $replacement);
+                }
+
+                $tag = $phpcsFile->findNext(T_DOC_COMMENT_TAG, ($tag + 1));
+            }
+
             $phpcsFile->fixer->endChangeset();
-        }
+        }//end if
 
     }//end process()
 

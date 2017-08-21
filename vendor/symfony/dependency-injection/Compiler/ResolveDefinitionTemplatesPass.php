@@ -14,6 +14,7 @@ namespace Symfony\Component\DependencyInjection\Compiler;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\DefinitionDecorator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Exception\ExceptionInterface;
 use Symfony\Component\DependencyInjection\Exception\RuntimeException;
 
 /**
@@ -96,11 +97,24 @@ class ResolveDefinitionTemplatesPass implements CompilerPassInterface
      */
     private function resolveDefinition(ContainerBuilder $container, DefinitionDecorator $definition)
     {
-        if (!$container->hasDefinition($parent = $definition->getParent())) {
-            throw new RuntimeException(sprintf('The parent definition "%s" defined for definition "%s" does not exist.', $parent, $this->currentId));
+        try {
+            return $this->doResolveDefinition($container, $definition);
+        } catch (ExceptionInterface $e) {
+            $r = new \ReflectionProperty($e, 'message');
+            $r->setAccessible(true);
+            $r->setValue($e, sprintf('Service "%s": %s', $this->currentId, $e->getMessage()));
+
+            throw $e;
+        }
+    }
+
+    private function doResolveDefinition(ContainerBuilder $container, DefinitionDecorator $definition)
+    {
+        if (!$container->has($parent = $definition->getParent())) {
+            throw new RuntimeException(sprintf('Parent definition "%s" does not exist.', $parent));
         }
 
-        $parentDef = $container->getDefinition($parent);
+        $parentDef = $container->findDefinition($parent);
         if ($parentDef instanceof DefinitionDecorator) {
             $id = $this->currentId;
             $this->currentId = $parent;
@@ -127,6 +141,7 @@ class ResolveDefinitionTemplatesPass implements CompilerPassInterface
         $def->setFile($parentDef->getFile());
         $def->setPublic($parentDef->isPublic());
         $def->setLazy($parentDef->isLazy());
+        $def->setAutowired($parentDef->isAutowired());
 
         // overwrite with values specified in the decorator
         $changes = $definition->getChanges();
@@ -151,12 +166,15 @@ class ResolveDefinitionTemplatesPass implements CompilerPassInterface
         if (isset($changes['deprecated'])) {
             $def->setDeprecated($definition->isDeprecated(), $definition->getDeprecationMessage('%service_id%'));
         }
+        if (isset($changes['autowire'])) {
+            $def->setAutowired($definition->isAutowired());
+        }
         if (isset($changes['decorated_service'])) {
             $decoratedService = $definition->getDecoratedService();
             if (null === $decoratedService) {
                 $def->setDecoratedService($decoratedService);
             } else {
-                $def->setDecoratedService($decoratedService[0], $decoratedService[1]);
+                $def->setDecoratedService($decoratedService[0], $decoratedService[1], $decoratedService[2]);
             }
         }
 

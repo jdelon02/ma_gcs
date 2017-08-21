@@ -2,6 +2,75 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
+## 2.7.2 - 2016-12-16
+
+### Added
+
+- [#124](https://github.com/zendframework/zend-cache/pull/124)
+  New coding standard
+
+### Deprecated
+
+- [#123](https://github.com/zendframework/zend-cache/pull/123)
+  Deprecate capability "expiredRead".
+  It's basically providing the same information as staticTtl but from a wrong PoV
+
+### Removed
+
+- Nothing.
+
+### Fixed
+
+- [#122](https://github.com/zendframework/zend-cache/pull/122)
+  Fixed redis doc for lib_options (not lib_option)
+- [#118](https://github.com/zendframework/zend-cache/pull/118)
+  fixed redis tests in case running with different server
+- [#119](https://github.com/zendframework/zend-cache/pull/119)
+  Redis: Don't call method Redis::info() every time
+- [#113](https://github.com/zendframework/zend-cache/pull/113)
+  Travis: Moved coverage reporting to latest env
+- [#114](https://github.com/zendframework/zend-cache/pull/114)
+  Travis: removed fast_finish flag
+- [#107](https://github.com/zendframework/zend-cache/issues/107)
+  fixed redis server version test in Redis::internalGetMetadata()
+- [#111](https://github.com/zendframework/zend-cache/pull/111)
+  Fixed typo in storage adapter doc
+- [#102](https://github.com/zendframework/zend-cache/pull/102)
+  filesystem: fixes a lot of possible race conditions
+
+## 2.7.1 - 2016-05-12
+
+### Added
+
+- [#35](https://github.com/zendframework/zend-cache/pull/35)
+  Added benchmarks using PHPBench
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
+
+### Fixed
+
+- [#76](https://github.com/zendframework/zend-cache/pull/76)
+  ZendServer: fixed return null on missing item
+- [#88](https://github.com/zendframework/zend-cache/issues/88)
+  Redis: fixed segfault on storing NULL and fixed supported datatypes capabilities
+- [#95](https://github.com/zendframework/zend-cache/issues/95)
+  don't try to unserialize missing items
+- [#66](https://github.com/zendframework/zend-cache/issues/66)
+  fixed Memcached::internalSetItems in PHP-7 by reducing variables by reference
+- [#57](https://github.com/zendframework/zend-cache/pull/57)
+  Memcached: HHVM compatibility and reduced duplicated code
+- [#91](https://github.com/zendframework/zend-cache/pull/91)
+  fixed that order of adapter options may cause exception
+- [#98](https://github.com/zendframework/zend-cache/pull/98) updates the plugin
+  manager alias list to ensure all adapter name permutations commonly used are
+  accepted.
+
 ## 2.7.0 - 2016-04-12
 
 ### Added

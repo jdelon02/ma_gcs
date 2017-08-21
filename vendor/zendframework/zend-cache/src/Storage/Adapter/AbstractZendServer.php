@@ -39,7 +39,8 @@ abstract class AbstractZendServer extends AbstractAdapter
         $prefix      = ($namespace === '') ? '' : $namespace . self::NAMESPACE_SEPARATOR;
 
         $result = $this->zdcFetch($prefix . $normalizedKey);
-        if ($result === null) {
+        if ($result === false) {
+            $result  = null;
             $success = false;
         } else {
             $success  = true;
@@ -220,7 +221,6 @@ abstract class AbstractZendServer extends AbstractAdapter
                     'staticTtl'          => true,
                     'ttlPrecision'       => 1,
                     'useRequestTime'     => false,
-                    'expiredRead'        => false,
                     'maxKeyLength'       => 0,
                     'namespaceIsPrefix'  => true,
                     'namespaceSeparator' => self::NAMESPACE_SEPARATOR,

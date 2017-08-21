@@ -67,10 +67,12 @@ class Serializer extends AbstractPlugin
      */
     public function onReadItemPost(PostEvent $event)
     {
-        $serializer = $this->getOptions()->getSerializer();
-        $result     = $event->getResult();
-        $result     = $serializer->unserialize($result);
-        $event->setResult($result);
+        $result = $event->getResult();
+        if ($result !== null) {
+            $serializer = $this->getOptions()->getSerializer();
+            $result     = $serializer->unserialize($result);
+            $event->setResult($result);
+        }
     }
 
     /**
@@ -156,7 +158,7 @@ class Serializer extends AbstractPlugin
         $keyValuePairs = $storage->getItems(array_keys($params['keyValuePairs']));
         foreach ($params['keyValuePairs'] as $key => & $value) {
             if (isset($keyValuePairs[$key])) {
-                $keyValuePairs[$key]+= $value;
+                $keyValuePairs[$key] += $value;
             } else {
                 $keyValuePairs[$key] = $value;
             }
@@ -210,7 +212,7 @@ class Serializer extends AbstractPlugin
         $keyValuePairs = $storage->getItems(array_keys($params['keyValuePairs']));
         foreach ($params['keyValuePairs'] as $key => &$value) {
             if (isset($keyValuePairs[$key])) {
-                $keyValuePairs[$key]-= $value;
+                $keyValuePairs[$key] -= $value;
             } else {
                 $keyValuePairs[$key] = -$value;
             }
@@ -236,7 +238,7 @@ class Serializer extends AbstractPlugin
         $baseCapabilities = $event->getResult();
         $index = spl_object_hash($baseCapabilities);
 
-        if (!isset($this->capabilities[$index])) {
+        if (! isset($this->capabilities[$index])) {
             $this->capabilities[$index] = new Capabilities(
                 $baseCapabilities->getAdapter(),
                 new stdClass(), // marker

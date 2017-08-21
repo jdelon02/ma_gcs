@@ -2,8 +2,6 @@
 /**
  * PHP_CodeSniffer_Sniffs_Drupal_Commenting_InlineCommentSniff.
  *
- * PHP version 5
- *
  * @category PHP
  * @package  PHP_CodeSniffer
  * @link     http://pear.php.net/package/PHP_CodeSniffer
@@ -87,6 +85,7 @@ class Drupal_Sniffs_Commenting_InlineCommentSniff implements PHP_CodeSniffer_Sni
                        T_ABSTRACT,
                        T_CONST,
                        T_PROPERTY,
+                       T_VAR,
                       );
 
             // Also ignore all doc blocks defined in the outer scope (no scope
@@ -233,7 +232,7 @@ class Drupal_Sniffs_Commenting_InlineCommentSniff implements PHP_CodeSniffer_Sni
             // (function references, machine names with underscores etc.).
             $matches = array();
             preg_match('/[a-z]+/', $words[0], $matches);
-            if (isset($matches[0]) && $matches[0] === $words[0]) {
+            if (isset($matches[0]) === true && $matches[0] === $words[0]) {
                 $error = 'Inline comments must start with a capital letter';
                 $fix   = $phpcsFile->addFixableError($error, $topComment, 'NotCapital');
                 if ($fix === true) {
@@ -245,10 +244,10 @@ class Drupal_Sniffs_Commenting_InlineCommentSniff implements PHP_CodeSniffer_Sni
 
         $commentCloser   = $commentText[(strlen($commentText) - 1)];
         $acceptedClosers = array(
-                            'full-stops'        => '.',
-                            'exclamation marks' => '!',
-                            'colons'            => ':',
-                            'question marks'    => '?',
+                            'full-stops'             => '.',
+                            'exclamation marks'      => '!',
+                            'colons'                 => ':',
+                            'question marks'         => '?',
                             'or closing parentheses' => ')',
                            );
 
@@ -262,7 +261,11 @@ class Drupal_Sniffs_Commenting_InlineCommentSniff implements PHP_CodeSniffer_Sni
             $isUrl = isset($matches[0]) === true;
             preg_match('/[$a-zA-Z_]+\([$a-zA-Z_]*\)/', $lastWord, $matches);
             $isFunction = isset($matches[0]) === true;
-            if (!$isUrl && !$isFunction) {
+
+            // Also allow closing tags like @endlink or @endcode.
+            $isEndTag = $lastWord[0] === '@';
+
+            if ($isUrl === false && $isFunction === false && $isEndTag === false) {
                 $error = 'Inline comments must end in %s';
                 $ender = '';
                 foreach ($acceptedClosers as $closerName => $symbol) {
@@ -425,7 +428,8 @@ class Drupal_Sniffs_Commenting_InlineCommentSniff implements PHP_CodeSniffer_Sni
                                             '-',
                                             '@todo',
                                            );
-                    $words = preg_split('/\s+/', $prevCommentText);
+                    $words        = preg_split('/\s+/', $prevCommentText);
+                    $numberedList = (bool) preg_match('/^[0-9]+\./', $words[1]);
                     if (in_array($words[1], $indentationStarters) === true) {
                         if ($spaceCount !== ($prevSpaceCount + 2)) {
                             $error = 'Comment indentation error after %s element, expected %s spaces';
@@ -435,10 +439,20 @@ class Drupal_Sniffs_Commenting_InlineCommentSniff implements PHP_CodeSniffer_Sni
                                 $phpcsFile->fixer->replaceToken($stackPtr, $newComment);
                             }
                         }
+                    } else if ($numberedList === true) {
+                        $expectedSpaceCount = ($prevSpaceCount + strlen($words[1]) + 1);
+                        if ($spaceCount !== $expectedSpaceCount) {
+                            $error = 'Comment indentation error, expected %s spaces';
+                            $fix   = $phpcsFile->addFixableError($error, $stackPtr, 'SpacingBefore', array($expectedSpaceCount));
+                            if ($fix === true) {
+                                $newComment = '//'.str_repeat(' ', $expectedSpaceCount).ltrim($tokens[$stackPtr]['content'], "/\t ");
+                                $phpcsFile->fixer->replaceToken($stackPtr, $newComment);
+                            }
+                        }
                     } else {
                         $error = 'Comment indentation error, expected only %s spaces';
                         $phpcsFile->addError($error, $stackPtr, 'SpacingBefore', array($prevSpaceCount));
-                    }
+                    }//end if
                 }//end if
             } else {
                 $error = '%s spaces found before inline comment; expected "// %s" but found "%s"';

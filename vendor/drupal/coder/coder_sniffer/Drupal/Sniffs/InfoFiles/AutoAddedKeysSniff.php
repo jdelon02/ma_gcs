@@ -2,8 +2,6 @@
 /**
  * Drupal_Sniffs_InfoFiles_RequiredSniff.
  *
- * PHP version 5
- *
  * @category PHP
  * @package  PHP_CodeSniffer
  * @link     http://pear.php.net/package/PHP_CodeSniffer
@@ -40,13 +38,11 @@ class Drupal_Sniffs_InfoFiles_AutoAddedKeysSniff implements PHP_CodeSniffer_Snif
      * @param int                  $stackPtr  The position of the current token in the
      *                                        stack passed in $tokens.
      *
-     * @return void
+     * @return int
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
         // Only run this sniff once per info file.
-        $end = (count($phpcsFile->getTokens()) + 1);
-
         if (preg_match('/\.info$/', $phpcsFile->getFilename()) === 1) {
             // Drupal 7 style info file.
             $contents = file_get_contents($phpcsFile->getFilename());
@@ -58,29 +54,29 @@ class Drupal_Sniffs_InfoFiles_AutoAddedKeysSniff implements PHP_CodeSniffer_Snif
                 $info = \Symfony\Component\Yaml\Yaml::parse($contents);
             } catch (\Symfony\Component\Yaml\Exception\ParseException $e) {
                 // If the YAML is invalid we ignore this file.
-                return $end;
+                return ($phpcsFile->numTokens + 1);
             }
         } else {
-            return $end;
+            return ($phpcsFile->numTokens + 1);
         }
 
         if (isset($info['project']) === true) {
-            $warning = 'Remove "project" form the info file, it will be added by drupal.org packaging automatically';
+            $warning = 'Remove "project" from the info file, it will be added by drupal.org packaging automatically';
             $phpcsFile->addWarning($warning, $stackPtr, 'Project');
         }
 
         if (isset($info['timestamp']) === true) {
-            $warning = 'Remove "timestamp" form the info file, it will be added by drupal.org packaging automatically';
+            $warning = 'Remove "timestamp" from the info file, it will be added by drupal.org packaging automatically';
             $phpcsFile->addWarning($warning, $stackPtr, 'Timestamp');
         }
 
         // "version" is special: we want to allow it in core, but not anywhere else.
         if (isset($info['version']) === true && strpos($phpcsFile->getFilename(), '/core/') === false) {
-            $warning = 'Remove "version" form the info file, it will be added by drupal.org packaging automatically';
+            $warning = 'Remove "version" from the info file, it will be added by drupal.org packaging automatically';
             $phpcsFile->addWarning($warning, $stackPtr, 'Version');
         }
 
-        return $end;
+        return ($phpcsFile->numTokens + 1);
 
     }//end process()
 

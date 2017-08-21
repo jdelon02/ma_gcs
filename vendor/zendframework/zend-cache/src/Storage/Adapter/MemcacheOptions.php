@@ -16,6 +16,16 @@ use Zend\Cache\Exception;
  */
 class MemcacheOptions extends AdapterOptions
 {
+    // @codingStandardsIgnoreStart
+    /**
+     * Prioritized properties ordered by prio to be set first
+     * in case a bulk of options sets set at once
+     *
+     * @var string[]
+     */
+    protected $__prioritizedProperties__ = ['resource_manager', 'resource_id'];
+    // @codingStandardsIgnoreEnd
+
     /**
      * The namespace separator
      * @var string
@@ -113,7 +123,7 @@ class MemcacheOptions extends AdapterOptions
      */
     public function getResourceManager()
     {
-        if (!$this->resourceManager) {
+        if (! $this->resourceManager) {
             $this->resourceManager = new MemcacheResourceManager();
         }
         return $this->resourceManager;

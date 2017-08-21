@@ -23,10 +23,7 @@ class Drupal_Sniffs_Commenting_PostStatementCommentSniff implements PHP_CodeSnif
      *
      * @var array
      */
-    public $supportedTokenizers = array(
-                                   'PHP',
-                                   'JS',
-                                  );
+    public $supportedTokenizers = array('PHP');
 
 
     /**
@@ -86,6 +83,7 @@ class Drupal_Sniffs_Commenting_PostStatementCommentSniff implements PHP_CodeSnif
                 $phpcsFile->fixer->addNewlineBefore($stackPtr);
                 return;
             }
+
             $lineStart = $stackPtr;
             while ($tokens[$lineStart]['line'] === $tokens[$stackPtr]['line']
                 && $tokens[$lineStart]['code'] !== T_OPEN_TAG
