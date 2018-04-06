@@ -1,6 +1,6 @@
 # README #
 
-This is a Drupal 7 module that extends the shortcode and shortcode_wysiwyg modules to allow for dynamically generating graphs using D3/C3 libraries.  The data is pulled from a google sheets URL.
+This is a Drupal 7 module that extends the shortcode and shortcode_wysiwyg modules to allow for dynamically generating graphs using D3/C3 libraries.  The data is pulled from a google sheets URL. This is a fork of the original, it is not maintained, and will no longer work.  It is here for review purposes only. 
 
 ### What is this repository for? ###
 
